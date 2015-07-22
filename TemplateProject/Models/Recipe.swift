@@ -15,7 +15,11 @@ class Recipe: PFObject, PFSubclassing
 {
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
+    @NSManaged var RecipeTitle: String?
+    @NSManaged var Ingredients: NSArray?
+    @NSManaged var Directions: NSArray?
    
+    var ingredient: String?
     var image: Dynamic<UIImage?> = Dynamic(nil)
     var photoUploadTask: UIBackgroundTaskIdentifier?
     var likes =  Dynamic<[PFUser]?>(nil)
