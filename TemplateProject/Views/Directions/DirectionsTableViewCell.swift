@@ -10,7 +10,8 @@ import UIKit
 
 class DirectionsTableViewCell: UITableViewCell
 {
-    var direction: NSString!
+    var ingredient: AnyObject?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
