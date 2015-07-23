@@ -12,7 +12,6 @@ typealias PhotoTakingHelperCallback = UIImage? -> Void
 
 class PhotoTakingHelper : NSObject
 {
-    
     /** View controller on which AlertViewController and UIImagePickerController are presented */
     weak var viewController: UIViewController!
     var callback: PhotoTakingHelperCallback
@@ -36,10 +35,11 @@ class PhotoTakingHelper : NSObject
         
         self.viewController.presentViewController(imagePickerController!, animated: true, completion: nil)
     }
+    
     func showPhotoSourceSelection()
     {
         // Allow user to choose between photo library and camera
-        let alertController = UIAlertController(title: nil, message: "Create a new recipe by uploading a photo or video by: ", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: "Uploading a photo by:", preferredStyle: .ActionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
@@ -64,20 +64,26 @@ class PhotoTakingHelper : NSObject
         
         viewController.presentViewController(alertController, animated: true, completion: nil)
     }
+    
 }
+
 extension PhotoTakingHelper: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!)
     {
         viewController.dismissViewControllerAnimated(false, completion: nil)
-        
         callback(image)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController)
     {
         viewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
+    {
+        
     }
     
 }
