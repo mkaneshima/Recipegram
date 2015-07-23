@@ -11,8 +11,23 @@ import UIKit
 class ChosenRecipeViewController: UIViewController, UIScrollViewDelegate
 {
         
-    @IBOutlet weak var pageControl: UIPageControl!
+//    @IBOutlet weak var pageControl: UIPageControl!
+    
+    @IBOutlet weak var recipeTitleLabel: UILabel!
+//    @IBOutlet weak var ingredientsImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var contentView: UIView!
+//    @IBOutlet weak var servingsAmountLabel: UILabel!
+//    @IBOutlet weak var prepTimeLabel: UILabel!
+//    @IBOutlet weak var cookTimeLabel: UILabel!
+//    @IBOutlet weak var skillLevelLabel: UILabel!
+    
+    var ingredientsArray: [String]?
+  
+    
+    @IBOutlet weak var instructionsTextView: UITextView!
+    
     @IBOutlet weak var chosenImageView: UIImageView!
     {
         didSet
@@ -41,7 +56,6 @@ class ChosenRecipeViewController: UIViewController, UIScrollViewDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        scrollView.contentSize.height = 3000
         // Do any additional setup after loading the view.
     }
     

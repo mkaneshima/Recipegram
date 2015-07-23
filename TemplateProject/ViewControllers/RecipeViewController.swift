@@ -9,19 +9,22 @@
 import UIKit
 import Parse
 import ConvenienceKit
+import AVFoundation
 
-class RecipeViewController: UIViewController, TimelineComponentTarget
+class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TimelineComponentTarget
 {
     @IBOutlet weak var tableView: UITableView!
     
     var selected: Int!
     
-    // Segue Identifier
+    // Segue Identifiers
     let recipeSegueIdentifier = "ShowRecipeSegue"
+    let newRecipeSegueIdentifier = "CreateNewRecipeSegue"
     
     // PhotoTakingHelper
     var photoTakingHelper: PhotoTakingHelper?
     
+
     // Timeline Component Protocol
     let defaultRange = 0...4
     let additionalRangeSize = 5
@@ -53,11 +56,24 @@ class RecipeViewController: UIViewController, TimelineComponentTarget
     {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        // If the user selects the recipe from the timeline, the RecipeViewController selects the segue to ChosenRecipeViewController
         if(segue.identifier == recipeSegueIdentifier)
         {
             let destViewController = segue.destinationViewController as! ChosenRecipeViewController
             destViewController.recipe = self.recipeTimelineComponent.content[selected]
         }
+        else if(segue.identifier == newRecipeSegueIdentifier)
+        {
+            
+        }
+        
+        // Otherwise, the RecipeViewController selects the segue to his/her Profile.
+//        if(segue.identifier == "SelectProfileSegue")
+//        {
+//            let destViewController = segue.destinationViewController as! ProfileViewController
+////            destViewController.recipe = self.recipeTimelineComponent.content[selected]
+//        }
     }
     
 
@@ -85,12 +101,19 @@ class RecipeViewController: UIViewController, TimelineComponentTarget
             PhotoTakingHelper(viewController: self.tabBarController!)
         {
             (image: UIImage?) in
-            let recipe = Recipe()
-            recipe.image.value = image!
-            recipe.uploadRecipe()
+//            let recipe = Recipe()
+//            recipe.image.value = image!
+//            recipe.uploadRecipe()
+//            let picker = UIImagePickerController()
+//            picker.delegate = self
+//            picker.allowsEditing = true
+//            picker.sourceType = .
+            
+//            UIImageWriteToSavedPhotosAlbum(image, self, "imageDidFinishSavingWithErrorContextInfo:error:contextInfo:", nil)
+            
         }
     }
-   
+    
 }
 
 // MARK: Tab Bar Delegate
@@ -99,15 +122,16 @@ extension RecipeViewController: UITabBarControllerDelegate
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool
     {
-        if (viewController is PhotoViewController)
+        if (viewController is NewRecipeViewController)
         {
-            takePhoto()
+            self.tabBarController?.selectedIndex = 2
             return false
         }
         else
         {
             return true
         }
+        
     }
 }
 
