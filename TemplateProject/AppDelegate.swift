@@ -56,9 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         println("No logged in user :(")
     }
     
-//    var pageController = UIPageControl.appearance()
-//    pageController.pageIndicatorTintColor = UIColor.blackColor()
-//    pageController.backgroundColor = UIColor.whiteColor()
+    // Initialize PageViewController
+    var pageController = UIPageControl.appearance()
+    pageController.pageIndicatorTintColor = UIColor.blueColor()
+    pageController.backgroundColor = UIColor.whiteColor()
     
     
     // Set default ACL
