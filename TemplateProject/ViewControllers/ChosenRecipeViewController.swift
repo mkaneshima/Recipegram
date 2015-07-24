@@ -7,26 +7,19 @@
 //
 
 import UIKit
+import Parse
 
-class ChosenRecipeViewController: UIViewController, UIScrollViewDelegate
+class ChosenRecipeViewController: UIViewController, UIPageViewControllerDelegate
 {
-        
-//    @IBOutlet weak var pageControl: UIPageControl!
     
-    @IBOutlet weak var recipeTitleLabel: UILabel!
-//    @IBOutlet weak var ingredientsImageView: UIImageView!
-    @IBOutlet weak var scrollView: UIScrollView!
+//    var ingredientsArray: [String]?
+    var pageImages: [UIImage] = []
+    var pageViews: [UIImageView?] = []
     
-    @IBOutlet weak var contentView: UIView!
-//    @IBOutlet weak var servingsAmountLabel: UILabel!
-//    @IBOutlet weak var prepTimeLabel: UILabel!
-//    @IBOutlet weak var cookTimeLabel: UILabel!
-//    @IBOutlet weak var skillLevelLabel: UILabel!
+   
     
-    var ingredientsArray: [String]?
-  
     
-    @IBOutlet weak var instructionsTextView: UITextView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var chosenImageView: UIImageView!
     {
@@ -50,13 +43,31 @@ class ChosenRecipeViewController: UIViewController, UIScrollViewDelegate
     }
     
     
-    
-    
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+//        pageImages = [UIImage(coder: self)]
+//        
+//        let pageCount = pageImages.count
+//        
+//        // 2
+//        pageControl.currentPage = 0
+//        pageControl.numberOfPages = pageCount
+//        
+//        // 3
+//        for _ in 0..<pageCount {
+//            pageViews.append(nil)
+//        }
+//        
+//        // 4
+//        let pagesScrollViewSize = scrollView.frame.size
+//        scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
+//        
+//        // 5
+//        loadVisiblePages()
+
     }
     
 
@@ -77,3 +88,12 @@ class ChosenRecipeViewController: UIViewController, UIScrollViewDelegate
     
 
 }
+
+//extension ChosenRecipeViewController: UIPageViewControllerDataSource
+//{
+//    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
+//    {
+//        var vc = viewController as! ContentViewController
+//        var index = vc.pageIndex as Int
+//    }
+//}
