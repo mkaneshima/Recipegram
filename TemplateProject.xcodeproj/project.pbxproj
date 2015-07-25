@@ -280,6 +280,7 @@
 		472DAD551B5B49E600278F99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4742BA721B634CBD0044B69E /* FriendSearch */,
 				4741CF6F1B5E1B6900320995 /* Directions */,
 				4741CF6C1B5E168700320995 /* Ingredients */,
 				472DAD5A1B5B569100278F99 /* RecipeTimeline */,
@@ -323,6 +324,13 @@
 				4741CF701B5E1B7B00320995 /* DirectionsTableViewCell.swift */,
 			);
 			path = Directions;
+			sourceTree = "<group>";
+		};
+		4742BA721B634CBD0044B69E /* FriendSearch */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FriendSearch;
 			sourceTree = "<group>";
 		};
 		474410651B5CC53D0048A587 /* FilterPreviewImages */ = {
