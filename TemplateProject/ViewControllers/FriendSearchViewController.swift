@@ -10,8 +10,8 @@ import UIKit
 import ConvenienceKit
 import Parse
 
-class FriendSearchViewController: UIViewController {
-    
+class FriendSearchViewController: UIViewController
+{    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
