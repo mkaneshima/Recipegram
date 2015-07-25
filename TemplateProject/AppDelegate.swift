@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             {
                 // if login was successful, display the TabBarController
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UIViewController
+                let mainViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
                 
-                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
+                self.window?.rootViewController!.presentViewController(mainViewController, animated:true, completion:nil)
             }
         }
     }
@@ -56,12 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         println("No logged in user :(")
     }
     
-    // Initialize PageViewController
-    var pageController = UIPageControl.appearance()
-    pageController.pageIndicatorTintColor = UIColor.blueColor()
-    pageController.backgroundColor = UIColor.whiteColor()
-    
-    
     // Set default ACL
     let acl = PFACL()
     acl.setPublicReadAccess(true)
@@ -77,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     if (user != nil)
     {
-        // if we have a user, set the TabBarController to be the initial View Controller
+        // if we have a user, set the RecipeViewController to be the initial View Controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         startViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
     }
@@ -96,9 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     self.window?.rootViewController = startViewController;
     self.window?.makeKeyAndVisible()
     
-    // make white the default color for selected tab bar entries
-    UITabBar.appearance().tintColor = UIColor.whiteColor()
-
     return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
