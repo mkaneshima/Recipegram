@@ -9,18 +9,24 @@
 import UIKit
 import Parse
 
-protocol FriendSearchTableViewCellDelegate: class {
+protocol FriendSearchTableViewCellDelegate: class
+{
     func cell(cell: FriendSearchTableViewCell, didSelectFollowUser user: PFUser)
     func cell(cell: FriendSearchTableViewCell, didSelectUnfollowUser user: PFUser)
 }
 
-class FriendSearchTableViewCell: UITableViewCell {
+class FriendSearchTableViewCell: UITableViewCell
+{
     
     @IBOutlet weak var usernameLabel: UILabel!
+    
     @IBOutlet weak var followButton: UIButton!
+    
+    
     weak var delegate: FriendSearchTableViewCellDelegate?
     
-    var user: PFUser? {
+    var user: PFUser?
+    {
         didSet {
             usernameLabel.text = user?.username
         }
@@ -47,4 +53,5 @@ class FriendSearchTableViewCell: UITableViewCell {
             self.canFollow = true
         }
     }
+    
 }
