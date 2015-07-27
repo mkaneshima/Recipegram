@@ -21,6 +21,15 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     let recipeSegueIdentifier = "ShowRecipeSegue"
     let newRecipeSegueIdentifier = "CreateNewRecipeSegue"
     
+    
+    @IBOutlet weak var addRecipeBarButton: UIBarButtonItem!
+    
+    
+    @IBAction func addButtonPressed(sender: AnyObject)
+    {
+        
+    }
+
     // PhotoTakingHelper
     var photoTakingHelper: PhotoTakingHelper?
     
@@ -63,17 +72,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
             let destViewController = segue.destinationViewController as! ChosenRecipeViewController
             destViewController.recipe = self.recipeTimelineComponent.content[selected]
         }
-        else if(segue.identifier == newRecipeSegueIdentifier)
-        {
-            
-        }
         
-        // Otherwise, the RecipeViewController selects the segue to his/her Profile.
-//        if(segue.identifier == "SelectProfileSegue")
-//        {
-//            let destViewController = segue.destinationViewController as! ProfileViewController
-////            destViewController.recipe = self.recipeTimelineComponent.content[selected]
-//        }
     }
     
 
@@ -94,25 +93,25 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     // MARK: View callbacks
-    func takePhoto()
-    {
-        // instantiate photo taking class, provide callback for when photo is selected
-        photoTakingHelper =
-            PhotoTakingHelper(viewController: self.tabBarController!)
-        {
-            (image: UIImage?) in
-//            let recipe = Recipe()
-//            recipe.image.value = image!
-//            recipe.uploadRecipe()
-//            let picker = UIImagePickerController()
-//            picker.delegate = self
-//            picker.allowsEditing = true
-//            picker.sourceType = .
-            
-//            UIImageWriteToSavedPhotosAlbum(image, self, "imageDidFinishSavingWithErrorContextInfo:error:contextInfo:", nil)
-            
-        }
-    }
+//    func takePhoto()
+//    {
+//        // instantiate photo taking class, provide callback for when photo is selected
+//        photoTakingHelper =
+//            PhotoTakingHelper(viewController: self.tabBarController!)
+//        {
+//            (image: UIImage?) in
+////            let recipe = Recipe()
+////            recipe.image.value = image!
+////            recipe.uploadRecipe()
+////            let picker = UIImagePickerController()
+////            picker.delegate = self
+////            picker.allowsEditing = true
+////            picker.sourceType = .
+//            
+////            UIImageWriteToSavedPhotosAlbum(image, self, "imageDidFinishSavingWithErrorContextInfo:error:contextInfo:", nil)
+//            
+//        }
+//    }
     
 }
 

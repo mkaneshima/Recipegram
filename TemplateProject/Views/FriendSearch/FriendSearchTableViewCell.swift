@@ -59,8 +59,4 @@ class FriendSearchTableViewCell: UITableViewCell
         }
     }
 
-
-
-
-
 }

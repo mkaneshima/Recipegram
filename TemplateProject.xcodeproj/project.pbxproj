@@ -35,6 +35,7 @@
 		474410721B5CC53D0048A587 /* filter_vignette.png in Resources */ = {isa = PBXBuildFile; fileRef = 474410691B5CC53D0048A587 /* filter_vignette.png */; };
 		474410731B5CC53D0048A587 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4744106A1B5CC53D0048A587 /* FilterViewController.swift */; };
 		474410741B5CC53D0048A587 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4744106B1B5CC53D0048A587 /* FilterViewController.xib */; };
+		4746D88B1B660D2F00EED07B /* UpdatedDirectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4746D88A1B660D2F00EED07B /* UpdatedDirectionsTableViewCell.swift */; };
 		624262C01B4460CB00005CE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624262B21B4460CB00005CE3 /* AppDelegate.swift */; };
 		624262C11B4460CB00005CE3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 624262B31B4460CB00005CE3 /* LaunchScreen.xib */; };
 		624262C21B4460CB00005CE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624262B51B4460CB00005CE3 /* Main.storyboard */; };
@@ -180,6 +181,7 @@
 		474410691B5CC53D0048A587 /* filter_vignette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter_vignette.png; sourceTree = "<group>"; };
 		4744106A1B5CC53D0048A587 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		4744106B1B5CC53D0048A587 /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		4746D88A1B660D2F00EED07B /* UpdatedDirectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatedDirectionsTableViewCell.swift; sourceTree = "<group>"; };
 		624262B21B4460CB00005CE3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		624262B41B4460CB00005CE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		624262B61B4460CB00005CE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		472DAD551B5B49E600278F99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4746D8831B660D0D00EED07B /* UpdatedDirections */,
 				4742BA721B634CBD0044B69E /* FriendSearch */,
 				4741CF6F1B5E1B6900320995 /* Directions */,
 				4741CF6C1B5E168700320995 /* Ingredients */,
@@ -348,6 +351,14 @@
 				474410691B5CC53D0048A587 /* filter_vignette.png */,
 			);
 			path = FilterPreviewImages;
+			sourceTree = "<group>";
+		};
+		4746D8831B660D0D00EED07B /* UpdatedDirections */ = {
+			isa = PBXGroup;
+			children = (
+				4746D88A1B660D2F00EED07B /* UpdatedDirectionsTableViewCell.swift */,
+			);
+			path = UpdatedDirections;
 			sourceTree = "<group>";
 		};
 		624262B11B4460CB00005CE3 /* TemplateProject */ = {
@@ -604,6 +615,7 @@
 				472DAD5C1B5B56CF00278F99 /* RecipeTableViewCell.swift in Sources */,
 				473F6F6C1B5EF8F300745F0D /* NewRecipeViewController.swift in Sources */,
 				474410591B5C640B0048A587 /* ChosenRecipeViewController.swift in Sources */,
+				4746D88B1B660D2F00EED07B /* UpdatedDirectionsTableViewCell.swift in Sources */,
 				624262C41B4460CB00005CE3 /* ParseLoginHelper.swift in Sources */,
 				4744106D1B5CC53D0048A587 /* FilterCollectionViewCell.swift in Sources */,
 				474410551B5C4D6E0048A587 /* RecipeSectionHeaderView.swift in Sources */,

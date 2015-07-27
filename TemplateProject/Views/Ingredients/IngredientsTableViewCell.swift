@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IngredientsTableViewCell: UITableViewCell, UITextFieldDelegate
+class IngredientsTableViewCell: UITableViewCell, UITextViewDelegate
 {
     var ingredient: AnyObject?
     override func awakeFromNib()

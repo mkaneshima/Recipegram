@@ -25,6 +25,8 @@ class Recipe: PFObject, PFSubclassing
     var likes =  Dynamic<[PFUser]?>(nil)
     static var imageCache: NSCacheSwift<String, UIImage>!
     
+    var title: Dynamic<String?> = Dynamic(nil)
+    
     //MARK: PFSubclassing Protocol
     static func parseClassName() -> String
     {

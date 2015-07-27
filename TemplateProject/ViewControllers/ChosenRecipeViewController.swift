@@ -9,15 +9,8 @@
 import UIKit
 import Parse
 
-class ChosenRecipeViewController: UIViewController, UIPageViewControllerDelegate
+class ChosenRecipeViewController: UIViewController
 {
-    
-//    var ingredientsArray: [String]?
-    var pageImages: [UIImage] = []
-    var pageViews: [UIImageView?] = []
-    
-   
-    @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var chosenImageView: UIImageView!
     {
@@ -30,7 +23,7 @@ class ChosenRecipeViewController: UIViewController, UIPageViewControllerDelegate
         }
     }
     var recipe: Recipe?
-    {
+        {
         didSet
         {
             if recipe != nil && chosenImageView != nil
@@ -39,6 +32,35 @@ class ChosenRecipeViewController: UIViewController, UIPageViewControllerDelegate
             }
         }
     }
+
+    
+    @IBOutlet weak var recipeTitleLabel: UILabel!
+        {
+        didSet
+        {
+            if recipe != nil
+            {
+                //recipeTitleLabel.text = recipe?.title
+            }
+        }
+    }
+
+    
+    
+    @IBOutlet weak var servingsLabel: UILabel!
+    @IBOutlet weak var prepTimeLabel: UILabel!
+    
+    @IBOutlet weak var cookTimeLabel: UILabel!
+    @IBOutlet weak var skillLabel: UILabel!
+    @IBOutlet weak var ingredientsImageView: UIImageView!
+    
+    @IBOutlet weak var ingredientsTextView: UITextView!
+    
+    
+    
+    
+    
+    
     
     
     override func viewDidLoad()
@@ -46,26 +68,6 @@ class ChosenRecipeViewController: UIViewController, UIPageViewControllerDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-//        pageImages = [UIImage(coder: self)]
-//        
-//        let pageCount = pageImages.count
-//        
-//        // 2
-//        pageControl.currentPage = 0
-//        pageControl.numberOfPages = pageCount
-//        
-//        // 3
-//        for _ in 0..<pageCount {
-//            pageViews.append(nil)
-//        }
-//        
-//        // 4
-//        let pagesScrollViewSize = scrollView.frame.size
-//        scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * CGFloat(pageImages.count), pagesScrollViewSize.height)
-//        
-//        // 5
-//        loadVisiblePages()
-
     }
     
 
@@ -87,11 +89,3 @@ class ChosenRecipeViewController: UIViewController, UIPageViewControllerDelegate
 
 }
 
-//extension ChosenRecipeViewController: UIPageViewControllerDataSource
-//{
-//    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
-//    {
-//        var vc = viewController as! ContentViewController
-//        var index = vc.pageIndex as Int
-//    }
-//}

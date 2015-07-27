@@ -124,29 +124,34 @@ class FriendSearchViewController: UIViewController
 
 
 // MARK: TableViewDataSource
-//extension FriendSearchViewController: UITableViewDataSource
-//{
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.users?.count ?? 0
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell") as! FriendSearchTableViewCell
-//        
-//        let user = users![indexPath.row]
-//        cell.user = user
-//        
-//        if let followingUsers = followingUsers {
-//            // check if current user is already following displayed user
-//            // change button appereance based on result
-//            cell.canFollow = !contains(followingUsers, user)
-//        }
-//        
+extension FriendSearchViewController: UITableViewDataSource
+{
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return self.users?.count ?? 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell") as! FriendSearchTableViewCell
+        
+        let user = users![indexPath.row]
+        cell.user = user
+        
+        if let followingUsers = followingUsers
+        {
+            // check if current user is already following displayed user
+            // change button appereance based on result
+            cell.canFollow = !contains(followingUsers, user)
+        }
+        
+        
+        // MARK: Cannot assign a value of type 'FriendSearchViewController' to a value of type 'FriendSearchTableViewCellDelegate?'
 //        cell.delegate = self
-//        
-//        return cell
-//    }
-//}
+        
+        return cell
+    }
+}
 
 
 // MARK: Searchbar Delegate
@@ -176,9 +181,12 @@ extension FriendSearchViewController: UISearchBarDelegate
 
 // MARK: FriendSearchTableViewCell Delegate
 
+
+// MARK: Type 'FriendSearchViewController' does not conform to protocol 'FriendSearchTableViewCellDelegate'.
 //extension FriendSearchViewController: FriendSearchTableViewCellDelegate
 //{
-//    func cell(cell: FriendSearchTableViewCell, didSelectFollowUser user: PFUser) {
+//    func cell(cell: FriendSearchTableViewCell, didSelectFollowUser user: PFUser)
+//    {
 //        ParseHelper.addFollowRelationshipFromUser(PFUser.currentUser()!, toUser: user)
 //        // update local cache
 //        followingUsers?.append(user)
