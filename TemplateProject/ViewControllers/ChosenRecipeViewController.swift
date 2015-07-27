@@ -17,8 +17,6 @@ class ChosenRecipeViewController: UIViewController, UIPageViewControllerDelegate
     var pageViews: [UIImageView?] = []
     
    
-    
-    
     @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var chosenImageView: UIImageView!
