@@ -9,9 +9,22 @@
 import UIKit
 import Parse
 
-class ChosenRecipeViewController: UIViewController
+class ChosenRecipeViewController: UIViewController, UITableViewDelegate
 {
+    @IBOutlet weak var servingsLabel: UILabel!
+    @IBOutlet weak var prepTimeLabel: UILabel!
     
+    @IBOutlet weak var cookTimeLabel: UILabel!
+    @IBOutlet weak var skillLabel: UILabel!
+    @IBOutlet weak var ingredientsImageView: UIImageView!
+    
+    @IBOutlet weak var ingredientsTextView: UITextView!
+    
+    @IBOutlet weak var updatedDirectionsTableView: UITableView!
+    
+    var updatedDirectionsArray: [String] = []
+    var updatedImagesArray: [UIImage] = []
+
     @IBOutlet weak var chosenImageView: UIImageView!
     {
         didSet
@@ -23,7 +36,7 @@ class ChosenRecipeViewController: UIViewController
         }
     }
     var recipe: Recipe?
-        {
+    {
         didSet
         {
             if recipe != nil && chosenImageView != nil
@@ -35,31 +48,16 @@ class ChosenRecipeViewController: UIViewController
 
     
     @IBOutlet weak var recipeTitleLabel: UILabel!
-        {
+    {
         didSet
         {
             if recipe != nil
             {
-                //recipeTitleLabel.text = recipe?.title
+                recipeTitleLabel.text = recipe?.title.value
             }
         }
     }
 
-    
-    
-    @IBOutlet weak var servingsLabel: UILabel!
-    @IBOutlet weak var prepTimeLabel: UILabel!
-    
-    @IBOutlet weak var cookTimeLabel: UILabel!
-    @IBOutlet weak var skillLabel: UILabel!
-    @IBOutlet weak var ingredientsImageView: UIImageView!
-    
-    @IBOutlet weak var ingredientsTextView: UITextView!
-    
-    
-    
-    
-    
     
     
     
@@ -77,15 +75,25 @@ class ChosenRecipeViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-//    {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//    }
+    // MARK: Table View Delegate
+    func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
+    {
+        return Int(updatedDirectionsArray.count ?? 0) // Create 1 row as an example
+    }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UpdatedDirectionsCell") as! UpdatedDirectionsTableViewCell
+        
+        let directions = updatedDirectionsArray[indexPath.row]
+        let updatedImages = updatedImagesArray[indexPath.row]
+        cell.updatedDirectionsLabel.text = directions
+        cell.updatedDirectionsImageView.image = updatedImages
+        
+        return cell
+    }
 
 }
+
+
 

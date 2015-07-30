@@ -7,16 +7,59 @@
 //
 
 import UIKit
+import Parse
 
-class DirectionsViewController: UIViewController {
+class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate
+{
+    var direction: Direction = Direction()
 
-    override func viewDidLoad() {
+    
+    // PhotoTakingHelper
+    var photoTakingHelper: PhotoTakingHelper?
+    
+    // Photo Upload Task
+    var photoUploadTask: UIBackgroundTaskIdentifier?
+
+    
+    // Directions textfield and image
+    @IBOutlet weak var directionsTextField: UITextField!
+    @IBOutlet weak var directionsImageView: UIImageView!
+    
+    @IBOutlet weak var cameraButton: UIButton!
+    
+    
+    @IBAction func cameraButtonPressed(sender: AnyObject)
+    {
+        photoTakingHelper = PhotoTakingHelper(viewController: self)
+        {
+                (image: UIImage?) in
+            
+                let imageData = UIImageJPEGRepresentation(image, 0.8)
+                let imageFile = PFFile(data: imageData)
+                self.direction.directionsImage = imageFile
+                self.directionsImageView?.image = image!
+                self.direction["directionsImages"] = imageFile
+//                self.direction
+            
+        }
+ 
+    }
+    
+    @IBOutlet weak var doneButton: UIButton!
+    @IBAction func doneButtonPressed(sender: AnyObject)
+    {
+//        var direction = Direction(directionsText: <#String#>, directionsImage: <#UIImage#>)
+    }
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

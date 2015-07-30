@@ -24,16 +24,13 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var addRecipeBarButton: UIBarButtonItem!
     
-    
     @IBAction func addButtonPressed(sender: AnyObject)
     {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newRecipeViewController: AnyObject! = storyboard.instantiateViewControllerWithIdentifier(newRecipeSegueIdentifier)
         
     }
-
-    // PhotoTakingHelper
-    var photoTakingHelper: PhotoTakingHelper?
     
-
     // Timeline Component Protocol
     let defaultRange = 0...4
     let additionalRangeSize = 5
@@ -43,13 +40,14 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     {
         super.viewDidLoad()
         recipeTimelineComponent = TimelineComponent(target: self)
-        self.tabBarController?.delegate = self
+        self.navigationController?.delegate = self
     }
 
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
         recipeTimelineComponent.loadInitialIfRequired()
+        
         
     }
     override func didReceiveMemoryWarning()
@@ -75,6 +73,12 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
+    @IBAction func unwindToSegue(segue: UIStoryboardSegue)
+    {
+        
+    }
+    
+    
 
     // MARK: TimelineComponentTarget implementation
     func loadInRange(range: Range<Int>, completionBlock: ([Recipe]?) -> Void)
@@ -92,47 +96,10 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
-    // MARK: View callbacks
-//    func takePhoto()
-//    {
-//        // instantiate photo taking class, provide callback for when photo is selected
-//        photoTakingHelper =
-//            PhotoTakingHelper(viewController: self.tabBarController!)
-//        {
-//            (image: UIImage?) in
-////            let recipe = Recipe()
-////            recipe.image.value = image!
-////            recipe.uploadRecipe()
-////            let picker = UIImagePickerController()
-////            picker.delegate = self
-////            picker.allowsEditing = true
-////            picker.sourceType = .
-//            
-////            UIImageWriteToSavedPhotosAlbum(image, self, "imageDidFinishSavingWithErrorContextInfo:error:contextInfo:", nil)
-//            
-//        }
-//    }
+    // MARK: View callbacks    
     
 }
 
-// MARK: Tab Bar Delegate
-extension RecipeViewController: UITabBarControllerDelegate
-{
-    
-    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool
-    {
-        if (viewController is NewRecipeViewController)
-        {
-            self.tabBarController?.selectedIndex = 2
-            return false
-        }
-        else
-        {
-            return true
-        }
-        
-    }
-}
 
 // MARK: TableViewDataSource
 extension RecipeViewController: UITableViewDataSource
@@ -154,7 +121,6 @@ extension RecipeViewController: UITableViewDataSource
         // let recipe = recipeTimelineComponent.content[indexPath.row]
         let recipe = recipeTimelineComponent.content[indexPath.section]
         recipe.downloadImage()
-        recipe.fetchLikes()
         cell.recipe = recipe
 //        cell.timeline = self
         
