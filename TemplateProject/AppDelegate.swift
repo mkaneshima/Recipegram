@@ -30,9 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             }
             else  if let user = user
             {
-                // if login was successful, display the TabBarController
+                // if login was successful, display the NavigationController
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let mainViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+                let mainViewController = storyboard.instantiateViewControllerWithIdentifier("NavigationController") as! UINavigationController
                 
                 self.window?.rootViewController!.presentViewController(mainViewController, animated:true, completion:nil)
             }
@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // if we have a user, set the RecipeViewController to be the initial View Controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        startViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+        startViewController = storyboard.instantiateViewControllerWithIdentifier("NavigationController") as! UINavigationController
     }
     else
     {
