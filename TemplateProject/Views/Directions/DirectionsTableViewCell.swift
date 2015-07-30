@@ -10,15 +10,32 @@ import UIKit
 
 class DirectionsTableViewCell: UITableViewCell
 {
-    var ingredient: AnyObject?
+    @IBOutlet weak var directionsTextView: UITextView!
+    @IBOutlet weak var directionsImageView: UIImageView!
+    @IBOutlet weak var directionsCameraButton: UIButton!
+    
+    
+    var directions: [String]?
+    
+    
+    @IBAction func directionsCameraButtonPressed(sender: AnyObject)
+    {
+        
+    }
+    
+    
+    
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
         // Initialization code
+        directionsTextView.scrollEnabled = true
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(selected: Bool, animated: Bool)
+    {
+        
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
