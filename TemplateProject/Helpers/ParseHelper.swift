@@ -13,15 +13,15 @@ import Parse
 
 class ParseHelper
 {
-    // Following Relation
-    static let ParseFollowClass       = "Follow"
-    static let ParseFollowFromUser    = "fromUser"
-    static let ParseFollowToUser      = "toUser"
-    
-    // Like Relation
-    static let ParseLikeClass         = "Like"
-    static let ParseLikeToRecipe        = "toRecipe"
-    static let ParseLikeFromUser      = "fromUser"
+//    // Following Relation
+//    static let ParseFollowClass       = "Follow"
+//    static let ParseFollowFromUser    = "fromUser"
+//    static let ParseFollowToUser      = "toUser"
+//    
+//    // Like Relation
+//    static let ParseLikeClass         = "Like"
+//    static let ParseLikeToRecipe        = "toRecipe"
+//    static let ParseLikeFromUser      = "fromUser"
     
     // Recipe Relation
     static let ParseRecipeUser          = "user"
@@ -38,67 +38,71 @@ class ParseHelper
     // MARK: Recipe Timeline
     static func timelineRequestforCurrentUser(range: Range<Int>, completionBlock: PFArrayResultBlock)
     {
-        let followingQuery = PFQuery(className: ParseFollowClass)
-        followingQuery.whereKey(ParseLikeFromUser, equalTo:PFUser.currentUser()!)
+//        let followingQuery = PFQuery(className: ParseFollowClass)
+//        followingQuery.whereKey(ParseLikeFromUser, equalTo:PFUser.currentUser()!)
         
-        let recipesFromFollowedUsers = Recipe.query()
-        recipesFromFollowedUsers!.whereKey(ParseRecipeUser, matchesKey: ParseFollowToUser, inQuery: followingQuery)
+//        let recipesFromFollowedUsers = Recipe.query()
+//        recipesFromFollowedUsers!.whereKey(ParseRecipeUser, matchesKey: ParseFollowToUser, inQuery: followingQuery)
         
         let recipesFromThisUser = Recipe.query()
         recipesFromThisUser!.whereKey(ParseRecipeUser, equalTo: PFUser.currentUser()!)
         
-        let query = PFQuery.orQueryWithSubqueries([recipesFromFollowedUsers!, recipesFromThisUser!])
-        query.includeKey(ParseRecipeUser)
-        query.orderByDescending(ParseRecipeCreatedAt)
         
-        query.skip = range.startIndex
-        query.limit = range.endIndex - range.startIndex
         
-        query.findObjectsInBackgroundWithBlock(completionBlock)
+//        let query = PFQuery.orQueryWithSubqueries([recipesFromFollowedUsers!, recipesFromThisUser!])
+//        query.includeKey(ParseRecipeUser)
+//        query.orderByDescending(ParseRecipeCreatedAt)
+//        
+//        query.skip = range.startIndex
+//        query.limit = range.endIndex - range.startIndex
+//        
+//        query.findObjectsInBackgroundWithBlock(completionBlock)
+        
+        
     }
     
     // MARK: Likes
-    static func likeRecipe(user: PFUser, recipe: Recipe)
-    {
-        let likeObject = PFObject(className: ParseLikeClass)
-        likeObject[ParseLikeFromUser] = user
-        likeObject[ParseLikeToRecipe] = recipe
-        
-        likeObject.saveInBackgroundWithBlock(nil)
-    }
-    
-    static func unlikeRecipe(user: PFUser, recipe: Recipe)
-    {
-        let query = PFQuery(className: ParseLikeClass)
-        query.whereKey(ParseLikeFromUser, equalTo: user)
-        query.whereKey(ParseLikeToRecipe, equalTo: recipe)
-        
-        query.findObjectsInBackgroundWithBlock
-        {
-            (results: [AnyObject]?, error: NSError?) -> Void in
-            if let error = error
-            {
-                ErrorHandling.defaultErrorHandler(error)
-            }
-            
-            if let results = results as? [PFObject]
-            {
-                for likes in results
-                {
-                    likes.deleteInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
-                }
-            }
-        }
-    }
-    
-    static func likesForRecipe(recipe: Recipe, completionBlock: PFArrayResultBlock)
-    {
-        let query = PFQuery(className: ParseLikeClass)
-        query.whereKey(ParseLikeToRecipe, equalTo: recipe)
-        query.includeKey(ParseLikeFromUser)
-        
-        query.findObjectsInBackgroundWithBlock(completionBlock)
-    }
+//    static func likeRecipe(user: PFUser, recipe: Recipe)
+//    {
+//        let likeObject = PFObject(className: ParseLikeClass)
+//        likeObject[ParseLikeFromUser] = user
+//        likeObject[ParseLikeToRecipe] = recipe
+//        
+//        likeObject.saveInBackgroundWithBlock(nil)
+//    }
+//    
+//    static func unlikeRecipe(user: PFUser, recipe: Recipe)
+//    {
+//        let query = PFQuery(className: ParseLikeClass)
+//        query.whereKey(ParseLikeFromUser, equalTo: user)
+//        query.whereKey(ParseLikeToRecipe, equalTo: recipe)
+//        
+//        query.findObjectsInBackgroundWithBlock
+//        {
+//            (results: [AnyObject]?, error: NSError?) -> Void in
+//            if let error = error
+//            {
+//                ErrorHandling.defaultErrorHandler(error)
+//            }
+//            
+//            if let results = results as? [PFObject]
+//            {
+//                for likes in results
+//                {
+//                    likes.deleteInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
+//                }
+//            }
+//        }
+//    }
+//    
+//    static func likesForRecipe(recipe: Recipe, completionBlock: PFArrayResultBlock)
+//    {
+//        let query = PFQuery(className: ParseLikeClass)
+//        query.whereKey(ParseLikeToRecipe, equalTo: recipe)
+//        query.includeKey(ParseLikeFromUser)
+//        
+//        query.findObjectsInBackgroundWithBlock(completionBlock)
+//    }
     
     // MARK: Flagging
     static func flagPost(user: PFUser, recipe: Recipe)
@@ -123,28 +127,28 @@ class ParseHelper
     :param: user The user who's followees you want to retrive
     :param: completionBlock The completion block that is called when the query completes
     */
-    static func getFollowingUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock)
-    {
-        let query = PFQuery(className: ParseFollowClass)
-        
-        query.whereKey(ParseFollowFromUser, equalTo:user)
-        query.findObjectsInBackgroundWithBlock(completionBlock)
-    }
+//    static func getFollowingUsersForUser(user: PFUser, completionBlock: PFArrayResultBlock)
+//    {
+//        let query = PFQuery(className: ParseFollowClass)
+//        
+//        query.whereKey(ParseFollowFromUser, equalTo:user)
+//        query.findObjectsInBackgroundWithBlock(completionBlock)
+//    }
     
     /**
     Establishes a follow relationship between two users.
     
     :param: user    The user that is following
     :param: toUser  The user that is being followed
-    */
-    static func addFollowRelationshipFromUser(user: PFUser, toUser: PFUser)
-    {
-        let followObject = PFObject(className: ParseFollowClass)
-        followObject.setObject(user, forKey: ParseFollowFromUser)
-        followObject.setObject(toUser, forKey: ParseFollowToUser)
-        
-        followObject.saveInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
-    }
+//    */
+//    static func addFollowRelationshipFromUser(user: PFUser, toUser: PFUser)
+//    {
+//        let followObject = PFObject(className: ParseFollowClass)
+//        followObject.setObject(user, forKey: ParseFollowFromUser)
+//        followObject.setObject(toUser, forKey: ParseFollowToUser)
+//        
+//        followObject.saveInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
+//    }
     
     /**
     Deletes a follow relationship between two users.
@@ -152,28 +156,28 @@ class ParseHelper
     :param: user    The user that is following
     :param: toUser  The user that is being followed
     */
-    static func removeFollowRelationshipFromUser(user: PFUser, toUser: PFUser)
-    {
-        let query = PFQuery(className: ParseFollowClass)
-        query.whereKey(ParseFollowFromUser, equalTo:user)
-        query.whereKey(ParseFollowToUser, equalTo: toUser)
-        
-        query.findObjectsInBackgroundWithBlock
-        {
-            (results: [AnyObject]?, error: NSError?) -> Void in
-            if let error = error
-            {
-                ErrorHandling.defaultErrorHandler(error)
-            }
-            
-            let results = results as? [PFObject] ?? []
-            
-            for followRelationship in results
-            {
-                followRelationship.deleteInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
-            }
-        }
-    }
+//    static func removeFollowRelationshipFromUser(user: PFUser, toUser: PFUser)
+//    {
+//        let query = PFQuery(className: ParseFollowClass)
+//        query.whereKey(ParseFollowFromUser, equalTo:user)
+//        query.whereKey(ParseFollowToUser, equalTo: toUser)
+//        
+//        query.findObjectsInBackgroundWithBlock
+//        {
+//            (results: [AnyObject]?, error: NSError?) -> Void in
+//            if let error = error
+//            {
+//                ErrorHandling.defaultErrorHandler(error)
+//            }
+//            
+//            let results = results as? [PFObject] ?? []
+//            
+//            for followRelationship in results
+//            {
+//                followRelationship.deleteInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
+//            }
+//        }
+//    }
     
     // MARK: Users
     
