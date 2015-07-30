@@ -138,50 +138,10 @@
                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionsCell" rowHeight="140" id="207-KM-5wq" customClass="DirectionsTableViewCell" customModule="TemplateProject" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="457" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="207-KM-5wq" id="awI-WZ-A5p">
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="207-KM-5wq" id="awI-WZ-A5p">
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter direction..." translatesAutoresizingMaskIntoConstraints="NO" id="8FF-kK-Zaa">
-                                                                    <rect key="frame" x="8" y="17" width="231" height="114"/>
-                                                                    <color key="backgroundColor" red="1" green="0.3340672703" blue="0.28364516709999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                </textView>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MZL-30-uk8">
-                                                                    <rect key="frame" x="256" y="8" width="194" height="114"/>
-                                                                    <color key="backgroundColor" red="0.73333333329999995" green="0.72941176470000002" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="114" id="8pf-XJ-eaE"/>
-                                                                        <constraint firstAttribute="width" constant="194" id="jTR-FR-0fo"/>
-                                                                    </constraints>
-                                                                </imageView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIv-YZ-ZCv">
-                                                                    <rect key="frame" x="333" y="50" width="40" height="30"/>
-                                                                    <state key="normal" image="Camera">
-                                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    </state>
-                                                                    <connections>
-                                                                        <action selector="directionsCameraButtonPressed:" destination="207-KM-5wq" eventType="touchUpInside" id="Muk-0s-KX8"/>
-                                                                    </connections>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="MZL-30-uk8" secondAttribute="trailing" constant="8" id="6kS-7x-qgU"/>
-                                                                <constraint firstAttribute="centerY" secondItem="MZL-30-uk8" secondAttribute="centerY" constant="4" id="CFW-cN-92g"/>
-                                                            </constraints>
-                                                            <variation key="default">
-                                                                <mask key="subviews">
-                                                                    <exclude reference="MZL-30-uk8"/>
-                                                                    <exclude reference="EIv-YZ-ZCv"/>
-                                                                </mask>
-                                                            </variation>
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" red="0.2093841753" green="1" blue="0.84660756969999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <outlet property="directionsCameraButton" destination="EIv-YZ-ZCv" id="LgT-L8-l4B"/>
-                                                            <outlet property="directionsImageView" destination="MZL-30-uk8" id="hgL-t1-LOd"/>
-                                                            <outlet property="directionsTextView" destination="8FF-kK-Zaa" id="EQv-Te-iBm"/>
-                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                                 <connections>
