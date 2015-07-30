@@ -39,7 +39,6 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.direction.directionsImage = imageFile
                 self.directionsImageView?.image = image!
                 self.direction["directionsImages"] = imageFile
-//                self.direction
             
         }
  
@@ -48,7 +47,11 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var doneButton: UIButton!
     @IBAction func doneButtonPressed(sender: AnyObject)
     {
-//        var direction = Direction(directionsText: <#String#>, directionsImage: <#UIImage#>)
+        direction.directionsText = self.directionsTextField.text
+        let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
+        let directionsImageFile = PFFile(data: directionsImageData)
+        direction.directionsImage = directionsImageFile
+
     }
 
     override func viewDidLoad()

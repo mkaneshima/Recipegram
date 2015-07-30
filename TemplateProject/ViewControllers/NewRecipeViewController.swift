@@ -28,6 +28,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     {
         super.init(coder: aDecoder)
     }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
