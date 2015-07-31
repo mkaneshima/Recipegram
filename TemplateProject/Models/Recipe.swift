@@ -16,7 +16,7 @@ class Recipe: PFObject, PFSubclassing
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
     @NSManaged var recipeTitles: String?
-    @NSManaged var servings:NSNumber?
+    @NSManaged var servings:String?
     @NSManaged var prepTimes: String?
     @NSManaged var cookTimes: String?
     @NSManaged var skillLevel: String?
