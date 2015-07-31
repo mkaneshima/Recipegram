@@ -39,7 +39,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.direction.directionsImage = imageFile
                 self.directionsImageView?.image = image!
                 self.direction["directionsImages"] = imageFile
-            
+                
         }
  
     }

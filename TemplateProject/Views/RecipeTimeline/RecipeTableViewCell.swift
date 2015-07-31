@@ -12,7 +12,6 @@ import Parse
 
 class RecipeTableViewCell: UITableViewCell
 {
-//    var likeBond: Bond<[PFUser]?>!
     
     @IBOutlet weak var recipeImageView: UIImageView!
 //    @IBOutlet weak var usernameLabel: UILabel!
@@ -25,7 +24,6 @@ class RecipeTableViewCell: UITableViewCell
             // free memory of image stored with post that is no longer displayed
             if let oldValue = oldValue where oldValue != recipe
             {
-//                likeBond.unbindAll()
                 recipeImageView.designatedBond.unbindAll()
                 
                 if (oldValue.image.bonds.count == 0)
@@ -39,19 +37,11 @@ class RecipeTableViewCell: UITableViewCell
                 // bind the image of the post to the 'postImage' view
                 recipe.image ->> recipeImageView
                 
-                // bind the likeBond that we defined earlier, to update like label and button when likes change
-//                recipe.likes ->> likeBond
 //                usernameLabel.text = recipe.user?.username
                 //                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
 
             }
             
-//            if let recipe = recipe
-//            {
-//                usernameLabel.text = recipe.user?.username
-//                //                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
-//            }
-
         }
     }
     
@@ -60,36 +50,7 @@ class RecipeTableViewCell: UITableViewCell
     {
         super.init(coder: aDecoder)
 
-//        likeBond = Bond<[PFUser]?>()
-//        {
-//            [unowned self] likeList in
-//            if let likeList = likeList
-//            {
-//                self.likesLabel.text = self.stringFromUserList(likeList)
-//                self.likeButton.selected = contains(likeList, PFUser.currentUser()!)
-//                self.likesIconImageView.hidden = (likeList.count == 0)
-//            }
-//            else
-//            {
-//                // if there is no list of users that like this post, reset everything
-//                self.likesLabel.text = ""
-//                self.likeButton.selected = false
-//                self.likesIconImageView.hidden = true
-//            }
-//        }
     }
-
-//     Generates a comma separated list of usernames from an array (e.g. "User1, User2")
-//    func stringFromUserList(userList: [PFUser]) -> String
-//    {
-//        let usernameList = userList.map
-//        {
-//            user in user.username!
-//        }
-//        let commaSeparatedUserList = ", ".join(usernameList)
-//        
-//        return commaSeparatedUserList
-//    }
     
     // MARK: Additional methods
     override func awakeFromNib()
