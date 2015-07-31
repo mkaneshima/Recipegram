@@ -345,73 +345,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="599"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gpE-DM-Sha">
-                                <rect key="frame" x="0.0" y="2" width="600" height="597"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="389" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gpE-DM-Sha">
+                                <rect key="frame" x="0.0" y="94" width="600" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="320" id="MYR-z8-ZZR" customClass="RecipeTableViewCell" customModule="TemplateProject" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeHeader" rowHeight="40" id="Yr4-yZ-6nK" customClass="RecipeSectionHeaderView" customModule="TemplateProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MYR-z8-ZZR" id="srh-nt-GoQ">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yr4-yZ-6nK" id="NGo-fz-ifV">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6St-CM-NIN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="319.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="319.5" id="tzH-jW-DCS"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="6St-CM-NIN" firstAttribute="leading" secondItem="srh-nt-GoQ" secondAttribute="leading" id="30T-df-XIW"/>
-                                                <constraint firstItem="6St-CM-NIN" firstAttribute="top" secondItem="srh-nt-GoQ" secondAttribute="top" id="M2c-JH-9lG"/>
-                                                <constraint firstAttribute="trailing" secondItem="6St-CM-NIN" secondAttribute="trailing" id="eUx-4c-yKv"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="recipeImageView" destination="6St-CM-NIN" id="gjv-pE-3QO"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeHeader" id="EPJ-Q7-mZ0" customClass="RecipeSectionHeaderView" customModule="TemplateProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EPJ-Q7-mZ0" id="lPi-Xd-3ZN">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2H-DL-1cs">
-                                                    <rect key="frame" x="8" y="13" width="36.5" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieq-nh-KEP">
+                                                    <rect key="frame" x="8" y="11" width="36.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wy-SI-uDL">
-                                                    <rect key="frame" x="527.5" y="13" width="36.5" height="17"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock" translatesAutoresizingMaskIntoConstraints="NO" id="2OM-Cy-O03">
+                                                    <rect key="frame" x="572" y="10" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Thz-eD-Kmu"/>
+                                                        <constraint firstAttribute="width" constant="20" id="Urn-ac-CHT"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZG-Qp-6rL">
+                                                    <rect key="frame" x="527.5" y="12" width="36.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock" translatesAutoresizingMaskIntoConstraints="NO" id="L3p-2a-oSH">
-                                                    <rect key="frame" x="572" y="12" width="20" height="20"/>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="2OM-Cy-O03" secondAttribute="centerY" id="5Zk-1P-yAp"/>
+                                                <constraint firstItem="2OM-Cy-O03" firstAttribute="trailing" secondItem="NGo-fz-ifV" secondAttribute="trailingMargin" id="I1o-9Z-2Yk"/>
+                                                <constraint firstAttribute="centerY" secondItem="KZG-Qp-6rL" secondAttribute="centerY" constant="-0.5" id="JFF-9I-kIf"/>
+                                                <constraint firstItem="2OM-Cy-O03" firstAttribute="leading" secondItem="KZG-Qp-6rL" secondAttribute="trailing" constant="8" id="Nid-eW-ywI"/>
+                                                <constraint firstItem="ieq-nh-KEP" firstAttribute="leading" secondItem="NGo-fz-ifV" secondAttribute="leadingMargin" id="PoM-10-m1N"/>
+                                                <constraint firstAttribute="centerY" secondItem="ieq-nh-KEP" secondAttribute="centerY" constant="0.5" id="lyp-0g-ZCI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="postTimeLabel" destination="KZG-Qp-6rL" id="ZB6-on-gbL"/>
+                                            <outlet property="usernameLabel" destination="ieq-nh-KEP" id="zxw-qK-zFu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="350" id="QxH-64-gqd" customClass="RecipeTableViewCell" customModule="TemplateProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QxH-64-gqd" id="HIK-9g-dqv">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="96N-hb-ZUv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="btk-QD-UDk"/>
-                                                        <constraint firstAttribute="height" constant="20" id="hV8-zv-uQa"/>
+                                                        <constraint firstAttribute="height" constant="350" id="Ccf-7Q-bfa"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="L3p-2a-oSH" secondAttribute="trailing" id="8iZ-Jg-BMh"/>
-                                                <constraint firstAttribute="centerY" secondItem="R2H-DL-1cs" secondAttribute="centerY" constant="0.25" id="Crv-8n-3wQ"/>
-                                                <constraint firstItem="R2H-DL-1cs" firstAttribute="leading" secondItem="lPi-Xd-3ZN" secondAttribute="leadingMargin" id="HP9-LP-v6b"/>
-                                                <constraint firstAttribute="centerY" secondItem="L3p-2a-oSH" secondAttribute="centerY" constant="-0.25" id="Umy-mw-rV1"/>
-                                                <constraint firstItem="L3p-2a-oSH" firstAttribute="top" secondItem="lPi-Xd-3ZN" secondAttribute="topMargin" constant="4" id="V4F-Yg-XHg"/>
-                                                <constraint firstItem="L3p-2a-oSH" firstAttribute="leading" secondItem="1Wy-SI-uDL" secondAttribute="trailing" constant="8" id="fdC-Wk-A7z"/>
-                                                <constraint firstAttribute="centerY" secondItem="1Wy-SI-uDL" secondAttribute="centerY" constant="0.25" id="gac-gH-avB"/>
+                                                <constraint firstAttribute="trailing" secondItem="96N-hb-ZUv" secondAttribute="trailing" id="HA8-J4-e5y"/>
+                                                <constraint firstItem="96N-hb-ZUv" firstAttribute="top" secondItem="HIK-9g-dqv" secondAttribute="top" id="lBt-g7-0ed"/>
+                                                <constraint firstItem="96N-hb-ZUv" firstAttribute="leading" secondItem="HIK-9g-dqv" secondAttribute="leading" id="p7X-wm-QY8"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="postTimeLabel" destination="1Wy-SI-uDL" id="PRi-i4-Q7g"/>
-                                            <outlet property="usernameLabel" destination="R2H-DL-1cs" id="ovn-It-i5V"/>
+                                            <outlet property="recipeImageView" destination="96N-hb-ZUv" id="0Ch-Wn-eVs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -422,10 +420,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gpE-DM-Sha" firstAttribute="leading" secondItem="bqp-RN-1BL" secondAttribute="leading" id="Evd-ol-bus"/>
-                            <constraint firstItem="gpE-DM-Sha" firstAttribute="top" secondItem="BKt-iV-nMD" secondAttribute="bottom" constant="-92" id="W0e-iK-0wR"/>
-                            <constraint firstItem="O2P-kc-Cg0" firstAttribute="top" secondItem="gpE-DM-Sha" secondAttribute="bottom" id="tR9-Fd-6cl"/>
-                            <constraint firstAttribute="trailing" secondItem="gpE-DM-Sha" secondAttribute="trailing" id="ttJ-eB-QRR"/>
+                            <constraint firstItem="gpE-DM-Sha" firstAttribute="top" secondItem="BKt-iV-nMD" secondAttribute="bottom" id="0X3-wi-M9f"/>
+                            <constraint firstItem="O2P-kc-Cg0" firstAttribute="top" secondItem="gpE-DM-Sha" secondAttribute="bottom" id="7NC-oj-jDk"/>
+                            <constraint firstAttribute="trailing" secondItem="gpE-DM-Sha" secondAttribute="trailing" id="IMb-xB-M8x"/>
+                            <constraint firstItem="gpE-DM-Sha" firstAttribute="leading" secondItem="bqp-RN-1BL" secondAttribute="leading" id="ZL5-Xp-bXL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recipegram" id="yQP-k9-5Ne">
