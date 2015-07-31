@@ -25,8 +25,8 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var directionsTextField: UITextField!
     @IBOutlet weak var directionsImageView: UIImageView!
     
+    // First camera button
     @IBOutlet weak var cameraButton: UIButton!
-    
     
     @IBAction func cameraButtonPressed(sender: AnyObject)
     {
@@ -44,14 +44,15 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
  
     }
     
+    // Done button
     @IBOutlet weak var doneButton: UIButton!
+    
     @IBAction func doneButtonPressed(sender: AnyObject)
     {
         direction.directionsText = self.directionsTextField.text
         let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
         let directionsImageFile = PFFile(data: directionsImageData)
         direction.directionsImage = directionsImageFile
-
     }
 
     override func viewDidLoad()
@@ -77,5 +78,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }

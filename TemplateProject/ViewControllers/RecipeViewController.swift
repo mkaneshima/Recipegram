@@ -50,6 +50,14 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         
     }
+    
+//    override func viewWillAppear(animated: Bool)
+//    {
+//        super.viewWillAppear(animated)
+//        recipeTimelineComponent.loadInitialIfRequired()
+//        
+//        
+//    }
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -75,7 +83,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func unwindToSegue(segue: UIStoryboardSegue)
     {
-        
+        println("hello other segue")
     }
     
     
@@ -91,6 +99,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
                 ErrorHandling.defaultErrorHandler(error)
             }
 
+            println(result?.description)
             let recipes = result as? [Recipe] ?? []
             completionBlock(recipes)
         }
@@ -106,12 +115,14 @@ extension RecipeViewController: UITableViewDataSource
 {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return self.recipeTimelineComponent.content.count
+        let num = self.recipeTimelineComponent.content.count
+        println(num)
+        return num
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 1
+        return 1//self.recipeTimelineComponent.content[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

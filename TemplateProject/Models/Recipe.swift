@@ -16,7 +16,7 @@ class Recipe: PFObject, PFSubclassing
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
     @NSManaged var recipeTitles: String?
-    @NSManaged var servings: String?
+    @NSManaged var servings:NSNumber?
     @NSManaged var prepTimes: String?
     @NSManaged var cookTimes: String?
     @NSManaged var skillLevel: String?
@@ -26,17 +26,13 @@ class Recipe: PFObject, PFSubclassing
 //    @NSManaged var directionsImages: PFFile?
 //    @NSManaged var directionsText: String?
     
-   
-//    var ingredient: String?
     var image: Dynamic<UIImage?> = Dynamic(nil)
     
     var photoUploadTask: UIBackgroundTaskIdentifier?
-//    var likes =  Dynamic<[PFUser]?>(nil)
     static var imageCache: NSCacheSwift<String, UIImage>!
     
     var title: Dynamic<String?> = Dynamic(nil)
-//    var directions: Dynamic<String?> = Dynamic(nil)
-    
+
     //MARK: PFSubclassing Protocol
     static func parseClassName() -> String
     {
@@ -65,7 +61,7 @@ class Recipe: PFObject, PFSubclassing
         let imageFile = PFFile(data: imageData)
         
         // any uploaded post should be associated with the current user
-        user = PFUser.currentUser()
+        self.user = PFUser.currentUser()
         self.imageFile = imageFile
         
         

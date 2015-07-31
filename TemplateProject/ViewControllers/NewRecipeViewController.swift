@@ -89,7 +89,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         
         return cell
     }
-    
+        
     
     // MARK: UIPickerViewDataSource
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
@@ -151,20 +151,52 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             
                 self.recipe.image.value = image!
                 self.dishImageView?.image = image!
-                let imageData = UIImageJPEGRepresentation(image, 0.8)
-                let imageFile = PFFile(data: imageData)
-                self.recipe["imageFile"] = imageFile
-                self.recipe.save()
-            
-                self.ingredientsImageView?.image = image!
+//                let imageData = UIImageJPEGRepresentation(image, 0.8)
+//                let imageFile = PFFile(data: imageData)
+//                self.recipe["imageFile"] = imageFile
+//                self.recipe.save()
 
         }
-    
-       
+
     }
     
+    @IBAction func secondCameraButtonPressed(sender: AnyObject)
+    {
+        photoTakingHelper = PhotoTakingHelper(viewController: self)
+            {
+                (image: UIImage?) in
+                
+                self.recipe.image.value = image!
+                self.ingredientsImageView?.image = image!
+                let ingredientsImageData = UIImageJPEGRepresentation(image, 0.8)
+                let ingredientsImageFile = PFFile(data: ingredientsImageData)
+                self.recipe["ingredientsImages"] = ingredientsImageFile
+                
+        }
+
+    }
     
     @IBOutlet weak var postRecipeButton: UIButton!
+    
+    @IBAction func postRecipe(sender: UIButton) {
+        
+        recipe.recipeTitles = self.titleTextField.text
+//        recipe.servings = self.newServingsTextField.text
+        recipe.prepTimes = self.newPrepTimeTextField.text
+        recipe.cookTimes = self.newCookTimeTextField.text
+        recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
+        
+//        let ingredientsImageData = UIImageJPEGRepresentation(ingredientsImageView.image, 0.8)
+//        let ingredientsImageFile = PFFile(data: ingredientsImageData)
+//        recipe.ingredientsImages = ingredientsImageFile
+//        
+//        recipe.ingredients = self.ingredientsTextView.text
+//        recipe.directions = self.directionsArray
+        
+        recipe.uploadRecipe()
+        
+        performSegueWithIdentifier("postRecipeSegue", sender: nil)
+    }
     
     @IBAction func unwindToSegue(segue: UIStoryboardSegue)
     {
@@ -173,7 +205,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             let destViewController = segue.sourceViewController as! RecipeViewController
             
             recipe.recipeTitles = self.titleTextField.text
-            recipe.servings = self.newServingsTextField.text
+//            recipe.servings = self.newServingsTextField.text
             recipe.prepTimes = self.newPrepTimeTextField.text
             recipe.cookTimes = self.newCookTimeTextField.text
             recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]

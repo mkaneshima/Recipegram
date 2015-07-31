@@ -38,25 +38,25 @@ class ParseHelper
     // MARK: Recipe Timeline
     static func timelineRequestforCurrentUser(range: Range<Int>, completionBlock: PFArrayResultBlock)
     {
-//        let followingQuery = PFQuery(className: ParseFollowClass)
-//        followingQuery.whereKey(ParseLikeFromUser, equalTo:PFUser.currentUser()!)
+        //let followingQuery = PFQuery(className: ParseFollowClass)
+        //followingQuery.whereKey(ParseLikeFromUser, equalTo:PFUser.currentUser()!)
         
-//        let recipesFromFollowedUsers = Recipe.query()
-//        recipesFromFollowedUsers!.whereKey(ParseRecipeUser, matchesKey: ParseFollowToUser, inQuery: followingQuery)
+        //let recipesFromFollowedUsers = Recipe.query()
+        //recipesFromFollowedUsers!.whereKey(ParseRecipeUser, matchesKey: ParseFollowToUser, inQuery: followingQuery)
         
         let recipesFromThisUser = Recipe.query()
         recipesFromThisUser!.whereKey(ParseRecipeUser, equalTo: PFUser.currentUser()!)
         
         
         
-//        let query = PFQuery.orQueryWithSubqueries([recipesFromFollowedUsers!, recipesFromThisUser!])
-//        query.includeKey(ParseRecipeUser)
-//        query.orderByDescending(ParseRecipeCreatedAt)
-//        
-//        query.skip = range.startIndex
-//        query.limit = range.endIndex - range.startIndex
-//        
-//        query.findObjectsInBackgroundWithBlock(completionBlock)
+        //let query = PFQuery.orQueryWithSubqueries([recipesFromFollowedUsers!, recipesFromThisUser!])
+        recipesFromThisUser!.includeKey(ParseRecipeUser)
+        recipesFromThisUser!.orderByDescending(ParseRecipeCreatedAt)
+        
+        recipesFromThisUser!.skip = range.startIndex
+        recipesFromThisUser!.limit = range.endIndex - range.startIndex
+        
+        recipesFromThisUser!.findObjectsInBackgroundWithBlock(completionBlock)
         
         
     }

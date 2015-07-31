@@ -14,14 +14,14 @@ class DirectionsTableViewCell: UITableViewCell
     @IBOutlet weak var directionsImageView: UIImageView!
     @IBOutlet weak var directionsCameraButton: UIButton!
     
-    
+    var photoTakingHelper: PhotoTakingHelper?
     var directions: [String]?
     
     
-    @IBAction func directionsCameraButtonPressed(sender: AnyObject)
-    {
-        
-    }
+//    @IBAction func directionsCameraButtonPressed(sender: AnyObject)
+//    {
+//        photoTakingHelper = PhotoTakingHelper(
+//    }
     
     
     
@@ -30,7 +30,9 @@ class DirectionsTableViewCell: UITableViewCell
     {
         super.awakeFromNib()
         // Initialization code
-        directionsTextView.scrollEnabled = true
+        directionsTextView.scrollEnabled = false
+        
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool)

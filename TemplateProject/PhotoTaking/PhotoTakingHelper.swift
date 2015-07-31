@@ -81,10 +81,6 @@ extension PhotoTakingHelper: UIImagePickerControllerDelegate, UINavigationContro
         viewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
-//    {
-//        
-//    }
     
 }
 
