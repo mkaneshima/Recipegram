@@ -115,9 +115,7 @@ extension RecipeViewController: UITableViewDataSource
 {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        let num = self.recipeTimelineComponent.content.count
-        println(num)
-        return num
+        return self.recipeTimelineComponent.content.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

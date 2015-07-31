@@ -181,7 +181,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     @IBAction func postRecipe(sender: UIButton) {
         
         recipe.recipeTitles = self.titleTextField.text
-//        recipe.servings = self.newServingsTextField.text
+        recipe.servings = self.newServingsTextField.text
         recipe.prepTimes = self.newPrepTimeTextField.text
         recipe.cookTimes = self.newCookTimeTextField.text
         recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
