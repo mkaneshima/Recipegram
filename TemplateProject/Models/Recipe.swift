@@ -173,11 +173,11 @@ class Recipe: PFObject, PFSubclassing
 //    }
     
     //MARK: Flagging
-//    
-//    func flagPost(user: PFUser)
-//    {
-//        ParseHelper.flagRecipe(user, recipe: self)
-//    }
-//
+    
+    func flagRecipe(user: PFUser)
+    {
+        ParseHelper.flagRecipe(user, recipe: self)
+    }
+
     
 }

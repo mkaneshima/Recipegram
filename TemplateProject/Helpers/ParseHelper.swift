@@ -105,7 +105,7 @@ class ParseHelper
 //    }
     
     // MARK: Flagging
-    static func flagPost(user: PFUser, recipe: Recipe)
+    static func flagRecipe(user: PFUser, recipe: Recipe)
     {
         let flagObject = PFObject(className: ParseFlaggedContentClass)
         flagObject.setObject(user, forKey: ParseFlaggedContentFromUser)

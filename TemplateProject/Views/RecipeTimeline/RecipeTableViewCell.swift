@@ -15,21 +15,8 @@ class RecipeTableViewCell: UITableViewCell
 //    var likeBond: Bond<[PFUser]?>!
     
     @IBOutlet weak var recipeImageView: UIImageView!
-//    @IBOutlet weak var likesIconImageView: UIImageView!
-//    
-//    @IBOutlet weak var likesLabel: UILabel!
-//    @IBOutlet weak var likeButton: UIButton!
-//    @IBOutlet weak var moreButton: UIButton!
-    
-//     MARK: Button Callbacks
-//    @IBAction func moreButtonTapped(sender: AnyObject)
-//    {
-////        timeline?.showActionSheetForPost(post!)
-//    }
-//    @IBAction func likeButtonTapped(sender: AnyObject)
-//    {
-//        recipe?.toggleLikeRecipe(PFUser.currentUser()!)
-//    }
+//    @IBOutlet weak var usernameLabel: UILabel!
+//    @IBOutlet weak var postTimeLabel: UILabel!
     
     var recipe:Recipe?
     {
@@ -54,7 +41,17 @@ class RecipeTableViewCell: UITableViewCell
                 
                 // bind the likeBond that we defined earlier, to update like label and button when likes change
 //                recipe.likes ->> likeBond
+//                usernameLabel.text = recipe.user?.username
+                //                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
+
             }
+            
+//            if let recipe = recipe
+//            {
+//                usernameLabel.text = recipe.user?.username
+//                //                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
+//            }
+
         }
     }
     

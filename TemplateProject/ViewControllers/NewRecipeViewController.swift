@@ -85,7 +85,6 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             
         
         }
-//        cell.directionsImageView.image = directions.directionsImage
         
         return cell
     }

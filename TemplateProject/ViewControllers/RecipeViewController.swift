@@ -54,7 +54,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
 //    override func viewWillAppear(animated: Bool)
 //    {
 //        super.viewWillAppear(animated)
-//        recipeTimelineComponent.loadInitialIfRequired()
+////        recipeTimelineComponent.loadInitialIfRequired()
 //        
 //        
 //    }
