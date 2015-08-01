@@ -38,7 +38,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        //scrollView.contentSize = CGSizeMake(600, 3000)
+//        scrollView.contentSize = CGSizeMake(600, 2400)
         levelPickerView.delegate = self
         levelPickerView.dataSource = self
         
