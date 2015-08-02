@@ -83,18 +83,3 @@ extension PhotoTakingHelper: UIImagePickerControllerDelegate, UINavigationContro
     
     
 }
-
-//extension PhotoTakingHelper: FilterViewControllerDelegate
-//{
-//    func filterViewController(controller: FilterViewController, selectedImage: UIImage)
-//    {
-//        successCallback(selectedImage)
-//        // pop all view controllers
-//        viewController.dismissViewControllerAnimated(true, completion: nil)
-//    }
-//    
-//    func filterViewControllerCancelled(controller: FilterViewController)
-//    {
-//        popModalViewController()
-//    }
-//}
