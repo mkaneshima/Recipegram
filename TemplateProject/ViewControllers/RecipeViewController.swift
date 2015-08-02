@@ -99,7 +99,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
                 ErrorHandling.defaultErrorHandler(error)
             }
 
-            println(result?.description)
+//            println(result?.description)
             let recipes = result as? [Recipe] ?? []
             completionBlock(recipes)
         }
