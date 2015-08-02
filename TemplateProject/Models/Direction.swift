@@ -13,8 +13,9 @@ import Bond
 class Direction: PFObject, PFSubclassing
 {
     @NSManaged var directionsText: String?
-    @NSManaged var directionsImage: PFFile
+    @NSManaged var directionsImages: PFFile
     var image: Dynamic<UIImage?> = Dynamic(nil)
+    
     
     //MARK: PFSubclassing Protocol
     static func parseClassName() -> String
@@ -27,6 +28,7 @@ class Direction: PFObject, PFSubclassing
         super.init()
 //        self.directionsText = directionsText
 //        self.directionsImage = directionsImage
+        
     }
     
     override class func initialize()
