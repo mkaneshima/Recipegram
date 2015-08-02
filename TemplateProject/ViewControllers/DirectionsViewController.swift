@@ -13,7 +13,6 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
 {
     var direction: Direction = Direction()
 
-    
     // PhotoTakingHelper
     var photoTakingHelper: PhotoTakingHelper?
     
@@ -36,7 +35,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
             
                 let imageData = UIImageJPEGRepresentation(image, 0.8)
                 let imageFile = PFFile(data: imageData)
-                self.direction.directionsImage = imageFile
+                self.direction.directionsImages = imageFile
                 self.directionsImageView?.image = image!
                 self.direction["directionsImages"] = imageFile
                 
@@ -52,7 +51,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         direction.directionsText = self.directionsTextField.text
         let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
         let directionsImageFile = PFFile(data: directionsImageData)
-        direction.directionsImage = directionsImageFile
+        direction.directionsImages = directionsImageFile
     }
 
     override func viewDidLoad()
@@ -67,18 +66,6 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
 
 }
