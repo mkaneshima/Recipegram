@@ -12,15 +12,15 @@ import Bond
 
 class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate
 {
-    let recipe = Recipe()
+    //    var directionsImagesArray: [UIImage] = []
+    //    var directionsBond:Bond<String>!
+    //    var imagesBond: Bond<UIImage>!    let recipe = Recipe()
     
-    var ingredientsArray: [String] = []
+    var ingredientsArray: [String] = [""]
     var directionsArray: [Direction] = []
-//    var directionsImagesArray: [UIImage] = []
-//    var directionsBond:Bond<String>!
-//    var imagesBond: Bond<UIImage>!
     var levels = ["Easy", "Intermediate", "Hard"]
     var selectedLevel: String = ""
+    let recipe = Recipe()
     
     @IBOutlet weak var directionsTableView: UITableView!
     
@@ -162,14 +162,14 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     @IBAction func secondCameraButtonPressed(sender: AnyObject)
     {
         photoTakingHelper = PhotoTakingHelper(viewController: self)
-            {
-                (image: UIImage?) in
-                
-                self.recipe.image.value = image!
-                self.ingredientsImageView?.image = image!
-                let ingredientsImageData = UIImageJPEGRepresentation(image, 0.8)
-                let ingredientsImageFile = PFFile(data: ingredientsImageData)
-                self.recipe["ingredientsImages"] = ingredientsImageFile
+        {
+            (image: UIImage?) in
+            
+            self.recipe.image.value = image!
+            self.ingredientsImageView?.image = image!
+            let ingredientsImageData = UIImageJPEGRepresentation(image, 0.8)
+            let ingredientsImageFile = PFFile(data: ingredientsImageData)
+            self.recipe["ingredientsImages"] = ingredientsImageFile
                 
         }
 
@@ -177,20 +177,17 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     
     @IBOutlet weak var postRecipeButton: UIButton!
     
-    @IBAction func postRecipe(sender: UIButton) {
-        
+    @IBAction func postRecipe(sender: UIButton)
+    {
         recipe.recipeTitles = self.titleTextField.text
         recipe.servings = self.newServingsTextField.text
         recipe.prepTimes = self.newPrepTimeTextField.text
         recipe.cookTimes = self.newCookTimeTextField.text
         recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
         
-//        let ingredientsImageData = UIImageJPEGRepresentation(ingredientsImageView.image, 0.8)
-//        let ingredientsImageFile = PFFile(data: ingredientsImageData)
-//        recipe.ingredientsImages = ingredientsImageFile
-//        
-//        recipe.ingredients = self.ingredientsTextView.text
-//        recipe.directions = self.directionsArray
+        
+        recipe.ingredients = self.ingredientsTextView.text
+        recipe.directions = self.directionsArray
         
         recipe.uploadRecipe()
         
@@ -204,7 +201,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             let destViewController = segue.sourceViewController as! RecipeViewController
             
             recipe.recipeTitles = self.titleTextField.text
-//            recipe.servings = self.newServingsTextField.text
+            recipe.servings = self.newServingsTextField.text
             recipe.prepTimes = self.newPrepTimeTextField.text
             recipe.cookTimes = self.newCookTimeTextField.text
             recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
