@@ -30,8 +30,7 @@ class DirectionsTableViewCell: UITableViewCell
     {
         super.awakeFromNib()
         // Initialization code
-        directionsTextView.scrollEnabled = false
-        
+//        directionsTextView.scrollEnabled = false
         
     }
 
