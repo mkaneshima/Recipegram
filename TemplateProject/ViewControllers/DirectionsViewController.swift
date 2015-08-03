@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ConvenienceKit
 
 class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate
 {
@@ -18,7 +19,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     // Photo Upload Task
     var photoUploadTask: UIBackgroundTaskIdentifier?
-
+    
     
     // Directions textfield and image
     @IBOutlet weak var directionsTextField: UITextField!
@@ -67,5 +68,20 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Dispose of any resources that can be recreated.
     }
     
+//    override func
 
+}
+
+extension DirectionsViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        if (textField == directionsTextField)
+        {
+            directionsImageView.becomeFirstResponder()
+            directionsImageView.designatedBond
+        }
+        
+        return false
+    }
 }

@@ -22,6 +22,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     var selectedLevel: String = ""
     let recipe = Recipe()
     
+    // MARK: DirectionsTableView
     @IBOutlet weak var directionsTableView: UITableView!
     
     required init(coder aDecoder: NSCoder)
@@ -58,12 +59,15 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         
     }
     
-    // MARK: Table View Delegate
+    // MARK: Table View Delegate for DirectionsTableView
+    
+    // Number of rows in section
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
         return Int(directionsArray.count ?? 0) // Create 1 row as an example
     }
     
+    // Cell for Row at Index Path
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("DirectionsCell") as! DirectionsTableViewCell
@@ -88,6 +92,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         
         return cell
     }
+    
         
     
     // MARK: UIPickerViewDataSource
@@ -159,6 +164,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
 
     }
     
+    // Second camera button pressed in Ingredients imageview
     @IBAction func secondCameraButtonPressed(sender: AnyObject)
     {
         photoTakingHelper = PhotoTakingHelper(viewController: self)
@@ -175,6 +181,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
 
     }
     
+    // Post My Recipe button
     @IBOutlet weak var postRecipeButton: UIButton!
     
     @IBAction func postRecipe(sender: UIButton)

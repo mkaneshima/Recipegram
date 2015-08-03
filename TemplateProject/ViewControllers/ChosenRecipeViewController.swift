@@ -11,20 +11,25 @@ import Parse
 
 class ChosenRecipeViewController: UIViewController, UITableViewDelegate
 {
-    @IBOutlet weak var servingsLabel: UILabel!
-    @IBOutlet weak var prepTimeLabel: UILabel!
-    
-    @IBOutlet weak var cookTimeLabel: UILabel!
-    @IBOutlet weak var skillLabel: UILabel!
-    @IBOutlet weak var ingredientsImageView: UIImageView!
-    
-    @IBOutlet weak var ingredientsTextView: UITextView!
-    
-    @IBOutlet weak var updatedDirectionsTableView: UITableView!
-    
-    var updatedDirectionsArray: [String] = []
-    var updatedImagesArray: [UIImage] = []
+    // MARK: Initialization for Recipe class
+    var recipe: Recipe?
+    {
+        didSet
+        {
+            if recipe != nil && chosenImageView != nil && servingsLabel != nil && prepTimeLabel != nil && cookTimeLabel != nil && skillLabel != nil && ingredientsTextView != nil
+            {
+                chosenImageView.image = recipe?.image.value
+                recipeTitleLabel.text = recipe?.recipeTitles
+                servingsLabel.text = recipe?.servings
+                prepTimeLabel.text = recipe?.prepTimes
+                cookTimeLabel.text = recipe?.cookTimes
+                ingredientsTextView.text = recipe?.ingredients
 
+            }
+        }
+    }
+    
+    // MARK: If the user selects the photo from the Recipe Timeline, switch to ChosenRecipeViewController
     @IBOutlet weak var chosenImageView: UIImageView!
     {
         didSet
@@ -35,31 +40,121 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
             }
         }
     }
-    var recipe: Recipe?
-    {
+    
+    // MARK: Recipe titles
+    @IBOutlet weak var recipeTitleLabel: UILabel!
+        {
         didSet
         {
-            if recipe != nil && chosenImageView != nil
+            if recipe != nil
             {
-                chosenImageView.image = recipe?.image.value
+                recipeTitleLabel.text = recipe?.recipeTitles
             }
         }
     }
-
     
-    @IBOutlet weak var recipeTitleLabel: UILabel!
+    // MARK: Servings updates
+    @IBOutlet weak var servingsLabel: UILabel!
+        {
+        didSet
+        {
+            if recipe != nil
+            {
+                servingsLabel.text = recipe?.servings
+            }
+        }
+    }
+    
+    // MARK: Prep time updates
+    @IBOutlet weak var prepTimeLabel: UILabel!
+        {
+        didSet
+        {
+            if recipe != nil
+            {
+                prepTimeLabel.text = recipe?.prepTimes
+            }
+        }
+    }
+    
+    // MARK: Cook time updates
+    @IBOutlet weak var cookTimeLabel: UILabel!
+        {
+        didSet
+        {
+            if recipe != nil
+            {
+                cookTimeLabel.text = recipe?.cookTimes
+            }
+        }
+    }
+    
+    // MARK: Skill updates
+    @IBOutlet weak var skillLabel: UILabel!
+        {
+        didSet
+        {
+            if recipe != nil
+            {
+                skillLabel.text = recipe?.skillLevel
+            }
+        }
+        
+    }
+    
+    // MARK: Updates of ingredients images
+    
+    @IBOutlet weak var ingredientsImageView: UIImageView!
+//    {
+//        didSet
+//        {
+//            if recipe != nil
+//            {
+//                var ingredientsImageFiles = ingredientsImageView.image
+//                let imageData = UIImageJPEGRepresentation(ingredientsImageFiles, 0.8)
+//                let imageFile = PFFile(data: imageData)
+//                
+//                var ingredientsPhotos = PFFile(name: "ingredientsImages", data: imageData)
+//                ingredientsPhotos = recipe?.ingredientsImages
+//                
+//            }
+//        }
+//        
+//    }
+    
+    
+    
+    // MARK: Ingredients updates in text
+    @IBOutlet weak var ingredientsTextView: UITextView!
     {
         didSet
         {
             if recipe != nil
             {
-                recipeTitleLabel.text = recipe?.title.value
+                ingredientsTextView.text = recipe?.ingredients
             }
         }
     }
+    
+    // MARK: Updated directions with text and image
+    @IBOutlet weak var updatedDirectionsTableView: UITableView!
+    
+    var updatedDirectionsArray: [String] = []
+    var updatedImagesArray: [UIImage] = []
+   
+    
+    var direction: Direction?
+//    {
+//        didSet
+//        {
+//            if direction != nil
+//            {
+//                direction?.directionsText = recipe?.directions
+//            }
+//        }
+//    }
+    
 
-    
-    
     
     override func viewDidLoad()
     {
@@ -75,7 +170,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Table View Delegate
+    // MARK: Table View Delegate for UpdatedDirectionsTableViewCell
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
         return Int(updatedDirectionsArray.count ?? 0) // Create 1 row as an example
@@ -87,10 +182,16 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
         
         let directions = updatedDirectionsArray[indexPath.row]
         let updatedImages = updatedImagesArray[indexPath.row]
-        cell.updatedDirectionsLabel.text = directions
+        cell.updatedDirectionsTextView.text = directions
         cell.updatedDirectionsImageView.image = updatedImages
         
         return cell
+    }
+    
+    // MARK: Display directions
+    func displayDirections(direction: Direction?)
+    {
+        
     }
 
 }
