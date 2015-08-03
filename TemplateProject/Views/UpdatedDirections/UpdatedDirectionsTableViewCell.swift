@@ -12,10 +12,8 @@ class UpdatedDirectionsTableViewCell: UITableViewCell
 {
 
     @IBOutlet weak var updatedDirectionsImageView: UIImageView!
-    
-    @IBOutlet weak var updatedDirectionsLabel: UILabel!
-    
-    var updatedDirections: [String]!
+    @IBOutlet weak var updatedDirectionsTextView: UITextView!
+    var updatedDirections: [String] = []
     var updatedImages: UIImage?
     
     
