@@ -8,9 +8,12 @@
 
 import UIKit
 import Parse
+import Bond
+import ConvenienceKit
 
 class ChosenRecipeViewController: UIViewController, UITableViewDelegate
 {
+    var photoUploadTask: UIBackgroundTaskIdentifier?
     // MARK: Initialization for Recipe class
     var recipe: Recipe?
     {
@@ -105,23 +108,44 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     // MARK: Updates of ingredients images
     
     @IBOutlet weak var ingredientsImageView: UIImageView!
-//    {
-//        didSet
-//        {
-//            if recipe != nil
-//            {
-//                var ingredientsImageFiles = ingredientsImageView.image
-//                let imageData = UIImageJPEGRepresentation(ingredientsImageFiles, 0.8)
-//                let imageFile = PFFile(data: imageData)
-//                
-//                var ingredientsPhotos = PFFile(name: "ingredientsImages", data: imageData)
-//                ingredientsPhotos = recipe?.ingredientsImages
-//                
-//            }
-//        }
-//        
-//    }
+    {
+        didSet
+        {
+            if recipe != nil
+            {
+                ingredientsImageView.image = recipe?.ingredientsImages
+            }
+        }
+        
+    }
     
+    func uploadIngredientsImage()
+    {
+        let imageData = UIImageJPEGRepresentation(ingredientsImageView.image, 0.8)
+        let imageFile = PFFile(data: imageData)
+        
+        // any uploaded post should be associated with the current user
+//        self.user = PFUser.currentUser()
+//        self.imageFile = imageFile
+        
+        
+        photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler
+        {
+                () -> Void in
+                UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+        }
+        
+//        saveInBackgroundWithBlock
+//            {
+//                (success: Bool, error: NSError?) -> Void in
+//                if let error = error
+//                {
+//                    ErrorHandling.defaultErrorHandler(error)
+//                }
+//        }
+        
+    }
+
     
     
     // MARK: Ingredients updates in text
