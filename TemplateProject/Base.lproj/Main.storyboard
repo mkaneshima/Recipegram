@@ -709,6 +709,10 @@
                                                             </variation>
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" red="0.90911822549999999" green="0.59067094890000005" blue="0.0089678718049999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <outlet property="updatedDirectionsImageView" destination="j3A-p1-h50" id="wYy-IF-Vnk"/>
+                                                            <outlet property="updatedDirectionsTextView" destination="6S3-G9-zOW" id="enl-g0-NjH"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                                 <connections>
