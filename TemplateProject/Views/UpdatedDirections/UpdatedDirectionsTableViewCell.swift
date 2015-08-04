@@ -7,17 +7,28 @@
 //
 
 import UIKit
+import Parse
 
 class UpdatedDirectionsTableViewCell: UITableViewCell
 {
-
+    let recipe = Recipe()
+    
     @IBOutlet weak var updatedDirectionsImageView: UIImageView!
     @IBOutlet weak var updatedDirectionsTextView: UITextView!
-    var updatedDirections: [String] = []
-    var updatedImages: UIImage?
+//    var updatedDirections: [String] = []
+//    var updatedImages: [UIImage] = []
     
-    let recipe = Recipe()
+   
 //    let direction = Direction()
+    
+    func displayDirection()
+    {
+        if let updatedDirectionImageView = updatedDirectionsImageView, updatedDirectionTextView = updatedDirectionsTextView
+        {
+            updatedDirectionsImageView.image = recipe.image.value
+            updatedDirectionsTextView.text = recipe.directionsText[0]
+        }
+    }
     
     
     override func awakeFromNib()

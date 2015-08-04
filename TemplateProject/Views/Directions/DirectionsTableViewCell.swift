@@ -20,7 +20,7 @@ class DirectionsTableViewCell: UITableViewCell
     @IBOutlet weak var directionsImageView: UIImageView!
     
     // MARK: PhotoTakingHelper
-    var photoTakingHelper: PhotoTakingHelper?
+//    var photoTakingHelper: PhotoTakingHelper?
 //    var directions: [String]?
     
 //    var directionImage: UIImage?

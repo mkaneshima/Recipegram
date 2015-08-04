@@ -109,7 +109,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
         
     }
     
-    // MARK: Updates of ingredients images
+    // MARK: Updated images of ingredients
     
     @IBOutlet weak var ingredientsImageView: UIImageView!
     {
@@ -219,6 +219,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("UpdatedDirectionsCell") as! UpdatedDirectionsTableViewCell
         cell.updatedDirectionsTextView.text = "asfhsef"
+//        cell.updatedDirectionsImageView.image = updatedImagesArray[indexPath.row]
 
 //        let directions = updatedDirectionsArray[indexPath.row]
 //        let updatedImages = updatedImagesArray[indexPath.row]
