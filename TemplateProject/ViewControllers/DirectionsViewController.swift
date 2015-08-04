@@ -12,7 +12,8 @@ import ConvenienceKit
 
 class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate
 {
-    var direction: Direction = Direction()
+    var selectedImage: UIImage?
+    
 
     // PhotoTakingHelper
     var photoTakingHelper: PhotoTakingHelper?
@@ -36,10 +37,11 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
             
                 let imageData = UIImageJPEGRepresentation(image, 0.8)
                 let imageFile = PFFile(data: imageData)
-                self.direction.directionsImages = imageFile
+//                self.direction.directionsImages = imageFile
+                self.selectedImage = image
                 self.directionsImageView?.image = image!
-                self.direction["directionsImages"] = imageFile
-                
+//                self.direction["directionsImages"] = imageFile
+            
         }
  
     }
@@ -47,13 +49,47 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     // Done button
     @IBOutlet weak var doneButton: UIButton!
     
-    @IBAction func doneButtonPressed(sender: AnyObject)
+//    @IBAction func doneButtonPressed(sender: AnyObject)
+//    {
+//        direction.directionsText = self.directionsTextField.text
+//        println(self.directionsTextField.text)
+//        println(direction.directionsText)
+//        let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
+//        let directionsImageFile = PFFile(data: directionsImageData)
+//        direction.directionsImages = directionsImageFile
+//        
+//        performSegueWithIdentifier("selectDoneButtonSegue", sender: nil)
+//    }
+    
+    @IBAction func unwindToSegue(segue: UIStoryboardSegue)
     {
-        direction.directionsText = self.directionsTextField.text
-        let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
-        let directionsImageFile = PFFile(data: directionsImageData)
-        direction.directionsImages = directionsImageFile
+        if(segue.identifier == "selectDoneButtonSegue")
+        {
+            let destViewController = segue.destinationViewController as! NewRecipeViewController
+//            destViewController.recipe.directions!.append(direction)
+//            direction.directionsText = self.directionsTextField.text
+//            println(self.directionsTextField.text)
+//            println(direction.directionsText)
+//            let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
+//            let directionsImageFile = PFFile(data: directionsImageData)
+//            direction.directionsImages = directionsImageFile
+            
+//            destViewController.recipe.directionsImages!.append(selectedImage)
+//            destViewController.recipe.directionsImages!.addObject(selectedImage!)
+            
+            destViewController.recipe.directionsImages.append(selectedImage!)
+            
+//            destViewController.recipe.directionsText!.append(directionsTextField.text)
+//            destViewController.recipe.directionsText!.addObject(directionsTextField.text)
+            
+            destViewController.recipe.directionsText.append(directionsTextField.text)
+
+            
+        }
+        
     }
+    
+    
 
     override func viewDidLoad()
     {
@@ -68,7 +104,6 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Dispose of any resources that can be recreated.
     }
     
-//    override func
 
 }
 

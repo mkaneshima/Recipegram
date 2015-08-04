@@ -176,7 +176,8 @@ extension RecipeViewController: UITableViewDelegate
 
 extension RecipeViewController
 {
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    override func preferredStatusBarStyle() -> UIStatusBarStyle
+    {
         return .LightContent
     }
 }

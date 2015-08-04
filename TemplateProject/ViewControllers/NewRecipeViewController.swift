@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import Bond
 
+
 class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate
 {
     //    var directionsImagesArray: [UIImage] = []
@@ -17,9 +18,15 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     //    var imagesBond: Bond<UIImage>!    let recipe = Recipe()
     
     var ingredientsArray: [String] = [""]
-    var directionsArray: [Direction] = []
+    
+    // Directions arrays for images and text
+//    var directionsTextArray: [String] = []
+//    var directionsImagesArray: [UIImage] = []
+    
+    // Pickerview values
     var levels = ["Easy", "Intermediate", "Hard"]
     var selectedLevel: String = ""
+    
     let recipe = Recipe()
     
     // MARK: DirectionsTableView
@@ -39,10 +46,13 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     override func viewDidLoad()
     {
         super.viewDidLoad()
-//        scrollView.contentSize = CGSizeMake(600, 2400)
         levelPickerView.delegate = self
         levelPickerView.dataSource = self
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        directionsTableView.reloadData()
     }
     
     // MARK: - Navigation
@@ -64,18 +74,25 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     // Number of rows in section
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        return Int(directionsArray.count ?? 0) // Create 1 row as an example
+        //return Int(recipe.directionsText.count ?? 0) // Create 1 row as an example
+        return 3
     }
     
     // Cell for Row at Index Path
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("DirectionsCell") as! DirectionsTableViewCell
+        cell.directionsTextView.text = "asfhsef"
+         
         
-        let directions = directionsArray[indexPath.row]
-        cell.directionsTextView.text = directions.directionsText
+        /*let directionsText = recipe.directionsText[indexPath.row]
         
-        if let directionsImage = directions.valueForKey("directionsImages") as? PFFile
+        let directionsPhoto = recipe.directionsImages[indexPath.row] // Array index out of range
+        
+        cell.directionsTextView.text = directionsText
+        
+        // Directions photo
+        if let directionsImage = directionsPhoto.valueForKey("directionsImages") as? PFFile
         {
             directionsImage.getDataInBackgroundWithBlock(
             {
@@ -86,10 +103,8 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
                     cell.directionsImageView.image = image
                 }
             })
-            
         
-        }
-        
+        }*/
         return cell
     }
     
@@ -176,7 +191,8 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             let ingredientsImageData = UIImageJPEGRepresentation(image, 0.8)
             let ingredientsImageFile = PFFile(data: ingredientsImageData)
             self.recipe["ingredientsImages"] = ingredientsImageFile
-                
+            
+
         }
 
     }
@@ -192,9 +208,10 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         recipe.cookTimes = self.newCookTimeTextField.text
         recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
         
-        
         recipe.ingredients = self.ingredientsTextView.text
-        recipe.directions = self.directionsArray
+        
+//        recipe.directionsImages = self.
+//        recipe.directionsText = self.directionsTextArray
         
         recipe.uploadRecipe()
         
@@ -205,22 +222,24 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     {
         if(segue.identifier == "postRecipeSegue")
         {
-            let destViewController = segue.sourceViewController as! RecipeViewController
+            let destViewController = segue.destinationViewController as! RecipeViewController
             
-            recipe.recipeTitles = self.titleTextField.text
-            recipe.servings = self.newServingsTextField.text
-            recipe.prepTimes = self.newPrepTimeTextField.text
-            recipe.cookTimes = self.newCookTimeTextField.text
-            recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
+//            recipe.recipeTitles = self.titleTextField.text
+//            recipe.servings = self.newServingsTextField.text
+//            recipe.prepTimes = self.newPrepTimeTextField.text
+//            recipe.cookTimes = self.newCookTimeTextField.text
+//            recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
+//            
+//            let ingredientsImageData = UIImageJPEGRepresentation(ingredientsImageView.image, 0.8)
+//            let ingredientsImageFile = PFFile(data: ingredientsImageData)
+//            recipe.ingredientsImages = ingredientsImageFile
+//
+//            recipe.ingredients = self.ingredientsTextView.text
+////            recipe.directions = self.directionsArray
+//            recipe.directionsImages = self.directionsImagesArray
+//            recipe.directionsText = self.directionsTextArray
             
-            let ingredientsImageData = UIImageJPEGRepresentation(ingredientsImageView.image, 0.8)
-            let ingredientsImageFile = PFFile(data: ingredientsImageData)
-            recipe.ingredientsImages = ingredientsImageFile
-
-            recipe.ingredients = self.ingredientsTextView.text
-            recipe.directions = self.directionsArray
-            
-            recipe.uploadRecipe()
+//            recipe.uploadRecipe()
         }
     
     }

@@ -16,7 +16,8 @@ class UpdatedDirectionsTableViewCell: UITableViewCell
     var updatedDirections: [String] = []
     var updatedImages: UIImage?
     
-    
+    let recipe = Recipe()
+//    let direction = Direction()
     
     
     override func awakeFromNib()
@@ -31,5 +32,5 @@ class UpdatedDirectionsTableViewCell: UITableViewCell
 
         // Configure the view for the selected state
     }
-
+    
 }

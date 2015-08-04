@@ -108,44 +108,16 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     // MARK: Updates of ingredients images
     
     @IBOutlet weak var ingredientsImageView: UIImageView!
-    {
-        didSet
-        {
-            if recipe != nil
-            {
-                ingredientsImageView.image = recipe?.ingredientsImages
-            }
-        }
-        
-    }
-    
-    func uploadIngredientsImage()
-    {
-        let imageData = UIImageJPEGRepresentation(ingredientsImageView.image, 0.8)
-        let imageFile = PFFile(data: imageData)
-        
-        // any uploaded post should be associated with the current user
-//        self.user = PFUser.currentUser()
-//        self.imageFile = imageFile
-        
-        
-        photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler
-        {
-                () -> Void in
-                UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
-        }
-        
-//        saveInBackgroundWithBlock
+//    {
+//        didSet
+//        {
+//            if recipe != nil
 //            {
-//                (success: Bool, error: NSError?) -> Void in
-//                if let error = error
-//                {
-//                    ErrorHandling.defaultErrorHandler(error)
-//                }
+//                ingredientsImageView.image = recipe?.ingredientsImages
+//            }
 //        }
-        
-    }
-
+//        
+//    }
     
     
     // MARK: Ingredients updates in text
@@ -162,12 +134,20 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     
     // MARK: Updated directions with text and image
     @IBOutlet weak var updatedDirectionsTableView: UITableView!
-    
+    {
+        didSet
+        {
+            if recipe != nil
+            {
+                
+            }
+        }
+    }
     var updatedDirectionsArray: [String] = []
     var updatedImagesArray: [UIImage] = []
    
     
-    var direction: Direction?
+//    var direction: Direction?
 //    {
 //        didSet
 //        {
@@ -212,12 +192,6 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
         return cell
     }
     
-    // MARK: Display directions
-    func displayDirections(direction: Direction?)
-    {
-        
-    }
-
 }
 
 

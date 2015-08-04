@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 typealias photoTakingHelperCallBack = UIImage? -> Void
 
@@ -23,19 +24,33 @@ class DirectionsTableViewCell: UITableViewCell
     
     // MARK: PhotoTakingHelper
     var photoTakingHelper: PhotoTakingHelper?
-    var directions: [String]?
+//    var directions: [String]?
+    
+//    var directionImage: UIImage?
+//    var directionText: String = ""
+    let directionViewController = DirectionsViewController()
     
     
     @IBAction func directionsCameraButtonPressed(sender: AnyObject)
     {
-//        photoTakingHelper = PhotoTakingHelper(viewController: NewRecipeViewController, callback: photoTakingHelperCallBack)
+//        photoTakingHelper = PhotoTakingHelper(viewController: directionViewController, callback: self.photoTakingHelperCallBack)
 //        {
 //            
 //        }
         
-        
     }
     
+    func saveDirection()
+    {
+        if let directionsTextView = directionsTextView, directionsImageView = directionsImageView
+        {
+            if(directionsImageView.image != self.directionViewController.directionsImageView.image || directionsTextView.text != self.directionsTextView.text)
+            {
+                self.directionViewController.directionsTextField.text = directionsTextView.text
+                self.directionViewController.directionsImageView.image = directionsImageView.image
+            }
+        }
+    }
     
     override func awakeFromNib()
     {
@@ -46,10 +61,10 @@ class DirectionsTableViewCell: UITableViewCell
 
     override func setSelected(selected: Bool, animated: Bool)
     {
-        
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
+    
+    
+    
 }
