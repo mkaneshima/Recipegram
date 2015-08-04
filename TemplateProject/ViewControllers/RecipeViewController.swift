@@ -120,7 +120,8 @@ extension RecipeViewController: UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 1//self.recipeTimelineComponent.content[section].count
+        return 1
+        //self.recipeTimelineComponent.content[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

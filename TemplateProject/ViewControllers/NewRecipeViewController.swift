@@ -51,7 +51,8 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool)
+    {
         directionsTableView.reloadData()
     }
     
@@ -74,7 +75,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     // Number of rows in section
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        //return Int(recipe.directionsText.count ?? 0) // Create 1 row as an example
+//        return Int(recipe.directionsText.count ?? 0) // Create 1 row as an example
         return 3
     }
     

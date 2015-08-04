@@ -20,7 +20,7 @@ class Recipe: PFObject, PFSubclassing
     @NSManaged var prepTimes: String?
     @NSManaged var cookTimes: String?
     @NSManaged var skillLevel: String?
-    @NSManaged var ingredientsImages: PFFile?
+    @NSManaged var ingredientsImage: PFFile?
     @NSManaged var ingredients: String?
 //    @NSManaged var directions: Array<Direction>?
     

@@ -19,9 +19,6 @@ class DirectionsTableViewCell: UITableViewCell
     // MARK: Directions ImageView
     @IBOutlet weak var directionsImageView: UIImageView!
     
-    // MARK: Directions Camera button
-    @IBOutlet weak var directionsCameraButton: UIButton!
-    
     // MARK: PhotoTakingHelper
     var photoTakingHelper: PhotoTakingHelper?
 //    var directions: [String]?
@@ -30,15 +27,6 @@ class DirectionsTableViewCell: UITableViewCell
 //    var directionText: String = ""
     let directionViewController = DirectionsViewController()
     
-    
-    @IBAction func directionsCameraButtonPressed(sender: AnyObject)
-    {
-//        photoTakingHelper = PhotoTakingHelper(viewController: directionViewController, callback: self.photoTakingHelperCallBack)
-//        {
-//            
-//        }
-        
-    }
     
     func saveDirection()
     {

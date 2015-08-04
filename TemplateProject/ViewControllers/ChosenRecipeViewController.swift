@@ -13,7 +13,11 @@ import ConvenienceKit
 
 class ChosenRecipeViewController: UIViewController, UITableViewDelegate
 {
+    
     var photoUploadTask: UIBackgroundTaskIdentifier?
+    
+    
+    
     // MARK: Initialization for Recipe class
     var recipe: Recipe?
     {
@@ -108,16 +112,38 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     // MARK: Updates of ingredients images
     
     @IBOutlet weak var ingredientsImageView: UIImageView!
-//    {
-//        didSet
-//        {
-//            if recipe != nil
-//            {
-//                ingredientsImageView.image = recipe?.ingredientsImages
-//            }
-//        }
-//        
-//    }
+    {
+        didSet
+        {
+            if recipe != nil
+            {
+//                ingredientsImageView.image = Recipe.imageCache[self.recipe!.ingredientsImage]
+                
+                // if image is not downloaded yet, get it
+                if (self.recipe!.ingredientsImage == nil)
+                {
+                    recipe!.ingredientsImage?.getDataInBackgroundWithBlock
+                    {
+                        (data: NSData?, error: NSError?) -> Void in
+                        if let error = error
+                        {
+                            ErrorHandling.defaultErrorHandler(error)
+                        }
+                        if let data = data
+                        {
+                            let image = UIImage(data: data, scale:1.0)!
+                            self.ingredientsImageView.image = image
+                            Recipe.imageCache[self.recipe!.ingredientsImage!.name] = image
+                        }
+                    }
+                }
+
+            }
+            
+            
+        }
+        
+    }
     
     
     // MARK: Ingredients updates in text
@@ -134,15 +160,15 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     
     // MARK: Updated directions with text and image
     @IBOutlet weak var updatedDirectionsTableView: UITableView!
-    {
-        didSet
-        {
-            if recipe != nil
-            {
-                
-            }
-        }
-    }
+//    {
+//        didSet
+//        {
+//            if recipe != nil
+//            {
+//                
+//            }
+//        }
+//    }
     var updatedDirectionsArray: [String] = []
     var updatedImagesArray: [UIImage] = []
    
@@ -167,6 +193,13 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
         
     }
     
+    
+    override func viewDidAppear(animated: Bool)
+    {
+//        directionsTableView.reloadData()
+        updatedDirectionsTableView.reloadData()
+    }
+
 
     override func didReceiveMemoryWarning()
     {
@@ -177,17 +210,20 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     // MARK: Table View Delegate for UpdatedDirectionsTableViewCell
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        return Int(updatedDirectionsArray.count ?? 0) // Create 1 row as an example
+//        return Int(updatedDirectionsArray.count ?? 0) // Create 1 row as an example
+        
+        return 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("UpdatedDirectionsCell") as! UpdatedDirectionsTableViewCell
-        
-        let directions = updatedDirectionsArray[indexPath.row]
-        let updatedImages = updatedImagesArray[indexPath.row]
-        cell.updatedDirectionsTextView.text = directions
-        cell.updatedDirectionsImageView.image = updatedImages
+        cell.updatedDirectionsTextView.text = "asfhsef"
+
+//        let directions = updatedDirectionsArray[indexPath.row]
+//        let updatedImages = updatedImagesArray[indexPath.row]
+//        cell.updatedDirectionsTextView.text = directions
+//        cell.updatedDirectionsImageView.image = updatedImages
         
         return cell
     }
