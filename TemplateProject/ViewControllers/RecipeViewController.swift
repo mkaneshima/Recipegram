@@ -156,20 +156,20 @@ extension RecipeViewController: UITableViewDelegate
         performSegueWithIdentifier(recipeSegueIdentifier, sender: nil)
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        let headerCell = tableView.dequeueReusableCellWithIdentifier("RecipeHeader") as! RecipeSectionHeaderView
-        
-        let recipe = self.recipeTimelineComponent.content[section]
-        headerCell.recipe = recipe
-        
-        return headerCell
-    }
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+//    {
+//        let headerCell = tableView.dequeueReusableCellWithIdentifier("RecipeHeader") as! RecipeSectionHeaderView
+//        
+//        let recipe = self.recipeTimelineComponent.content[section]
+//        headerCell.recipe = recipe
+//        
+//        return headerCell
+//    }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
-        return 40
-    }
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+//    {
+//        return 40
+//    }
     
 }
 

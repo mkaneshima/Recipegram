@@ -27,7 +27,7 @@ class DirectionsTableViewCell: UITableViewCell
 //    var directionText: String = ""
     let directionViewController = DirectionsViewController()
     
-    
+    // MARK: How to save the directions content (text and image objects) from NewRecipeViewController and update them in DirectionsTableViewCell
     func saveDirection()
     {
         if let directionsTextView = directionsTextView, directionsImageView = directionsImageView

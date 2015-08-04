@@ -10,20 +10,20 @@ import UIKit
 
 class RecipeSectionHeaderView: UITableViewCell
 {
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var postTimeLabel: UILabel!
+//    @IBOutlet weak var usernameLabel: UILabel!
+//    @IBOutlet weak var postTimeLabel: UILabel!
     
-    var recipe: Recipe?
-    {
-        didSet
-        {
-            if let recipe = recipe
-            {
-                usernameLabel.text = recipe.user?.username
-//                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
-            }
-        }
-    }
+//    var recipe: Recipe?
+//    {
+//        didSet
+//        {
+//            if let recipe = recipe
+//            {
+//                usernameLabel.text = recipe.user?.username
+////                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
+//            }
+//        }
+//    }
     override func awakeFromNib()
     {
         super.awakeFromNib()

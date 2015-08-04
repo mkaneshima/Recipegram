@@ -14,6 +14,7 @@ class UpdatedDirectionsTableViewCell: UITableViewCell
     let recipe = Recipe()
     
     @IBOutlet weak var updatedDirectionsImageView: UIImageView!
+    
     @IBOutlet weak var updatedDirectionsTextView: UITextView!
 //    var updatedDirections: [String] = []
 //    var updatedImages: [UIImage] = []
@@ -21,12 +22,13 @@ class UpdatedDirectionsTableViewCell: UITableViewCell
    
 //    let direction = Direction()
     
+    // MARK: How to get the directions content (text and image objects) from NewRecipeViewController to show up in ChosenRecipeViewController
     func displayDirection()
     {
         if let updatedDirectionImageView = updatedDirectionsImageView, updatedDirectionTextView = updatedDirectionsTextView
         {
-            updatedDirectionsImageView.image = recipe.image.value
-            updatedDirectionsTextView.text = recipe.directionsText[0]
+            updatedDirectionImageView.image = recipe.image.value
+            updatedDirectionTextView.text = recipe.directionsText[0]
         }
     }
     

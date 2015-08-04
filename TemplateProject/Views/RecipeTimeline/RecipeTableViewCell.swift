@@ -15,6 +15,9 @@ class RecipeTableViewCell: UITableViewCell
     
     @IBOutlet weak var recipeImageView: UIImageView!
     
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var postTimeLabel: UILabel!
+    
     var recipe:Recipe?
     {
         didSet
@@ -34,8 +37,13 @@ class RecipeTableViewCell: UITableViewCell
             {
                 // bind the image of the post to the 'postImage' view
                 recipe.image ->> recipeImageView
+                
+                usernameLabel.text = recipe.user?.username
+                //                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
 
             }
+            
+            
             
         }
     }

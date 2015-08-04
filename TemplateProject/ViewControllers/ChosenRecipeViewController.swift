@@ -13,10 +13,7 @@ import ConvenienceKit
 
 class ChosenRecipeViewController: UIViewController, UITableViewDelegate
 {
-    
     var photoUploadTask: UIBackgroundTaskIdentifier?
-    
-    
     
     // MARK: Initialization for Recipe class
     var recipe: Recipe?
@@ -172,19 +169,6 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     var updatedDirectionsArray: [String] = []
     var updatedImagesArray: [UIImage] = []
    
-    
-//    var direction: Direction?
-//    {
-//        didSet
-//        {
-//            if direction != nil
-//            {
-//                direction?.directionsText = recipe?.directions
-//            }
-//        }
-//    }
-    
-
     
     override func viewDidLoad()
     {
