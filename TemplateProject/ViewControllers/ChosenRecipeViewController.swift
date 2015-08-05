@@ -162,8 +162,8 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: Updated directions with text and image
     @IBOutlet weak var updatedDirectionsTableView: UITableView!
-//    var updatedDirectionsArray: [String] = []
-//    var updatedImagesArray: [UIImage] = []
+    var updatedDirectionsArray: [String] = []
+    var updatedImagesArray: [UIImage] = []
    
     
     override func viewDidLoad()
@@ -200,17 +200,20 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("UpdatedDirectionsCell") as! UpdatedDirectionsTableViewCell
        
-//        cell.updatedDirectionsImageView.image = updatedImagesArray[indexPath.row]
-
+       
         if recipe!.directionsText.count > 0
         {
 //            let directions = updatedDirectionsArray[indexPath.row]
 //            let updatedImages = updatedImagesArray[indexPath.row]
 //            cell.updatedDirectionsTextView.text = directions
 //            cell.updatedDirectionsImageView.image = updatedImages
+            //cell.updatedDirectionsImageView.image = recipe?.directionsImages[indexPath.row]!.
 
             cell.updatedDirectionsTextView.text = recipe?.directionsText[indexPath.row]
-//            cell.updatedDirectionsImageView.image = recipe?.directionsImages[indexPath.row]
+           
+            let directionsImage =  recipe?.directionsImages[indexPath.row]
+
+            cell.updatedDirectionsImageView.image = UIImage(data:directionsImage!.getData()!)
         }
         else
         {

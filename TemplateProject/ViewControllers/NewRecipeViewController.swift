@@ -56,6 +56,8 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         
     }
     
+    
+    
     // MARK: Reloads direction table view data
     override func viewDidAppear(animated: Bool)
     {

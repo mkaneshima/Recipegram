@@ -17,25 +17,34 @@ class UpdatedDirectionsTableViewCell: UITableViewCell
 
     
     let recipe = Recipe()
-    let directionsViewController = DirectionsViewController()
+//    let directionsViewController = DirectionsViewController()
     
     @IBOutlet weak var updatedDirectionsImageView: UIImageView!
+//    {
+//        didSet
+//        {
+//            if(recipe != nil)
+//            {
+//                
+//            }
+//        }
+//    }
     @IBOutlet weak var updatedDirectionsTextView: UITextView!
     
     // MARK: How to get the directions content (text and image objects) from NewRecipeViewController to show up in ChosenRecipeViewController
-    func displayDirection()
-    {
-        if let updatedDirectionImageView = updatedDirectionsImageView, updatedDirectionTextView = updatedDirectionsTextView
-        {
-            if (updatedDirectionTextView != self.recipe.directionsText || updatedDirectionImageView != self.recipe.directionsImages)
-            {
-                updatedDirectionTextView.text = self.directionsViewController.directionsTextField.text
-                updatedDirectionImageView.image = self.directionsViewController.directionsImageView.image
-            }
-           
-        }
-    }
-    
+//    func displayDirection()
+//    {
+//        if let updatedDirectionImageView = updatedDirectionsImageView, updatedDirectionTextView = updatedDirectionsTextView
+//        {
+//            if (updatedDirectionTextView != self.recipe.directionsText || updatedDirectionImageView != self.recipe.directionsImages)
+//            {
+//                updatedDirectionTextView.text = self.directionsViewController.directionsTextField.text
+//                updatedDirectionImageView.image = self.directionsViewController.directionsImageView.image
+//            }
+//           
+//        }
+//    }
+//    
     
     override func awakeFromNib()
     {
