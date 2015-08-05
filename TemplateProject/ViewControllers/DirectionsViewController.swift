@@ -63,15 +63,13 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     // Done button
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
      {
-   
   
-//            let destViewController = segue.destinationViewController as! NewRecipeViewController
+//        let destViewController = segue.destinationViewController as! NewRecipeViewController
 //        var test = destViewController.recipe["directionsImages"] as! [UIImage]
 //        println(test.description)
-//            test.append(selectedImage!)
-//            destViewController.recipe["directionsImages"] = [selectedImage!]
-//
-//            destViewController.recipe.directionsText.append(directionsTextField.text)
+//        test.append(selectedImage!)
+//        destViewController.recipe["directionsImages"] = [selectedImage!]
+//        destViewController.recipe.directionsText.append(directionsTextField.text)
       
     }
     
@@ -102,12 +100,8 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     //
     //    }
 
-    
-    
 
 }
-
-
 
 
 extension DirectionsViewController: UITextFieldDelegate

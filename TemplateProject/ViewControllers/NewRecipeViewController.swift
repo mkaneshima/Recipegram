@@ -95,12 +95,12 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("DirectionsCell") as! DirectionsTableViewCell
         
-        if recipe.directionsText.count > 0
+        if recipe.directionsText.count > 0 
         {
             let directionsText = recipe.directionsText[indexPath.row]
-//            let directionsImage = recipe.directionsImages[indexPath.row]
+            let directionsImage = recipe.directionsImages[indexPath.row]
             cell.directionsTextView.text = directionsText
-//            cell.directionsImageView.image = directionsImage[]
+            cell.directionsImageView.image = UIImage(data:directionsImage.getData()!)
             
 //            // Directions photo
 //            if let directionsImage = directionsImage.valueForKey("directionsImages") as? PFFile
@@ -281,25 +281,23 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         if(segue.identifier == "selectDoneButtonPressed")
         {
             let sourceViewController = segue.sourceViewController as! DirectionsViewController
+            recipe.directionsText.append(sourceViewController.directionsTextField.text)
             
-                recipe.directionsImages.append(PFFile(data: UIImageJPEGRepresentation(sourceViewController.selectedImage!, 0.8)) )//
+            // Add/append the image in the imageview of the tableviewcell
+            recipe.directionsImages.append(PFFile(data: UIImageJPEGRepresentation(sourceViewController.selectedImage!, 0.8)))//
             
-                recipe.directionsText.append(sourceViewController.directionsTextField.text)
-
-            
-//            let directionsViewController = segue
         }
 
     }
     
-    @IBAction func getDirectionInfo(unwindSegue: UIStoryboardSegue)
-    {
-        if(unwindSegue.identifier == "selectDoneButtonSegue")
-        {
-            let directionViewController = unwindSegue.sourceViewController as? DirectionsViewController
-            println("hello from directionsviewcontroller")
-        }
-    }
+//    @IBAction func getDirectionInfo(unwindSegue: UIStoryboardSegue)
+//    {
+//        if(unwindSegue.identifier == "selectDoneButtonSegue")
+//        {
+//            let directionViewController = unwindSegue.sourceViewController as? DirectionsViewController
+//            println("hello from directionsviewcontroller")
+//        }
+//    }
     
     
     
