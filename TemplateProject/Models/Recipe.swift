@@ -49,7 +49,6 @@ class Recipe: PFObject, PFSubclassing
     override init ()
     {
         super.init()
-        
     }
     
     override class func initialize()
@@ -72,7 +71,7 @@ class Recipe: PFObject, PFSubclassing
         self.user = PFUser.currentUser()
         self.imageFile = imageFile
         
-        
+        // MARK: PhotoUploadTask
         photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler
         {
             () -> Void in

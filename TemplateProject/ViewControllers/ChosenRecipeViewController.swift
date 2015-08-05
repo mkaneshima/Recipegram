@@ -11,8 +11,11 @@ import Parse
 import Bond
 import ConvenienceKit
 
-class ChosenRecipeViewController: UIViewController, UITableViewDelegate
+class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+//    let recipes = Recipe()
+    
+    // MARK: PhotoUploadTask
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
     // MARK: Initialization for Recipe class
@@ -28,8 +31,11 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
                 prepTimeLabel.text = recipe?.prepTimes
                 cookTimeLabel.text = recipe?.cookTimes
                 ingredientsTextView.text = recipe?.ingredients
-
+                
+//                ingredientsImageView.image = recipe?.image.value
+            
             }
+            
         }
     }
     
@@ -47,7 +53,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     
     // MARK: Recipe titles
     @IBOutlet weak var recipeTitleLabel: UILabel!
-        {
+    {
         didSet
         {
             if recipe != nil
@@ -107,7 +113,6 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     }
     
     // MARK: Updated images of ingredients
-    
     @IBOutlet weak var ingredientsImageView: UIImageView!
     {
         didSet
@@ -157,22 +162,15 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     
     // MARK: Updated directions with text and image
     @IBOutlet weak var updatedDirectionsTableView: UITableView!
-//    {
-//        didSet
-//        {
-//            if recipe != nil
-//            {
-//                
-//            }
-//        }
-//    }
-    var updatedDirectionsArray: [String] = []
-    var updatedImagesArray: [UIImage] = []
+//    var updatedDirectionsArray: [String] = []
+//    var updatedImagesArray: [UIImage] = []
    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        updatedDirectionsTableView.dataSource = self
+        updatedDirectionsTableView.delegate = self
         // Do any additional setup after loading the view.
         
     }
@@ -180,7 +178,6 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     
     override func viewDidAppear(animated: Bool)
     {
-//        directionsTableView.reloadData()
         updatedDirectionsTableView.reloadData()
     }
 
@@ -196,19 +193,29 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate
     {
 //        return Int(updatedDirectionsArray.count ?? 0) // Create 1 row as an example
         
-        return 3
+        return recipe!.directionsText.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("UpdatedDirectionsCell") as! UpdatedDirectionsTableViewCell
-        cell.updatedDirectionsTextView.text = "asfhsef"
+       
 //        cell.updatedDirectionsImageView.image = updatedImagesArray[indexPath.row]
 
-//        let directions = updatedDirectionsArray[indexPath.row]
-//        let updatedImages = updatedImagesArray[indexPath.row]
-//        cell.updatedDirectionsTextView.text = directions
-//        cell.updatedDirectionsImageView.image = updatedImages
+        if recipe!.directionsText.count > 0
+        {
+//            let directions = updatedDirectionsArray[indexPath.row]
+//            let updatedImages = updatedImagesArray[indexPath.row]
+//            cell.updatedDirectionsTextView.text = directions
+//            cell.updatedDirectionsImageView.image = updatedImages
+
+            cell.updatedDirectionsTextView.text = recipe?.directionsText[indexPath.row]
+//            cell.updatedDirectionsImageView.image = recipe?.directionsImages[indexPath.row]
+        }
+        else
+        {
+             cell.updatedDirectionsTextView.text = "default"
+        }
         
         return cell
     }

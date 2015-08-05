@@ -393,7 +393,7 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BEW-AO-NEz">
-                                                    <rect key="frame" x="0.0" y="40" width="600" height="277"/>
+                                                    <rect key="frame" x="0.0" y="40" width="600" height="257"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -402,7 +402,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="BEW-AO-NEz" secondAttribute="trailing" id="IVI-KC-jzl"/>
                                                 <constraint firstItem="GoM-b3-1gi" firstAttribute="top" secondItem="ZZA-kx-UFa" secondAttribute="top" id="Kiu-cu-VkK"/>
                                                 <constraint firstAttribute="trailing" secondItem="GoM-b3-1gi" secondAttribute="trailing" id="l8n-O9-aM9"/>
-                                                <constraint firstAttribute="bottom" secondItem="BEW-AO-NEz" secondAttribute="bottom" constant="30" id="ogH-z7-dRf"/>
+                                                <constraint firstAttribute="bottom" secondItem="BEW-AO-NEz" secondAttribute="bottom" constant="50" id="ogH-z7-dRf"/>
                                                 <constraint firstItem="BEW-AO-NEz" firstAttribute="leading" secondItem="ZZA-kx-UFa" secondAttribute="leading" id="r3r-2O-PLu"/>
                                                 <constraint firstItem="BEW-AO-NEz" firstAttribute="top" secondItem="GoM-b3-1gi" secondAttribute="bottom" id="wgT-Ia-uxA"/>
                                                 <constraint firstItem="BEW-AO-NEz" firstAttribute="top" secondItem="GoM-b3-1gi" secondAttribute="bottom" id="zFD-of-rYz"/>

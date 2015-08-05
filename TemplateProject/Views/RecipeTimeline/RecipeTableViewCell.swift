@@ -9,12 +9,12 @@
 import UIKit
 import Bond
 import Parse
+import Foundation
 
 class RecipeTableViewCell: UITableViewCell
 {
     
     @IBOutlet weak var recipeImageView: UIImageView!
-    
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var postTimeLabel: UILabel!
     
@@ -39,7 +39,9 @@ class RecipeTableViewCell: UITableViewCell
                 recipe.image ->> recipeImageView
                 
                 usernameLabel.text = recipe.user?.username
-//                                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
+                
+                // Add the DateTools in the Podfile
+//                postTimeLabel.text = recipe.createdAt?.shortTimeAgoSinceDate(NSDate()) ?? ""
 
             }
             

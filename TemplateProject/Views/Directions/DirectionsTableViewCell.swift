@@ -19,12 +19,6 @@ class DirectionsTableViewCell: UITableViewCell
     // MARK: Directions ImageView
     @IBOutlet weak var directionsImageView: UIImageView!
     
-    // MARK: PhotoTakingHelper
-//    var photoTakingHelper: PhotoTakingHelper?
-//    var directions: [String]?
-    
-//    var directionImage: UIImage?
-//    var directionText: String = ""
     let directionViewController = DirectionsViewController()
     
     // MARK: How to save the directions content (text and image objects) from NewRecipeViewController and update them in DirectionsTableViewCell
@@ -40,13 +34,14 @@ class DirectionsTableViewCell: UITableViewCell
         }
     }
     
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
         // Initialization code
         
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool)
     {
         super.setSelected(selected, animated: animated)
@@ -54,5 +49,14 @@ class DirectionsTableViewCell: UITableViewCell
     }
     
     
+
+    
+    
+    // MARK: PhotoTakingHelper
+//    var photoTakingHelper: PhotoTakingHelper?
+//    var directions: [String]?
+    
+//    var directionImage: UIImage?
+//    var directionText: String = ""
     
 }

@@ -72,6 +72,8 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
 //        println(test.description)
 //        println(test.count)
        //test.append()
+        
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "AddDirectionsSegue")
