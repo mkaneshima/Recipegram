@@ -229,11 +229,15 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         {
             (image: UIImage?) in
             
-            self.recipe.image.value = image!
-            self.ingredientsImageView?.image = image!
             let ingredientsImageData = UIImageJPEGRepresentation(image, 0.8)
             let ingredientsImageFile = PFFile(data: ingredientsImageData)
-            self.recipe["ingredientsImages"] = ingredientsImageFile
+
+            self.recipe.ingredientsImages = ingredientsImageFile
+            self.ingredientsImageView?.image = image!
+//            let test = self.recipe.ingredientsImage?.getData()
+//            println(test)
+            
+//            self.recipe["ingredientsImages"] = ingredientsImageFile
             
         }
 

@@ -20,7 +20,7 @@ class Recipe: PFObject, PFSubclassing
     @NSManaged var prepTimes: String?
     @NSManaged var cookTimes: String?
     @NSManaged var skillLevel: String?
-    @NSManaged var ingredientsImage: PFFile?
+    @NSManaged var ingredientsImages: PFFile
     @NSManaged var ingredients: String?
 //    @NSManaged var directions: Array<Direction>?
     
@@ -34,12 +34,12 @@ class Recipe: PFObject, PFSubclassing
     @NSManaged var directionsText: [String]
     
     var image: Dynamic<UIImage?> = Dynamic(nil)
-    
+    var title: Dynamic<String?> = Dynamic(nil)
+
     var photoUploadTask: UIBackgroundTaskIdentifier?
     static var imageCache: NSCacheSwift<String, UIImage>!
     
-    var title: Dynamic<String?> = Dynamic(nil)
-
+   
     //MARK: PFSubclassing Protocol
     static func parseClassName() -> String
     {
@@ -61,6 +61,7 @@ class Recipe: PFObject, PFSubclassing
             Recipe.imageCache = NSCacheSwift<String, UIImage>()
         }
     }
+    
     // MARK: Parse logic
     func uploadRecipe()
     {

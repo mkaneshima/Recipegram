@@ -35,7 +35,7 @@ class RecipeTableViewCell: UITableViewCell
             
             if let recipe = recipe
             {
-                // bind the image of the post to the 'postImage' view
+                // bind the image of the recipe to the 'recipeImage' view
                 recipe.image ->> recipeImageView
                 
                 usernameLabel.text = recipe.user?.username

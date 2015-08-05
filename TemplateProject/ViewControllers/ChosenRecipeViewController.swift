@@ -13,7 +13,7 @@ import ConvenienceKit
 
 class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-//    let recipes = Recipe()
+    //    let recipes = Recipe()
     
     // MARK: PhotoUploadTask
     var photoUploadTask: UIBackgroundTaskIdentifier?
@@ -32,8 +32,8 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
                 cookTimeLabel.text = recipe?.cookTimes
                 ingredientsTextView.text = recipe?.ingredients
                 
-//                ingredientsImageView.image = recipe?.image.value
-            
+                ingredientsImageView.image = UIImage(data: recipe!.ingredientsImages.getData()!)
+                
             }
             
         }
@@ -53,7 +53,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: Recipe titles
     @IBOutlet weak var recipeTitleLabel: UILabel!
-    {
+        {
         didSet
         {
             if recipe != nil
@@ -119,27 +119,31 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         {
             if recipe != nil
             {
-//                ingredientsImageView.image = Recipe.imageCache[self.recipe!.ingredientsImage]
+                //                ingredientsImageView.image = Recipe.imageCache[self.recipe!.ingredientsImage]
+                //   ingredientsImageView.image = UIImage(data: recipe!.ingredientsImage!.getData()!)
+                
                 
                 // if image is not downloaded yet, get it
-                if (self.recipe!.ingredientsImage == nil)
-                {
-                    recipe!.ingredientsImage?.getDataInBackgroundWithBlock
-                    {
-                        (data: NSData?, error: NSError?) -> Void in
-                        if let error = error
-                        {
-                            ErrorHandling.defaultErrorHandler(error)
-                        }
-                        if let data = data
-                        {
-                            let image = UIImage(data: data, scale:1.0)!
-                            self.ingredientsImageView.image = image
-                            Recipe.imageCache[self.recipe!.ingredientsImage!.name] = image
-                        }
-                    }
-                }
-
+//                if (self.recipe!.ingredientsImage == nil)
+//                {
+//                    recipe!.ingredientsImage?.getDataInBackgroundWithBlock
+//                    {
+//                        (data: NSData?, error: NSError?) -> Void in
+//                        if let error = error
+//                        {
+//                            ErrorHandling.defaultErrorHandler(error)
+//                        }
+//                        if let data = data
+//                        {
+//                            let image = UIImage(data: data, scale:1.0)!
+//                            self.ingredientsImageView.image = image
+//                            Recipe.imageCache[self.recipe!.ingredientsImage!.name] = image
+//                        }
+//                    }
+//                }
+            
+                ingredientsImageView.designatedBond.unbindAll()
+                
             }
             
             
@@ -150,7 +154,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: Ingredients updates in text
     @IBOutlet weak var ingredientsTextView: UITextView!
-    {
+        {
         didSet
         {
             if recipe != nil
@@ -164,7 +168,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var updatedDirectionsTableView: UITableView!
     var updatedDirectionsArray: [String] = []
     var updatedImagesArray: [UIImage] = []
-   
+    
     
     override func viewDidLoad()
     {
@@ -173,6 +177,27 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         updatedDirectionsTableView.delegate = self
         // Do any additional setup after loading the view.
         
+        //  let test = recipe!.ingredientsImage!
+        // ingredientsImageView.image = UIImage(data: recipe!.ingredientsImages.getData()!)
+        
+      //  let test = recipe!["ingredientsImage"] as! PFFile
+
+        
+        recipe!.ingredientsImages.getDataInBackgroundWithBlock
+        {
+            (data: NSData?, error: NSError?) -> Void in
+            if let error = error
+            {
+                ErrorHandling.defaultErrorHandler(error)
+            }
+            if let data = data
+            {
+                let image = UIImage(data: data, scale:1.0)!
+                self.ingredientsImageView.image = image
+              //  Recipe.imageCache[self.recipe!.ingredientsImage!.name] = image
+            }
+            
+        }
     }
     
     
@@ -180,8 +205,8 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     {
         updatedDirectionsTableView.reloadData()
     }
-
-
+    
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -191,7 +216,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: Table View Delegate for UpdatedDirectionsTableViewCell
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-//        return Int(updatedDirectionsArray.count ?? 0) // Create 1 row as an example
+        //        return Int(updatedDirectionsArray.count ?? 0) // Create 1 row as an example
         
         return recipe!.directionsText.count
     }
@@ -199,25 +224,25 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("UpdatedDirectionsCell") as! UpdatedDirectionsTableViewCell
-       
-       
+        
+        
         if recipe!.directionsText.count > 0
         {
-//            let directions = updatedDirectionsArray[indexPath.row]
-//            let updatedImages = updatedImagesArray[indexPath.row]
-//            cell.updatedDirectionsTextView.text = directions
-//            cell.updatedDirectionsImageView.image = updatedImages
+            //            let directions = updatedDirectionsArray[indexPath.row]
+            //            let updatedImages = updatedImagesArray[indexPath.row]
+            //            cell.updatedDirectionsTextView.text = directions
+            //            cell.updatedDirectionsImageView.image = updatedImages
             //cell.updatedDirectionsImageView.image = recipe?.directionsImages[indexPath.row]!.
-
+            
             cell.updatedDirectionsTextView.text = recipe?.directionsText[indexPath.row]
-           
+            
             let directionsImage =  recipe?.directionsImages[indexPath.row]
-
+            
             cell.updatedDirectionsImageView.image = UIImage(data:directionsImage!.getData()!)
         }
         else
         {
-             cell.updatedDirectionsTextView.text = "default"
+            cell.updatedDirectionsTextView.text = "default"
         }
         
         return cell
