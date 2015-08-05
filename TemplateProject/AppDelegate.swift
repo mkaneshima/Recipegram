@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             {
                 ErrorHandling.defaultErrorHandler(error)
             }
-            else  if let user = user
+            else if let user = user
             {
                 // if login was successful, display the NavigationController
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

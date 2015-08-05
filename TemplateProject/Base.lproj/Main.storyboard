@@ -211,7 +211,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="qw1-Fc-fA7" kind="show" identifier="AddDirectionSegue" id="btl-mC-sKy"/>
+                                                    <segue destination="qw1-Fc-fA7" kind="presentation" identifier="AddDirectionsSegue" modalPresentationStyle="currentContext" id="aM9-c6-sTy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnS-hK-coi">
@@ -834,7 +834,8 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="OWB-bC-JgA" kind="unwind" identifier="selectDoneButtonSegue" unwindAction="unwindToSegue:" id="qLJ-tb-FCa"/>
+                                                    <action selector="doneButtonPressed:" destination="qw1-Fc-fA7" eventType="touchUpInside" id="MwT-Ra-7XH"/>
+                                                    <segue destination="OWB-bC-JgA" kind="unwind" identifier="selectDoneButtonPressed" unwindAction="unwindToSegue:" id="3yF-Tj-viO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -884,13 +885,13 @@
                         <outlet property="cameraButton" destination="4se-FU-ETJ" id="LWv-EZ-4yo"/>
                         <outlet property="directionsImageView" destination="9uY-W7-gt6" id="0Ev-BP-N08"/>
                         <outlet property="directionsTextField" destination="CDL-1N-1Na" id="nxU-w0-8OM"/>
-                        <outlet property="doneButton" destination="XTo-TX-h56" id="iba-tV-ISR"/>
+                        <outlet property="doneButton" destination="XTo-TX-h56" id="h2O-sH-0zg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdr-QL-Qpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OWB-bC-JgA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3992" y="-1127"/>
+            <point key="canvasLocation" x="3160" y="-876"/>
         </scene>
         <!--NavigationController-->
         <scene sceneID="3M5-ma-7GT">

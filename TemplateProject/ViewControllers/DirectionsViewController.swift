@@ -14,13 +14,11 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
 {
     var selectedImage: UIImage?
     
-
     // PhotoTakingHelper
     var photoTakingHelper: PhotoTakingHelper?
     
     // Photo Upload Task
     var photoUploadTask: UIBackgroundTaskIdentifier?
-    
     
     // Directions textfield and image
     @IBOutlet weak var directionsTextField: UITextField!
@@ -46,66 +44,71 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
  
     }
     
+    // MARK: viewDidLoad method
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    // MARK: didReceiveMemoryWarning
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    
     // Done button
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+     {
+   
+  
+//            let destViewController = segue.destinationViewController as! NewRecipeViewController
+//        var test = destViewController.recipe["directionsImages"] as! [UIImage]
+//        println(test.description)
+//            test.append(selectedImage!)
+//            destViewController.recipe["directionsImages"] = [selectedImage!]
+//
+//            destViewController.recipe.directionsText.append(directionsTextField.text)
+      
+    }
+    
     @IBOutlet weak var doneButton: UIButton!
     
-//    @IBAction func doneButtonPressed(sender: AnyObject)
-//    {
-//        direction.directionsText = self.directionsTextField.text
-//        println(self.directionsTextField.text)
-//        println(direction.directionsText)
-//        let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
-//        let directionsImageFile = PFFile(data: directionsImageData)
-//        direction.directionsImages = directionsImageFile
-//        
-//        performSegueWithIdentifier("selectDoneButtonSegue", sender: nil)
-//    }
-    
-    @IBAction func unwindToSegue(segue: UIStoryboardSegue)
+    @IBAction func doneButtonPressed(sender: AnyObject)
     {
-        if(segue.identifier == "selectDoneButtonSegue")
-        {
-            let destViewController = segue.destinationViewController as! NewRecipeViewController
-//            destViewController.recipe.directions!.append(direction)
+         println("hello there!")
 //            direction.directionsText = self.directionsTextField.text
 //            println(self.directionsTextField.text)
 //            println(direction.directionsText)
 //            let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
 //            let directionsImageFile = PFFile(data: directionsImageData)
 //            direction.directionsImages = directionsImageFile
-            
-//            destViewController.recipe.directionsImages!.append(selectedImage)
-//            destViewController.recipe.directionsImages!.addObject(selectedImage!)
-            
-            destViewController.recipe.directionsImages.append(selectedImage!)
-            
-//            destViewController.recipe.directionsText!.append(directionsTextField.text)
-//            destViewController.recipe.directionsText!.addObject(directionsTextField.text)
-            
-            destViewController.recipe.directionsText.append(directionsTextField.text)
-
-            
-        }
+    
+//            performSegueWithIdentifier("selectDoneButtonSegue", sender: nil)
         
     }
     
+    //    @IBAction func selectDoneButtonPressed(sender: AnyObject)
+    //    {
+    //        println("hello")
+    //        let destViewController = sender.destinationViewController as! NewRecipeViewController
+    //        destViewController.recipe.directionsImages.append(selectedImage!)
+    //        destViewController.recipe.directionsText.append(directionsTextField.text)
+    //        performSegueWithIdentifier("selectDoneButtonSegue", sender: self)
+    //        
+    //
+    //    }
+
     
-
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
 }
+
+
+
 
 extension DirectionsViewController: UITextFieldDelegate
 {

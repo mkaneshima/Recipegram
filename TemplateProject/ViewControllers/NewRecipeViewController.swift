@@ -10,8 +10,7 @@ import UIKit
 import Parse
 import Bond
 
-
-class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate
+class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource
 {
     //    var directionsImagesArray: [UIImage] = []
     //    var directionsBond:Bond<String>!
@@ -29,12 +28,14 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     
     let recipe = Recipe()
     
-    // MARK: DirectionsTableView
+    // MARK: Directions TableView
     @IBOutlet weak var directionsTableView: UITableView!
     
+    // MARK: Initialization
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
+        recipe.directionsImages = []
     }
     
     override func didReceiveMemoryWarning()
@@ -43,14 +44,19 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Adding dataSources and delegates
     override func viewDidLoad()
     {
         super.viewDidLoad()
         levelPickerView.delegate = self
         levelPickerView.dataSource = self
+        directionsTableView.dataSource = self
+        directionsTableView.delegate = self
+        
         
     }
     
+    // MARK: Reloads direction table view data
     override func viewDidAppear(animated: Bool)
     {
         directionsTableView.reloadData()
@@ -61,6 +67,11 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
+        
+//       var test = recipe.directionsImages
+//        println(test.description)
+//        println(test.count)
+       //test.append()
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "AddDirectionsSegue")
@@ -76,36 +87,63 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
 //        return Int(recipe.directionsText.count ?? 0) // Create 1 row as an example
-        return 3
+        return recipe.directionsText.count
     }
     
     // Cell for Row at Index Path
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("DirectionsCell") as! DirectionsTableViewCell
-        cell.directionsTextView.text = "asfhsef"
-         
         
-        /*let directionsText = recipe.directionsText[indexPath.row]
-        
-        let directionsPhoto = recipe.directionsImages[indexPath.row] // Array index out of range
-        
-        cell.directionsTextView.text = directionsText
-        
-        // Directions photo
-        if let directionsImage = directionsPhoto.valueForKey("directionsImages") as? PFFile
+        if recipe.directionsText.count > 0
         {
-            directionsImage.getDataInBackgroundWithBlock(
-            {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil)
-                {
-                    let image = UIImage(data:imageData!)
-                    cell.directionsImageView.image = image
-                }
-            })
+            let directionsText = recipe.directionsText[indexPath.row]
+//            let directionsImage = recipe.directionsImages[indexPath.row]
+            cell.directionsTextView.text = directionsText
+//            cell.directionsImageView.image = directionsImage[]
+            
+//            // Directions photo
+//            if let directionsImage = directionsImage.valueForKey("directionsImages") as? PFFile
+//            {
+//                directionsImage.getDataInBackgroundWithBlock(
+//                {
+//                    (imageData: NSData?, error: NSError?) -> Void in
+//                    if (error == nil)
+//                    {
+//                        let image = UIImage(data:imageData!)
+//                        cell.directionsImageView.image = image
+//                    }
+//                })
+//                    
+//            }
+
+        }
+        else
+        {
+            cell.directionsTextView.text = "default"
+        }
         
-        }*/
+
+        
+//        let directionsPhoto = recipe.directionsImages[indexPath.row] // Array index out of range
+//        
+//        cell.directionsTextView.text = directionsText
+//        
+//        // Directions photo
+//        if let directionsImage = directionsPhoto.valueForKey("directionsImages") as? PFFile
+//        {
+//            directionsImage.getDataInBackgroundWithBlock(
+//            {
+//                (imageData: NSData?, error: NSError?) -> Void in
+//                if (error == nil)
+//                {
+//                    let image = UIImage(data:imageData!)
+//                    cell.directionsImageView.image = image
+//                }
+//            })
+//        
+//        }
+        
         return cell
     }
     
@@ -193,14 +231,12 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             let ingredientsImageFile = PFFile(data: ingredientsImageData)
             self.recipe["ingredientsImages"] = ingredientsImageFile
             
-
         }
 
     }
     
-    // Post My Recipe button
+    // MARK: Post My Recipe button
     @IBOutlet weak var postRecipeButton: UIButton!
-    
     @IBAction func postRecipe(sender: UIButton)
     {
         recipe.recipeTitles = self.titleTextField.text
@@ -215,10 +251,10 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
 //        recipe.directionsText = self.directionsTextArray
         
         recipe.uploadRecipe()
-        
         performSegueWithIdentifier("postRecipeSegue", sender: nil)
     }
     
+    // MARK: UnwindtoSegue Function
     @IBAction func unwindToSegue(segue: UIStoryboardSegue)
     {
         if(segue.identifier == "postRecipeSegue")
@@ -242,8 +278,30 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             
 //            recipe.uploadRecipe()
         }
-    
+        if(segue.identifier == "selectDoneButtonPressed")
+        {
+            let sourceViewController = segue.sourceViewController as! DirectionsViewController
+            
+                recipe.directionsImages.append(PFFile(data: UIImageJPEGRepresentation(sourceViewController.selectedImage!, 0.8)) )//
+            
+                recipe.directionsText.append(sourceViewController.directionsTextField.text)
+
+            
+//            let directionsViewController = segue
+        }
+
     }
+    
+    @IBAction func getDirectionInfo(unwindSegue: UIStoryboardSegue)
+    {
+        if(unwindSegue.identifier == "selectDoneButtonSegue")
+        {
+            let directionViewController = unwindSegue.sourceViewController as? DirectionsViewController
+            println("hello from directionsviewcontroller")
+        }
+    }
+    
+    
     
     
 }

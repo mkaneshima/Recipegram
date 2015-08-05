@@ -39,7 +39,7 @@ class RecipeTableViewCell: UITableViewCell
                 recipe.image ->> recipeImageView
                 
                 usernameLabel.text = recipe.user?.username
-                //                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
+//                                postTimeLabel.text = recipe.createdAt?.shortTiimeAgoSinceDate(NSDate()) ?? ""
 
             }
             

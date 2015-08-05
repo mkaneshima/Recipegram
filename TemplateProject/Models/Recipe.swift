@@ -30,7 +30,7 @@ class Recipe: PFObject, PFSubclassing
     
     
     // MARK: Initialized as arrays
-    @NSManaged var directionsImages: [UIImage]
+    @NSManaged var directionsImages: [PFFile]
     @NSManaged var directionsText: [String]
     
     var image: Dynamic<UIImage?> = Dynamic(nil)
@@ -49,6 +49,7 @@ class Recipe: PFObject, PFSubclassing
     override init ()
     {
         super.init()
+        
     }
     
     override class func initialize()
