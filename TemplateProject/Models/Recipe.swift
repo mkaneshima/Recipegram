@@ -22,12 +22,6 @@ class Recipe: PFObject, PFSubclassing
     @NSManaged var skillLevel: String?
     @NSManaged var ingredientsImages: PFFile
     @NSManaged var ingredients: String?
-//    @NSManaged var directions: Array<Direction>?
-    
-    // MARK: Before initializing the values in arrays, they were initialized as optionals
-//    @NSManaged var directionsImages: UIImage?
-//    @NSManaged var directionsText: String?
-    
     
     // MARK: Initialized as arrays
     @NSManaged var directionsImages: [PFFile]

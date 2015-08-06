@@ -31,14 +31,16 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     {
         photoTakingHelper = PhotoTakingHelper(viewController: self)
         {
-                (image: UIImage?) in
+            (image: UIImage?) in
+        
+            let imageData = UIImageJPEGRepresentation(image, 0.8)
+            let imageFile = PFFile(data: imageData)
+
+            self.selectedImage = image
+            self.directionsImageView?.image = image!
             
-                let imageData = UIImageJPEGRepresentation(image, 0.8)
-                let imageFile = PFFile(data: imageData)
-//                self.direction.directionsImages = imageFile
-                self.selectedImage = image
-                self.directionsImageView?.image = image!
-//                self.direction["directionsImages"] = imageFile
+            // self.direction.directionsImages = imageFile
+            //self.direction["directionsImages"] = imageFile
             
         }
  
@@ -113,20 +115,3 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
 
 
 }
-
-
-//extension DirectionsViewController: UITextFieldDelegate
-//{
-//    func textFieldShouldReturn(textField: UITextField) -> Bool
-//    {
-//        textField.resignFirstResponder()
-//        
-////        if (textField == directionsTextField)
-////        {
-////            directionsImageView.becomeFirstResponder()
-////            directionsImageView.designatedBond
-////        }
-//        
-//        return false
-//    }
-//}

@@ -13,8 +13,6 @@ import ConvenienceKit
 
 class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    //    let recipes = Recipe()
-    
     // MARK: PhotoUploadTask
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
@@ -235,7 +233,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         }
         else
         {
-            cell.updatedDirectionsTextView.text = "default"
+            cell.updatedDirectionsTextView.text = ""
         }
         
         return cell

@@ -14,10 +14,6 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
 {
     var ingredientsArray: [String] = [""]
     
-    // Directions arrays for images and text
-//    var directionsTextArray: [String] = []
-//    var directionsImagesArray: [UIImage] = []
-    
     // Pickerview values
     var levels = ["Easy", "Intermediate", "Hard"]
     var selectedLevel: String = ""
@@ -59,7 +55,12 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         
         ingredientsTextView.delegate = self
         ingredientsTextView.editable = true
-        
+        if(ingredientsTextView.text == "")
+        {
+            textViewDidEndEditing(ingredientsTextView)
+        }
+        var tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(tapDismiss)
     }
     
     
@@ -82,11 +83,33 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     }
     
     // MARK: UITextView delegates
-    func textViewShouldEndEditing(textView: UITextView) -> Bool
+    func dismissKeyboard()
     {
         ingredientsTextView.resignFirstResponder()
-        return true
     }
+    
+    func textViewDidEndEditing(textView: UITextView)
+    {
+        if (ingredientsTextView.text == "")
+        {
+            ingredientsTextView.text = "Enter your ingredients..."
+            ingredientsTextView.textColor = UIColor.lightGrayColor()
+        }
+        
+        ingredientsTextView.resignFirstResponder()
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView)
+    {
+        if(ingredientsTextView.text == "Enter your ingredients...")
+        {
+            ingredientsTextView.text = ""
+            ingredientsTextView.textColor = UIColor.blackColor()
+        }
+        ingredientsTextView.becomeFirstResponder()
+    }
+    
+    
     
     // MARK: - Navigation
     
@@ -146,7 +169,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         }
         else
         {
-            cell.directionsTextView.text = "default"
+            cell.directionsTextView.text = ""
         }
         
         return cell
@@ -263,23 +286,6 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         if(segue.identifier == "postRecipeSegue")
         {
             let destViewController = segue.destinationViewController as! RecipeViewController
-            
-//            recipe.recipeTitles = self.titleTextField.text
-//            recipe.servings = self.newServingsTextField.text
-//            recipe.prepTimes = self.newPrepTimeTextField.text
-//            recipe.cookTimes = self.newCookTimeTextField.text
-//            recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
-//            
-//            let ingredientsImageData = UIImageJPEGRepresentation(ingredientsImageView.image, 0.8)
-//            let ingredientsImageFile = PFFile(data: ingredientsImageData)
-//            recipe.ingredientsImages = ingredientsImageFile
-//
-//            recipe.ingredients = self.ingredientsTextView.text
-////            recipe.directions = self.directionsArray
-//            recipe.directionsImages = self.directionsImagesArray
-//            recipe.directionsText = self.directionsTextArray
-            
-//            recipe.uploadRecipe()
         }
         
 
@@ -294,7 +300,8 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         }
 
     }
-    
 }
+
+
 
 
