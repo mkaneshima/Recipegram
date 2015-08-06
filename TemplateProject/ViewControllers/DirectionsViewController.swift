@@ -78,7 +78,20 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     @IBAction func doneButtonPressed(sender: AnyObject)
     {
-         println("hello there!")
+//         println("hello there!")
+        
+        if(self.directionsTextField.text == "" || self.directionsImageView.image == nil)
+        {
+            let alertController = UIAlertController(title: "Hold on...", message: "Please include the text and/or photo to create a direction.", preferredStyle: .Alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(defaultAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        else
+        {
+            performSegueWithIdentifier("selectDoneButtonPressed", sender: self)
+             println("hello there!")
+        }
         
     }
     

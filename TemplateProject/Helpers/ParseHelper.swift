@@ -47,6 +47,7 @@ class ParseHelper
         let recipesFromThisUser = Recipe.query()
         recipesFromThisUser!.whereKey(ParseRecipeUser, equalTo: PFUser.currentUser()!)
         
+        // MARK: Check if another user can enter their username and password.
         
         
         //let query = PFQuery.orQueryWithSubqueries([recipesFromFollowedUsers!, recipesFromThisUser!])

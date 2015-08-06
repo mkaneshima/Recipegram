@@ -45,16 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     // Set up the Parse SDK
     Parse.setApplicationId("LGHDw7YSM4F1OBuBQwSZzKFcPvlZhl5brqVr27nv", clientKey: "jxEQqoFEaGI2iqRcATk3ri8PwAXtlyxYYLFeZwgx")
-    PFUser.logInWithUsername("test", password: "test")
-    
-    if let user = PFUser.currentUser()
-    {
-        println("Log in successful")
-    }
-    else
-    {
-        println("No logged in user :(")
-    }
     
     // Set default ACL
     let acl = PFACL()
@@ -63,6 +53,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     // Initialize Facebook
     PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+    
+    
+//    PFUser.logInWithUsername("test", password: "test")
+    
+//    if let user = PFUser.currentUser()
+//    {
+//        println("Log in successful")
+//    }
+//    else
+//    {
+//        println("No logged in user :(")
+//    }
+    
+   
     
     // check if we have logged in user
     let user = PFUser.currentUser()
@@ -79,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Otherwise set the LoginViewController to be the first
         let loginViewController = PFLogInViewController()
-        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten | .Facebook
+        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten |  .Facebook
         loginViewController.delegate = parseLoginHelper
         loginViewController.signUpController?.delegate = parseLoginHelper
         

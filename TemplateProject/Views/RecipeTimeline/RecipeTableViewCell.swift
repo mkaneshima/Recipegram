@@ -17,6 +17,9 @@ class RecipeTableViewCell: UITableViewCell
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var postTimeLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
+    
+    weak var recipeTimeline: RecipeViewController?
     
     var recipe:Recipe?
     {
@@ -70,5 +73,12 @@ class RecipeTableViewCell: UITableViewCell
 
         // Configure the view for the selected state
     }
+    
+    // MARK: moreButton Callback
+    
+//    @IBAction func moreButtonTapped(sender: AnyObject)
+//    {
+//        recipeTimeline?.showActionSheetForRecipe(recipe!)
+//    }
 
 }

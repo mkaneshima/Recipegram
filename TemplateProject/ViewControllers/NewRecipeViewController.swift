@@ -78,6 +78,9 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
+        titleTextField.resignFirstResponder()
+        newServingsTextField.resignFirstResponder()
+        newPrepTimeTextField.resignFirstResponder()
         newCookTimeTextField.resignFirstResponder()
         return true
     }
@@ -126,7 +129,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
 //                return true
 //            }
 //        }
-//
+
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -140,9 +143,6 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         }
         
     }
-    
-    
-    
     
     
     // MARK: Table View Delegate for DirectionsTableView
@@ -266,19 +266,35 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     
     // MARK: Post My Recipe button
     @IBOutlet weak var postRecipeButton: UIButton!
+    
+    // MARK: Fix this function if the user does not add any one of these fields
     @IBAction func postRecipe(sender: UIButton)
     {
-        recipe.recipeTitles = self.titleTextField.text
-        recipe.servings = self.newServingsTextField.text
-        recipe.prepTimes = self.newPrepTimeTextField.text
-        recipe.cookTimes = self.newCookTimeTextField.text
-        recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
-        
-        recipe.ingredients = self.ingredientsTextView.text
-        
-        recipe.uploadRecipe()
-        performSegueWithIdentifier("postRecipeSegue", sender: nil)
+       if(self.dishImageView.image == nil || self.ingredientsImageView.image == nil || self.titleTextField.text == "" || self.newServingsTextField.text == "" || self.newPrepTimeTextField.text == "" || self.newCookTimeTextField.text == "" || ingredientsTextView.text == "")
+       {
+            let alertController = UIAlertController(title: "Hold on...", message: "Please fill in the missing fields.", preferredStyle: .Alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(defaultAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+       }
+        else
+        {
+            recipe.recipeTitles = self.titleTextField.text
+            recipe.servings = self.newServingsTextField.text
+            recipe.prepTimes = self.newPrepTimeTextField.text
+            recipe.cookTimes = self.newCookTimeTextField.text
+            recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
+            
+            recipe.ingredients = self.ingredientsTextView.text
+            
+            recipe.uploadRecipe()
+            performSegueWithIdentifier("postRecipeSegue", sender: nil)
+
+        }
     }
+    
+    
+    
     
     // MARK: UnwindtoSegue Function
     @IBAction func unwindToSegue(segue: UIStoryboardSegue)

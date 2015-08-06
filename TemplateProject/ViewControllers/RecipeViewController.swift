@@ -30,6 +30,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         let newRecipeViewController: AnyObject! = storyboard.instantiateViewControllerWithIdentifier(newRecipeSegueIdentifier)
         
     }
+
     
     // Timeline Component Protocol
     let defaultRange = 0...4
@@ -105,8 +106,56 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
-    // MARK: View callbacks    
+    // MARK: UIActionSheets
     
+//    func showActionSheetForRecipe(recipe: Recipe)
+//    {
+//        if (recipe.user == PFUser.currentUser())
+//        {
+//            showDeleteActionSheetForRecipe(recipe)
+//        }
+//        else
+//        {
+//            showFlagActionSheetForRecipe(recipe)
+//        }
+//    }
+//    func showDeleteActionSheetForRecipe(recipe: Recipe)
+//    {
+//        let alertController = UIAlertController(title: nil, message: "Do you want to delete this recipe?", preferredStyle: .ActionSheet)
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+//        
+//        let destroyAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) in
+//            recipe.deleteInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+//                if (success) {
+//                    self.recipeTimelineComponent.removeObject(recipe)
+//                } else {
+//                    // restore old state
+//                    self.recipeTimelineComponent.refresh(self)
+//                }
+//            })
+//        }
+//        alertController.addAction(destroyAction)
+//        
+//        self.presentViewController(alertController, animated: true, completion: nil)
+//    }
+//    
+//    func showFlagActionSheetForRecipe(recipe: Recipe) {
+//        let alertController = UIAlertController(title: nil, message: "Do you want to flag this recipe?", preferredStyle: .ActionSheet)
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+//        
+//        let destroyAction = UIAlertAction(title: "Flag", style: .Destructive) { (action) in
+//            recipe.flagRecipe(PFUser.currentUser()!)
+//        }
+//        
+//        alertController.addAction(destroyAction)
+//        
+//        self.presentViewController(alertController, animated: true, completion: nil)
+//    }
+//
 }
 
 
