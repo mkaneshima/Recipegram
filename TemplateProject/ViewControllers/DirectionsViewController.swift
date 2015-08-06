@@ -48,7 +48,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        directionsTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -59,19 +59,30 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: UITextField delegates
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool
+    {
+        return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return true
+    }
     
     // Done button
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-     {
-  
-//        let destViewController = segue.destinationViewController as! NewRecipeViewController
-//        var test = destViewController.recipe["directionsImages"] as! [UIImage]
-//        println(test.description)
-//        test.append(selectedImage!)
-//        destViewController.recipe["directionsImages"] = [selectedImage!]
-//        destViewController.recipe.directionsText.append(directionsTextField.text)
-      
-    }
+//     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+//     {
+//  
+////        let destViewController = segue.destinationViewController as! NewRecipeViewController
+////        var test = destViewController.recipe["directionsImages"] as! [UIImage]
+////        println(test.description)
+////        test.append(selectedImage!)
+////        destViewController.recipe["directionsImages"] = [selectedImage!]
+////        destViewController.recipe.directionsText.append(directionsTextField.text)
+//      
+//    }
     
     @IBOutlet weak var doneButton: UIButton!
     
@@ -104,16 +115,18 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
 }
 
 
-extension DirectionsViewController: UITextFieldDelegate
-{
-    func textFieldShouldReturn(textField: UITextField) -> Bool
-    {
-        if (textField == directionsTextField)
-        {
-            directionsImageView.becomeFirstResponder()
-            directionsImageView.designatedBond
-        }
-        
-        return false
-    }
-}
+//extension DirectionsViewController: UITextFieldDelegate
+//{
+//    func textFieldShouldReturn(textField: UITextField) -> Bool
+//    {
+//        textField.resignFirstResponder()
+//        
+////        if (textField == directionsTextField)
+////        {
+////            directionsImageView.becomeFirstResponder()
+////            directionsImageView.designatedBond
+////        }
+//        
+//        return false
+//    }
+//}

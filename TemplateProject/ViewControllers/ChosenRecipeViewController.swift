@@ -25,14 +25,20 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         {
             if recipe != nil && chosenImageView != nil && servingsLabel != nil && prepTimeLabel != nil && cookTimeLabel != nil && skillLabel != nil && ingredientsTextView != nil
             {
+                // The selected image from the RecipeViewController timeline
                 chosenImageView.image = recipe?.image.value
+                
+                // Recipe titles
                 recipeTitleLabel.text = recipe?.recipeTitles
+                
+                // Servings, prep times, and cook times
                 servingsLabel.text = recipe?.servings
                 prepTimeLabel.text = recipe?.prepTimes
                 cookTimeLabel.text = recipe?.cookTimes
-                ingredientsTextView.text = recipe?.ingredients
                 
+                // Ingredients
                 ingredientsImageView.image = UIImage(data: recipe!.ingredientsImages.getData()!)
+                ingredientsTextView.text = recipe?.ingredients
                 
             }
             
@@ -101,7 +107,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: Skill updates
     @IBOutlet weak var skillLabel: UILabel!
-        {
+    {
         didSet
         {
             if recipe != nil
@@ -114,11 +120,11 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: Updated images of ingredients
     @IBOutlet weak var ingredientsImageView: UIImageView!
-    {
-        didSet
-        {
-            if recipe != nil
-            {
+//    {
+//        didSet
+//        {
+//            if recipe != nil
+//            {
                 //                ingredientsImageView.image = Recipe.imageCache[self.recipe!.ingredientsImage]
                 //   ingredientsImageView.image = UIImage(data: recipe!.ingredientsImage!.getData()!)
                 
@@ -141,20 +147,20 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
 //                        }
 //                    }
 //                }
-            
-                ingredientsImageView.designatedBond.unbindAll()
-                
-            }
-            
-            
-        }
-        
-    }
-    
+//            
+//                ingredientsImageView.designatedBond.unbindAll()
+//                
+//            }
+//    
+//            
+//        }
+//        
+//    }
+//    
     
     // MARK: Ingredients updates in text
     @IBOutlet weak var ingredientsTextView: UITextView!
-        {
+    {
         didSet
         {
             if recipe != nil
@@ -176,12 +182,6 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         updatedDirectionsTableView.dataSource = self
         updatedDirectionsTableView.delegate = self
         // Do any additional setup after loading the view.
-        
-        //  let test = recipe!.ingredientsImage!
-        // ingredientsImageView.image = UIImage(data: recipe!.ingredientsImages.getData()!)
-        
-      //  let test = recipe!["ingredientsImage"] as! PFFile
-
         
         recipe!.ingredientsImages.getDataInBackgroundWithBlock
         {
@@ -225,15 +225,8 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("UpdatedDirectionsCell") as! UpdatedDirectionsTableViewCell
         
-        
         if recipe!.directionsText.count > 0
         {
-            //            let directions = updatedDirectionsArray[indexPath.row]
-            //            let updatedImages = updatedImagesArray[indexPath.row]
-            //            cell.updatedDirectionsTextView.text = directions
-            //            cell.updatedDirectionsImageView.image = updatedImages
-            //cell.updatedDirectionsImageView.image = recipe?.directionsImages[indexPath.row]!.
-            
             cell.updatedDirectionsTextView.text = recipe?.directionsText[indexPath.row]
             
             let directionsImage =  recipe?.directionsImages[indexPath.row]

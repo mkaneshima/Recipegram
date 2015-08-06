@@ -10,12 +10,8 @@ import UIKit
 import Parse
 import Bond
 
-class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource
+class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate
 {
-    //    var directionsImagesArray: [UIImage] = []
-    //    var directionsBond:Bond<String>!
-    //    var imagesBond: Bond<UIImage>!    let recipe = Recipe()
-    
     var ingredientsArray: [String] = [""]
     
     // Directions arrays for images and text
@@ -38,6 +34,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         recipe.directionsImages = []
     }
     
+    // MARK: didReceiveMemoryWarning
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -48,14 +45,22 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         levelPickerView.delegate = self
         levelPickerView.dataSource = self
+        
         directionsTableView.dataSource = self
         directionsTableView.delegate = self
         
+        titleTextField.delegate = self
+        newServingsTextField.delegate = self
+        newPrepTimeTextField.delegate = self
+        newCookTimeTextField.delegate = self
+        
+        ingredientsTextView.delegate = self
+        ingredientsTextView.editable = true
         
     }
-    
     
     
     // MARK: Reloads direction table view data
@@ -64,17 +69,45 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         directionsTableView.reloadData()
     }
     
+    // MARK: UITextField delegates
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool
+    {
+        return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        newCookTimeTextField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: UITextView delegates
+    func textViewShouldEndEditing(textView: UITextView) -> Bool
+    {
+        ingredientsTextView.resignFirstResponder()
+        return true
+    }
+    
     // MARK: - Navigation
+    
+    // MARK: Fix this function if the user does not add any one of these fields
+//        override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool
+//        {
+//            // If any of the fields (text or images) are empty, then return false. Otherwise, return true
+//            if(dishImageView.image == nil || ingredientsImageView.image == nil || titleTextField.text == "" || newServingsTextField.text == "" || newPrepTimeTextField.text == "" || newCookTimeTextField.text == "" || ingredientsTextView.text == "")
+//            {
+//                return false
+//            }
+//            else
+//            {
+//                return true
+//            }
+//        }
+//
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        
-//       var test = recipe.directionsImages
-//        println(test.description)
-//        println(test.count)
-       //test.append()
-        
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -84,6 +117,10 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         }
         
     }
+    
+    
+    
+    
     
     // MARK: Table View Delegate for DirectionsTableView
     
@@ -106,47 +143,11 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             cell.directionsTextView.text = directionsText
             cell.directionsImageView.image = UIImage(data:directionsImage.getData()!)
             
-//            // Directions photo
-//            if let directionsImage = directionsImage.valueForKey("directionsImages") as? PFFile
-//            {
-//                directionsImage.getDataInBackgroundWithBlock(
-//                {
-//                    (imageData: NSData?, error: NSError?) -> Void in
-//                    if (error == nil)
-//                    {
-//                        let image = UIImage(data:imageData!)
-//                        cell.directionsImageView.image = image
-//                    }
-//                })
-//                    
-//            }
-
         }
         else
         {
             cell.directionsTextView.text = "default"
         }
-        
-
-        
-//        let directionsPhoto = recipe.directionsImages[indexPath.row] // Array index out of range
-//        
-//        cell.directionsTextView.text = directionsText
-//        
-//        // Directions photo
-//        if let directionsImage = directionsPhoto.valueForKey("directionsImages") as? PFFile
-//        {
-//            directionsImage.getDataInBackgroundWithBlock(
-//            {
-//                (imageData: NSData?, error: NSError?) -> Void in
-//                if (error == nil)
-//                {
-//                    let image = UIImage(data:imageData!)
-//                    cell.directionsImageView.image = image
-//                }
-//            })
-//        
-//        }
         
         return cell
     }
@@ -234,10 +235,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
 
             self.recipe.ingredientsImages = ingredientsImageFile
             self.ingredientsImageView?.image = image!
-//            let test = self.recipe.ingredientsImage?.getData()
-//            println(test)
             
-//            self.recipe["ingredientsImages"] = ingredientsImageFile
             
         }
 
@@ -254,9 +252,6 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         recipe.skillLevel = levels[levelPickerView.selectedRowInComponent(0)]
         
         recipe.ingredients = self.ingredientsTextView.text
-        
-//        recipe.directionsImages = self.
-//        recipe.directionsText = self.directionsTextArray
         
         recipe.uploadRecipe()
         performSegueWithIdentifier("postRecipeSegue", sender: nil)
@@ -286,6 +281,8 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             
 //            recipe.uploadRecipe()
         }
+        
+
         if(segue.identifier == "selectDoneButtonPressed")
         {
             let sourceViewController = segue.sourceViewController as! DirectionsViewController
@@ -298,21 +295,6 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
 
     }
     
-//    @IBAction func getDirectionInfo(unwindSegue: UIStoryboardSegue)
-//    {
-//        if(unwindSegue.identifier == "selectDoneButtonSegue")
-//        {
-//            let directionViewController = unwindSegue.sourceViewController as? DirectionsViewController
-//            println("hello from directionsviewcontroller")
-//        }
-//    }
-    
-    
-    
-    
 }
 
-//extension NewRecipeViewController: UITableViewDataSource
-//{
-//    
-//}
+
