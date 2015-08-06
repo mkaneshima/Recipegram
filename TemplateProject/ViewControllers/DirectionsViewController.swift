@@ -73,45 +73,14 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         return true
     }
     
-    // Done button
-//     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-//     {
-//  
-////        let destViewController = segue.destinationViewController as! NewRecipeViewController
-////        var test = destViewController.recipe["directionsImages"] as! [UIImage]
-////        println(test.description)
-////        test.append(selectedImage!)
-////        destViewController.recipe["directionsImages"] = [selectedImage!]
-////        destViewController.recipe.directionsText.append(directionsTextField.text)
-//      
-//    }
     
     @IBOutlet weak var doneButton: UIButton!
     
     @IBAction func doneButtonPressed(sender: AnyObject)
     {
          println("hello there!")
-//            direction.directionsText = self.directionsTextField.text
-//            println(self.directionsTextField.text)
-//            println(direction.directionsText)
-//            let directionsImageData = UIImageJPEGRepresentation(directionsImageView.image, 0.8)
-//            let directionsImageFile = PFFile(data: directionsImageData)
-//            direction.directionsImages = directionsImageFile
-    
-//            performSegueWithIdentifier("selectDoneButtonSegue", sender: nil)
         
     }
     
-    //    @IBAction func selectDoneButtonPressed(sender: AnyObject)
-    //    {
-    //        println("hello")
-    //        let destViewController = sender.destinationViewController as! NewRecipeViewController
-    //        destViewController.recipe.directionsImages.append(selectedImage!)
-    //        destViewController.recipe.directionsText.append(directionsTextField.text)
-    //        performSegueWithIdentifier("selectDoneButtonSegue", sender: self)
-    //        
-    //
-    //    }
-
 
 }

@@ -136,14 +136,14 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6YV-KG-huZ">
-                                                                    <rect key="frame" x="387" y="8" width="160" height="107"/>
+                                                                    <rect key="frame" x="389" y="8" width="160" height="98.5"/>
                                                                     <color key="backgroundColor" red="0.73333333329999995" green="0.72941176470000002" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="160" id="iGP-K7-2pf"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1g1-xA-AE9">
-                                                                    <rect key="frame" x="13" y="13" width="354" height="93.5"/>
+                                                                    <rect key="frame" x="13" y="13" width="366" height="93.5"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -158,11 +158,11 @@
                                                                 <constraint firstItem="1g1-xA-AE9" firstAttribute="top" secondItem="wE1-m7-N0o" secondAttribute="topMargin" constant="5" id="AC5-fS-haW"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="6YV-KG-huZ" secondAttribute="bottom" id="LR6-xv-KFE"/>
                                                                 <constraint firstItem="6YV-KG-huZ" firstAttribute="top" secondItem="wE1-m7-N0o" secondAttribute="topMargin" id="OTO-hZ-Ftn"/>
-                                                                <constraint firstAttribute="bottomMargin" secondItem="6YV-KG-huZ" secondAttribute="bottom" constant="-3.5" id="PE2-GE-7Hw"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="6YV-KG-huZ" secondAttribute="trailing" constant="5" id="VjV-3I-xul"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="6YV-KG-huZ" secondAttribute="bottom" constant="5" id="PE2-GE-7Hw"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="6YV-KG-huZ" secondAttribute="trailing" constant="3" id="VjV-3I-xul"/>
                                                                 <constraint firstAttribute="centerY" secondItem="6YV-KG-huZ" secondAttribute="centerY" constant="-0.25" id="Z0y-e7-diK"/>
                                                                 <constraint firstItem="1g1-xA-AE9" firstAttribute="leading" secondItem="wE1-m7-N0o" secondAttribute="leadingMargin" constant="5" id="f4N-bt-R3U"/>
-                                                                <constraint firstItem="6YV-KG-huZ" firstAttribute="leading" secondItem="1g1-xA-AE9" secondAttribute="trailing" constant="20" id="kw4-0D-vJo"/>
+                                                                <constraint firstItem="6YV-KG-huZ" firstAttribute="leading" secondItem="1g1-xA-AE9" secondAttribute="trailing" constant="10" id="kw4-0D-vJo"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="6YV-KG-huZ" secondAttribute="trailing" constant="-10" id="nWP-6l-spr"/>
                                                             </constraints>
                                                             <variation key="default">
@@ -188,14 +188,14 @@
                                                 </connections>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCM-th-bUw">
-                                                <rect key="frame" x="255" y="1561" width="90" height="30"/>
+                                                <rect key="frame" x="225" y="1561" width="150" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="1Ry-rc-OU4"/>
-                                                    <constraint firstAttribute="width" constant="90" id="Fn7-0g-x3m"/>
+                                                    <constraint firstAttribute="width" constant="150" id="Fn7-0g-x3m"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="Add">
+                                                <state key="normal" title="Add New Direction">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>

@@ -118,43 +118,6 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: Updated images of ingredients
     @IBOutlet weak var ingredientsImageView: UIImageView!
-//    {
-//        didSet
-//        {
-//            if recipe != nil
-//            {
-                //                ingredientsImageView.image = Recipe.imageCache[self.recipe!.ingredientsImage]
-                //   ingredientsImageView.image = UIImage(data: recipe!.ingredientsImage!.getData()!)
-                
-                
-                // if image is not downloaded yet, get it
-//                if (self.recipe!.ingredientsImage == nil)
-//                {
-//                    recipe!.ingredientsImage?.getDataInBackgroundWithBlock
-//                    {
-//                        (data: NSData?, error: NSError?) -> Void in
-//                        if let error = error
-//                        {
-//                            ErrorHandling.defaultErrorHandler(error)
-//                        }
-//                        if let data = data
-//                        {
-//                            let image = UIImage(data: data, scale:1.0)!
-//                            self.ingredientsImageView.image = image
-//                            Recipe.imageCache[self.recipe!.ingredientsImage!.name] = image
-//                        }
-//                    }
-//                }
-//            
-//                ingredientsImageView.designatedBond.unbindAll()
-//                
-//            }
-//    
-//            
-//        }
-//        
-//    }
-//    
     
     // MARK: Ingredients updates in text
     @IBOutlet weak var ingredientsTextView: UITextView!
