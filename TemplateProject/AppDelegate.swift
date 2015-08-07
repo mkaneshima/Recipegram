@@ -56,19 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
     
     
-//    PFUser.logInWithUsername("test", password: "test")
-    
-//    if let user = PFUser.currentUser()
-//    {
-//        println("Log in successful")
-//    }
-//    else
-//    {
-//        println("No logged in user :(")
-//    }
-    
-   
-    
     // check if we have logged in user
     let user = PFUser.currentUser()
     
