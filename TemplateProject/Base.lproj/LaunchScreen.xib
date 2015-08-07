@@ -18,13 +18,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipegram" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="100.5" width="441" height="122"/>
+                    <rect key="frame" x="20" y="100" width="441" height="122"/>
                     <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="36"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Utensils" translatesAutoresizingMaskIntoConstraints="NO" id="HVu-8i-5nG">
-                    <rect key="frame" x="188" y="253" width="105" height="104"/>
+                    <rect key="frame" x="188" y="252" width="105" height="104"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="0.43308853580000001" blue="0.41379320689999999" alpha="1" colorSpace="calibratedRGB"/>
