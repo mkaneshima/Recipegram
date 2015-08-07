@@ -56,6 +56,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         directionsTextField.delegate = self
         scrollView.delegate = self
         scrollView.bounces = false
+        scrollView.scrollEnabled = false
         // Do any additional setup after loading the view.
     }
     
