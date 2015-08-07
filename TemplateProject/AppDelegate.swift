@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         super.init()
         
+        // MARK: Parse Login
         parseLoginHelper = ParseLoginHelper
         {
             [unowned self] user, error in

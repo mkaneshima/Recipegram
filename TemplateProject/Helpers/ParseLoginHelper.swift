@@ -2,7 +2,7 @@
 //  ParseLoginHelper.swift
 //  Template Project
 //
-//  Created by Benjamin Encz on 4/15/15.
+//  Created by Mari Kaneshima on 7/20/15.
 //  Copyright (c) 2015 Make School. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ import ParseUI
 typealias ParseLoginHelperCallback = (PFUser?, NSError?) -> Void
 
 /** 
-  This class implements the 'PFLogInViewControllerDelegate' protocol. After a successfull login
+  This class implements the 'PFLogInViewControllerDelegate' protocol. After a successful login
   it will call the callback function and provide a 'PFUser' object.
 */
 class ParseLoginHelper : NSObject, NSObjectProtocol
