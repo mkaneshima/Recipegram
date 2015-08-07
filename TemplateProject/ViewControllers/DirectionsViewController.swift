@@ -75,7 +75,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
-        textField.resignFirstResponder()
+        directionsTextField.resignFirstResponder()
         return true
     }
     

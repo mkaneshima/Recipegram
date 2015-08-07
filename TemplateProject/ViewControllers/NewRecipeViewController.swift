@@ -79,10 +79,26 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
-        titleTextField.resignFirstResponder()
-        newServingsTextField.resignFirstResponder()
-        newPrepTimeTextField.resignFirstResponder()
-        newCookTimeTextField.resignFirstResponder()
+        if textField == titleTextField
+        {
+            titleTextField.resignFirstResponder()
+            newServingsTextField.becomeFirstResponder()
+        }
+        else if textField == newServingsTextField
+        {
+            newServingsTextField.resignFirstResponder()
+            newPrepTimeTextField.becomeFirstResponder()
+        }
+        else if textField == newPrepTimeTextField
+        {
+            newPrepTimeTextField.resignFirstResponder()
+            newCookTimeTextField.becomeFirstResponder()
+        }
+        else if textField == newCookTimeTextField
+        {
+            newCookTimeTextField.resignFirstResponder()
+        }
+        
         return true
     }
     
