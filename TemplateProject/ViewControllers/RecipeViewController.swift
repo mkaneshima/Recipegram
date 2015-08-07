@@ -162,14 +162,14 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
 // MARK: TableViewDataSource
 extension RecipeViewController: UITableViewDataSource
 {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        return self.recipeTimelineComponent.content.count
-    }
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+//    {
+//        return self.recipeTimelineComponent.content.count
+//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 1
+        return self.recipeTimelineComponent.content.count
         //self.recipeTimelineComponent.content[section].count
     }
     
@@ -178,7 +178,7 @@ extension RecipeViewController: UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("RecipeCell") as! RecipeTableViewCell
         
         // let recipe = recipeTimelineComponent.content[indexPath.row]
-        let recipe = recipeTimelineComponent.content[indexPath.section]
+        let recipe = recipeTimelineComponent.content[indexPath.row]
         recipe.downloadImage()
         cell.recipe = recipe
 //        cell.timeline = self
@@ -196,7 +196,7 @@ extension RecipeViewController: UITableViewDelegate
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
     {
 //        recipeTimelineComponent.targetWillDisplayEntry(indexPath.row)
-        recipeTimelineComponent.targetWillDisplayEntry(indexPath.section)
+        recipeTimelineComponent.targetWillDisplayEntry(indexPath.row)
 
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)

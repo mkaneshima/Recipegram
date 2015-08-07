@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ConvenienceKit
 
-class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate
+class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate
 {
     var selectedImage: UIImage?
     
@@ -19,6 +19,9 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     // Photo Upload Task
     var photoUploadTask: UIBackgroundTaskIdentifier?
+    
+    // Scrollview
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // Directions textfield and image
     @IBOutlet weak var directionsTextField: UITextField!
@@ -51,6 +54,8 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
     {
         super.viewDidLoad()
         directionsTextField.delegate = self
+        scrollView.delegate = self
+        scrollView.bounces = false
         // Do any additional setup after loading the view.
     }
     

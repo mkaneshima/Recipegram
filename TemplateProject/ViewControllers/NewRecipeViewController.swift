@@ -17,6 +17,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     // Pickerview values
     var levels = ["Easy", "Intermediate", "Hard"]
     var selectedLevel: String = ""
+    var textViewValue = "Enter your ingredients..."
     
     let recipe = Recipe()
     
@@ -95,7 +96,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     {
         if (ingredientsTextView.text == "")
         {
-            ingredientsTextView.text = "Enter your ingredients..."
+            ingredientsTextView.text = textViewValue
             ingredientsTextView.textColor = UIColor.lightGrayColor()
         }
         
@@ -104,7 +105,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     
     func textViewDidBeginEditing(textView: UITextView)
     {
-        if(ingredientsTextView.text == "Enter your ingredients...")
+        if(ingredientsTextView.text == textViewValue)
         {
             ingredientsTextView.text = ""
             ingredientsTextView.textColor = UIColor.blackColor()
@@ -115,22 +116,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     
     
     // MARK: - Navigation
-    
-    // MARK: Fix this function if the user does not add any one of these fields
-//        override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool
-//        {
-//            // If any of the fields (text or images) are empty, then return false. Otherwise, return true
-//            if(dishImageView.image == nil || ingredientsImageView.image == nil || titleTextField.text == "" || newServingsTextField.text == "" || newPrepTimeTextField.text == "" || newCookTimeTextField.text == "" || ingredientsTextView.text == "")
-//            {
-//                return false
-//            }
-//            else
-//            {
-//                return true
-//            }
-//        }
-
-    
+        
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
@@ -267,10 +253,9 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     // MARK: Post My Recipe button
     @IBOutlet weak var postRecipeButton: UIButton!
     
-    // MARK: Fix this function if the user does not add any one of these fields
     @IBAction func postRecipe(sender: UIButton)
     {
-       if(self.dishImageView.image == nil || self.ingredientsImageView.image == nil || self.titleTextField.text == "" || self.newServingsTextField.text == "" || self.newPrepTimeTextField.text == "" || self.newCookTimeTextField.text == "" || ingredientsTextView.text == "")
+       if(self.dishImageView.image == nil || self.ingredientsImageView.image == nil || self.titleTextField.text == "" || self.newServingsTextField.text == "" || self.newPrepTimeTextField.text == "" || self.newCookTimeTextField.text == "" || ingredientsTextView.text == textViewValue || self.recipe.directionsText.count == 0)
        {
             let alertController = UIAlertController(title: "Hold on...", message: "Please fill in the missing fields.", preferredStyle: .Alert)
             let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -288,7 +273,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             recipe.ingredients = self.ingredientsTextView.text
             
             recipe.uploadRecipe()
-            performSegueWithIdentifier("postRecipeSegue", sender: nil)
+            performSegueWithIdentifier("postRecipeSegue", sender: self)
 
         }
     }
@@ -299,19 +284,20 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     // MARK: UnwindtoSegue Function
     @IBAction func unwindToSegue(segue: UIStoryboardSegue)
     {
+        // "Post My Recipe" button pressed and goes back to reloads the RecipeViewController to reload the image
         if(segue.identifier == "postRecipeSegue")
         {
             let destViewController = segue.destinationViewController as! RecipeViewController
         }
         
-
+        // Selecting the "Done" button
         if(segue.identifier == "selectDoneButtonPressed")
         {
             let sourceViewController = segue.sourceViewController as! DirectionsViewController
             recipe.directionsText.append(sourceViewController.directionsTextField.text)
             
             // Add/append the image in the imageview of the tableviewcell
-            recipe.directionsImages.append(PFFile(data: UIImageJPEGRepresentation(sourceViewController.selectedImage!, 0.8)))//
+            recipe.directionsImages.append(PFFile(data: UIImageJPEGRepresentation(sourceViewController.selectedImage!, 0.8)))
             
         }
 
