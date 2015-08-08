@@ -8,10 +8,13 @@
 
 import UIKit
 import Parse
+import ParseUI
 import ConvenienceKit
 import AVFoundation
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TimelineComponentTarget
+class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, TimelineComponentTarget
 {
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,6 +35,28 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
 
     
+    // MARK: Logout bar button
+    @IBOutlet weak var logoutBarButtonItem: UIBarButtonItem!
+    
+    
+    @IBAction func logoutBarButtonItemPressed(sender: AnyObject)
+    {
+        PFUser.logOut()
+//        let parseLoginHelper = (UIApplication.sharedApplication().delegate as! AppDelegate).parseLoginHelper
+//        let window = (UIApplication.sharedApplication().delegate as! AppDelegate).window
+//        let loginViewController = PFLogInViewController()
+//        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten |  .Facebook
+//        loginViewController.delegate = parseLoginHelper
+//        loginViewController.signUpController?.delegate = parseLoginHelper
+  
+        //self.removeFromParentViewController()
+//        self.presentViewController(loginViewController, animated:true, completion:nil)
+        
+        
+        
+    }
+    
+    
     // Timeline Component Protocol
     let defaultRange = 0...4
     let additionalRangeSize = 5
@@ -42,6 +67,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
         recipeTimelineComponent = TimelineComponent(target: self)
         self.navigationController?.delegate = self
+        
     }
 
     override func viewDidAppear(animated: Bool)

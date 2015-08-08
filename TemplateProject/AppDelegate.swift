@@ -10,6 +10,8 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import ParseUI
+import Mixpanel
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -35,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainViewController = storyboard.instantiateViewControllerWithIdentifier("NavigationController") as! UINavigationController
                 
+                
+//                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 self.window?.rootViewController!.presentViewController(mainViewController, animated:true, completion:nil)
             }
         }
@@ -42,7 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
   {
+    
     // Override point for customization after application launch.
+    
+    Mixpanel.sharedInstanceWithToken("401068b56d236e5403ba8ee996d0208c")
+    let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+    mixpanel.track("App launched")
     
     // Set up the Parse SDK
     Parse.setApplicationId("LGHDw7YSM4F1OBuBQwSZzKFcPvlZhl5brqVr27nv", clientKey: "jxEQqoFEaGI2iqRcATk3ri8PwAXtlyxYYLFeZwgx")

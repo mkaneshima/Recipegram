@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FZ8-Za-TpB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pso-1x-YVS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -8,7 +8,7 @@
         <!--New Recipe-->
         <scene sceneID="ex9-HF-YdM">
             <objects>
-                <viewController storyboardIdentifier="NewRecipeViewController" id="lv1-jg-ukz" customClass="NewRecipeViewController" customModule="TemplateProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewRecipeViewController" id="lv1-jg-ukz" customClass="NewRecipeViewController" customModule="Recipegram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z3Z-4F-HNS"/>
                         <viewControllerLayoutGuide type="bottom" id="4aW-zT-cKA"/>
@@ -127,7 +127,7 @@
                                                 </constraints>
                                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="1" maxY="1"/>
                                                 <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DirectionsCell" rowHeight="120" id="LYC-u7-3hh" customClass="DirectionsTableViewCell" customModule="TemplateProject" customModuleProvider="target">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DirectionsCell" rowHeight="120" id="LYC-u7-3hh" customClass="DirectionsTableViewCell" customModule="Recipegram" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LYC-u7-3hh" id="wE1-m7-N0o">
@@ -343,7 +343,7 @@
         <!--RecipeViewController-->
         <scene sceneID="F2w-8X-SQa">
             <objects>
-                <viewController storyboardIdentifier="RecipeViewController" title="RecipeViewController" id="ZhA-gl-FRJ" customClass="RecipeViewController" customModule="TemplateProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipeViewController" title="RecipeViewController" id="ZhA-gl-FRJ" customClass="RecipeViewController" customModule="Recipegram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BKt-iV-nMD"/>
                         <viewControllerLayoutGuide type="bottom" id="O2P-kc-Cg0"/>
@@ -357,7 +357,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="347" id="E2c-m3-s6W" customClass="RecipeTableViewCell" customModule="TemplateProject" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="347" id="E2c-m3-s6W" customClass="RecipeTableViewCell" customModule="Recipegram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E2c-m3-s6W" id="ZZA-kx-UFa">
@@ -456,24 +456,31 @@
                                 <segue destination="lv1-jg-ukz" kind="show" identifier="CreateNewRecipe" id="FZ0-sD-bga"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="wzF-4I-LNn">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="logoutBarButtonItemPressed:" destination="ZhA-gl-FRJ" id="wTG-wH-7I3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="addRecipeBarButton" destination="5M4-Lj-rS0" id="NZC-zS-6bZ"/>
+                        <outlet property="logoutBarButtonItem" destination="wzF-4I-LNn" id="Ymw-dk-wkA"/>
                         <outlet property="tableView" destination="aI6-0C-YX3" id="CgP-kj-rba"/>
                         <segue destination="nXj-lr-Gql" kind="show" identifier="ShowRecipeSegue" id="PlJ-Xn-AYR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKb-uz-9dA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846" y="-1827"/>
+            <point key="canvasLocation" x="3429" y="-1897"/>
         </scene>
         <!--Chosen Recipe View Controller-->
         <scene sceneID="w0t-hC-kYz">
             <objects>
-                <viewController storyboardIdentifier="ChosenRecipeViewController" id="nXj-lr-Gql" customClass="ChosenRecipeViewController" customModule="TemplateProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChosenRecipeViewController" id="nXj-lr-Gql" customClass="ChosenRecipeViewController" customModule="Recipegram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mhu-y3-rgh"/>
                         <viewControllerLayoutGuide type="bottom" id="8TD-vC-Sbe"/>
@@ -629,7 +636,7 @@
                                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleAspectFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="UpdatedDirectionsCell" rowHeight="150" id="PNo-UA-WhB" userLabel="Directions Table View Cell" customClass="UpdatedDirectionsTableViewCell" customModule="TemplateProject" customModuleProvider="target">
+                                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleAspectFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="UpdatedDirectionsCell" rowHeight="150" id="PNo-UA-WhB" userLabel="Directions Table View Cell" customClass="UpdatedDirectionsTableViewCell" customModule="Recipegram" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="449" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PNo-UA-WhB" id="9rX-pQ-8wV" userLabel="Directions Content View">
@@ -789,12 +796,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNx-UH-WzX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540" y="-3068"/>
+            <point key="canvasLocation" x="4164" y="-3068"/>
         </scene>
         <!--DirectionsViewController-->
         <scene sceneID="u1f-gg-kbH">
             <objects>
-                <viewController title="DirectionsViewController" id="qw1-Fc-fA7" customClass="DirectionsViewController" customModule="TemplateProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="DirectionsViewController" id="qw1-Fc-fA7" customClass="DirectionsViewController" customModule="Recipegram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c3d-Ox-NW0"/>
                         <viewControllerLayoutGuide type="bottom" id="gtg-2N-VOB"/>
@@ -918,27 +925,23 @@
             <point key="canvasLocation" x="3309" y="-866"/>
         </scene>
         <!--NavigationController-->
-        <scene sceneID="3M5-ma-7GT">
+        <scene sceneID="je0-xQ-6er">
             <objects>
-                <navigationController storyboardIdentifier="NavigationController" title="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FZ8-Za-TpB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" title="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="pso-1x-YVS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YJ8-ip-j9V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zCK-NH-Lss">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="1" green="0.43308853581154994" blue="0.41379320692739763" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
+                        <color key="barTintColor" red="1" green="0.43308853580000001" blue="0.41379320689999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ZhA-gl-FRJ" kind="relationship" relationship="rootViewController" id="gBk-cF-8fc"/>
+                        <segue destination="ZhA-gl-FRJ" kind="relationship" relationship="rootViewController" id="HxL-PG-Ui2"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y5q-Uv-YTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOT-3L-YNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="-1754"/>
+            <point key="canvasLocation" x="2617" y="-1897"/>
         </scene>
     </scenes>
     <resources>
