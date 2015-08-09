@@ -10,6 +10,7 @@ import UIKit
 import Bond
 import Parse
 import Foundation
+import DateTools
 
 class RecipeTableViewCell: UITableViewCell
 {
@@ -44,7 +45,7 @@ class RecipeTableViewCell: UITableViewCell
                 usernameLabel.text = recipe.user?.username
                 
                 // Add the DateTools in the Podfile
-//                postTimeLabel.text = recipe.createdAt?.shortTimeAgoSinceDate(NSDate()) ?? ""
+                postTimeLabel.text = recipe.createdAt?.shortTimeAgoSinceDate(NSDate()) ?? ""
 
             }
             
