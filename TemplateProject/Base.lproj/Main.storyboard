@@ -338,7 +338,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HlP-r6-yn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dlL-i4-HXm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2515" y="-340"/>
+            <point key="canvasLocation" x="3473" y="-434"/>
         </scene>
         <!--RecipeViewController-->
         <scene sceneID="F2w-8X-SQa">
@@ -352,12 +352,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="390" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aI6-0C-YX3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="389" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aI6-0C-YX3">
                                 <rect key="frame" x="0.0" y="94" width="600" height="506"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="347" id="E2c-m3-s6W" customClass="RecipeTableViewCell" customModule="Recipegram" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="389" id="E2c-m3-s6W" customClass="RecipeTableViewCell" customModule="Recipegram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E2c-m3-s6W" id="ZZA-kx-UFa">
@@ -400,13 +400,17 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BEW-AO-NEz">
                                                     <rect key="frame" x="0.0" y="40" width="600" height="257"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FF5-ok-LJz">
-                                                    <rect key="frame" x="13" y="302" width="26" height="28"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUE-XO-PEg">
+                                                    <rect key="frame" x="8" y="305" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="4hu-Bp-fru"/>
+                                                        <constraint firstAttribute="width" constant="44" id="761-bl-jYR"/>
+                                                    </constraints>
                                                     <state key="normal" image="More">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="moreButtonTapped:" destination="E2c-m3-s6W" eventType="touchUpInside" id="Cdv-Ac-uDl"/>
+                                                        <action selector="moreButtonTapped:" destination="E2c-m3-s6W" eventType="touchUpInside" id="Jb7-6L-PNB"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -415,11 +419,10 @@
                                                 <constraint firstItem="GoM-b3-1gi" firstAttribute="leading" secondItem="ZZA-kx-UFa" secondAttribute="leading" id="91x-Ae-cgx"/>
                                                 <constraint firstAttribute="trailing" secondItem="BEW-AO-NEz" secondAttribute="trailing" id="IVI-KC-jzl"/>
                                                 <constraint firstItem="GoM-b3-1gi" firstAttribute="top" secondItem="ZZA-kx-UFa" secondAttribute="top" id="Kiu-cu-VkK"/>
-                                                <constraint firstItem="FF5-ok-LJz" firstAttribute="top" secondItem="BEW-AO-NEz" secondAttribute="bottom" constant="5" id="bcW-PB-zGa"/>
-                                                <constraint firstAttribute="centerY" secondItem="FF5-ok-LJz" secondAttribute="centerY" constant="-142.5" id="fOi-ES-y31"/>
+                                                <constraint firstItem="dUE-XO-PEg" firstAttribute="leading" secondItem="ZZA-kx-UFa" secondAttribute="leadingMargin" id="LNX-jc-4kN"/>
+                                                <constraint firstItem="dUE-XO-PEg" firstAttribute="top" secondItem="BEW-AO-NEz" secondAttribute="bottom" constant="8" id="Smp-XB-XA6"/>
                                                 <constraint firstAttribute="trailing" secondItem="GoM-b3-1gi" secondAttribute="trailing" id="l8n-O9-aM9"/>
-                                                <constraint firstAttribute="bottom" secondItem="BEW-AO-NEz" secondAttribute="bottom" constant="50" id="ogH-z7-dRf"/>
-                                                <constraint firstItem="FF5-ok-LJz" firstAttribute="leading" secondItem="ZZA-kx-UFa" secondAttribute="leadingMargin" constant="5" id="p6e-ve-CNy"/>
+                                                <constraint firstAttribute="bottom" secondItem="BEW-AO-NEz" secondAttribute="bottom" constant="92" id="ogH-z7-dRf"/>
                                                 <constraint firstItem="BEW-AO-NEz" firstAttribute="leading" secondItem="ZZA-kx-UFa" secondAttribute="leading" id="r3r-2O-PLu"/>
                                                 <constraint firstItem="BEW-AO-NEz" firstAttribute="top" secondItem="GoM-b3-1gi" secondAttribute="bottom" id="wgT-Ia-uxA"/>
                                                 <constraint firstItem="BEW-AO-NEz" firstAttribute="top" secondItem="GoM-b3-1gi" secondAttribute="bottom" id="zFD-of-rYz"/>
@@ -427,7 +430,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="moreButton" destination="FF5-ok-LJz" id="Laf-fp-eom"/>
+                                            <outlet property="moreButton" destination="dUE-XO-PEg" id="Otg-v7-ryy"/>
                                             <outlet property="postTimeLabel" destination="kru-zi-Qkq" id="Vod-QW-98g"/>
                                             <outlet property="recipeImageView" destination="BEW-AO-NEz" id="EXy-1z-eyc"/>
                                             <outlet property="usernameLabel" destination="u0N-CH-McU" id="FjA-qS-kbf"/>
@@ -922,7 +925,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdr-QL-Qpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OWB-bC-JgA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3309" y="-866"/>
+            <point key="canvasLocation" x="4277" y="-994"/>
         </scene>
         <!--NavigationController-->
         <scene sceneID="je0-xQ-6er">
@@ -936,12 +939,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ZhA-gl-FRJ" kind="relationship" relationship="rootViewController" id="HxL-PG-Ui2"/>
+                        <segue destination="ZhA-gl-FRJ" kind="relationship" relationship="rootViewController" id="JQ0-mn-gf7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOT-3L-YNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="-1897"/>
+            <point key="canvasLocation" x="2646" y="-1897"/>
         </scene>
     </scenes>
     <resources>

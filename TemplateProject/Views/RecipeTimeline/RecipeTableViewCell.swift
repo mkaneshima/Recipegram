@@ -14,12 +14,18 @@ import DateTools
 
 class RecipeTableViewCell: UITableViewCell
 {
-    
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var postTimeLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     
+    // MARK: moreButton Callback
+    
+    @IBAction func moreButtonTapped(sender: AnyObject)
+    {
+        recipeTimeline?.showActionSheetForRecipe(recipe!)
+    }
+
     weak var recipeTimeline: RecipeViewController?
     
     var recipe:Recipe?
@@ -49,8 +55,6 @@ class RecipeTableViewCell: UITableViewCell
 
             }
             
-            
-            
         }
     }
     
@@ -75,11 +79,5 @@ class RecipeTableViewCell: UITableViewCell
         // Configure the view for the selected state
     }
     
-    // MARK: moreButton Callback
     
-//    @IBAction func moreButtonTapped(sender: AnyObject)
-//    {
-//        recipeTimeline?.showActionSheetForRecipe(recipe!)
-//    }
-
 }

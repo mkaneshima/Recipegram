@@ -48,8 +48,8 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
 //        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten |  .Facebook
 //        loginViewController.delegate = parseLoginHelper
 //        loginViewController.signUpController?.delegate = parseLoginHelper
-  
-        //self.removeFromParentViewController()
+//  
+//        self.removeFromParentViewController()
 //        self.presentViewController(loginViewController, animated:true, completion:nil)
         
         
@@ -134,54 +134,57 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     // MARK: UIActionSheets
     
-//    func showActionSheetForRecipe(recipe: Recipe)
-//    {
-//        if (recipe.user == PFUser.currentUser())
-//        {
-//            showDeleteActionSheetForRecipe(recipe)
-//        }
-//        else
-//        {
-//            showFlagActionSheetForRecipe(recipe)
-//        }
-//    }
-//    func showDeleteActionSheetForRecipe(recipe: Recipe)
-//    {
-//        let alertController = UIAlertController(title: nil, message: "Do you want to delete this recipe?", preferredStyle: .ActionSheet)
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//        alertController.addAction(cancelAction)
-//        
-//        let destroyAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) in
-//            recipe.deleteInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-//                if (success) {
-//                    self.recipeTimelineComponent.removeObject(recipe)
-//                } else {
-//                    // restore old state
-//                    self.recipeTimelineComponent.refresh(self)
-//                }
-//            })
-//        }
-//        alertController.addAction(destroyAction)
-//        
-//        self.presentViewController(alertController, animated: true, completion: nil)
-//    }
-//    
-//    func showFlagActionSheetForRecipe(recipe: Recipe) {
-//        let alertController = UIAlertController(title: nil, message: "Do you want to flag this recipe?", preferredStyle: .ActionSheet)
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//        alertController.addAction(cancelAction)
-//        
-//        let destroyAction = UIAlertAction(title: "Flag", style: .Destructive) { (action) in
-//            recipe.flagRecipe(PFUser.currentUser()!)
-//        }
-//        
-//        alertController.addAction(destroyAction)
-//        
-//        self.presentViewController(alertController, animated: true, completion: nil)
-//    }
-//
+    // MARK: More button
+    func showActionSheetForRecipe(recipe: Recipe)
+    {
+        if (recipe.user == PFUser.currentUser())
+        {
+            showDeleteActionSheetForRecipe(recipe)
+        }
+        else
+        {
+            showFlagActionSheetForRecipe(recipe)
+        }
+    }
+    func showDeleteActionSheetForRecipe(recipe: Recipe)
+    {
+        let alertController = UIAlertController(title: nil, message: "Do you want to delete this recipe?", preferredStyle: .ActionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let destroyAction = UIAlertAction(title: "Delete", style: .Destructive)
+        {
+            (action) in
+            recipe.deleteInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    self.recipeTimelineComponent.removeObject(recipe)
+                } else {
+                    // restore old state
+                    self.recipeTimelineComponent.refresh(self)
+                }
+            })
+        }
+        alertController.addAction(destroyAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func showFlagActionSheetForRecipe(recipe: Recipe) {
+        let alertController = UIAlertController(title: nil, message: "Do you want to flag this recipe?", preferredStyle: .ActionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let destroyAction = UIAlertAction(title: "Flag", style: .Destructive) { (action) in
+            recipe.flagRecipe(PFUser.currentUser()!)
+        }
+        
+        alertController.addAction(destroyAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
 }
 
 
@@ -203,7 +206,6 @@ extension RecipeViewController: UITableViewDataSource
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("RecipeCell") as! RecipeTableViewCell
         
-        // let recipe = recipeTimelineComponent.content[indexPath.row]
         let recipe = recipeTimelineComponent.content[indexPath.row]
         recipe.downloadImage()
         cell.recipe = recipe
@@ -221,7 +223,6 @@ extension RecipeViewController: UITableViewDelegate
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
     {
-//        recipeTimelineComponent.targetWillDisplayEntry(indexPath.row)
         recipeTimelineComponent.targetWillDisplayEntry(indexPath.row)
 
     }
@@ -230,21 +231,6 @@ extension RecipeViewController: UITableViewDelegate
         selected = indexPath.row
         performSegueWithIdentifier(recipeSegueIdentifier, sender: nil)
     }
-    
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-//    {
-//        let headerCell = tableView.dequeueReusableCellWithIdentifier("RecipeHeader") as! RecipeSectionHeaderView
-//        
-//        let recipe = self.recipeTimelineComponent.content[section]
-//        headerCell.recipe = recipe
-//        
-//        return headerCell
-//    }
-    
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-//    {
-//        return 40
-//    }
     
 }
 

@@ -56,7 +56,6 @@ class ParseHelper
         
         recipesFromThisUser!.skip = range.startIndex
         recipesFromThisUser!.limit = range.endIndex - range.startIndex
-        //recipesFromThisUser!.includeKey("ingredientsImages")
         recipesFromThisUser!.findObjectsInBackgroundWithBlock(completionBlock)
         
         
