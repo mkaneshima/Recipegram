@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Bond
+import Mixpanel
 
 class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate
 {
@@ -17,7 +18,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     // Pickerview values
     var levels = ["Easy", "Intermediate", "Hard"]
     var selectedLevel: String = ""
-    var textViewValue = "Enter your ingredients..."
+    var textViewValue = "Enter your ingredients with measurements..."
     
     let recipe = Recipe()
     

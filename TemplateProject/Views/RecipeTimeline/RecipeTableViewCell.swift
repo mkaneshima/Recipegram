@@ -11,6 +11,7 @@ import Bond
 import Parse
 import Foundation
 import DateTools
+import Mixpanel
 
 class RecipeTableViewCell: UITableViewCell
 {

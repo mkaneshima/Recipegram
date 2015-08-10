@@ -10,6 +10,7 @@ import Foundation
 import FBSDKCoreKit
 import Parse
 import ParseUI
+import Mixpanel
 
 typealias ParseLoginHelperCallback = (PFUser?, NSError?) -> Void
 

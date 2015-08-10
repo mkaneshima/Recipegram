@@ -13,6 +13,7 @@ import ConvenienceKit
 import AVFoundation
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Mixpanel
 
 class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, TimelineComponentTarget
 {

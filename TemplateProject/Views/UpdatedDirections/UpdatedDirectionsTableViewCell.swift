@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Mixpanel
 
 class UpdatedDirectionsTableViewCell: UITableViewCell
 {

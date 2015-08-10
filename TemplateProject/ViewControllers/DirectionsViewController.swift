@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ConvenienceKit
+import Mixpanel
 
 class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate
 {

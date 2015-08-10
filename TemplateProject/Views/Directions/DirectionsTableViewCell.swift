@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Mixpanel
 
 typealias photoTakingHelperCallBack = UIImage? -> Void
 

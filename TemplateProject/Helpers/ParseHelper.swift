@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Parse
+import Mixpanel
 
 
 class ParseHelper

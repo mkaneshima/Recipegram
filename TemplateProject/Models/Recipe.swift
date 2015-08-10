@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import Bond
 import ConvenienceKit
+import Mixpanel
 
 class Recipe: PFObject, PFSubclassing
 {

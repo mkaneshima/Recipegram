@@ -8,6 +8,7 @@
 
 import UIKit
 import ConvenienceKit
+import Mixpanel
 
 /**
   This struct provides basic Error handling functionality.
