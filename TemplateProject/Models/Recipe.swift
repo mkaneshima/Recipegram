@@ -79,7 +79,9 @@ class Recipe: PFObject, PFSubclassing
                 if let error = error
                 {
                     ErrorHandling.defaultErrorHandler(error)
-                }
+                } else if success {
+                    println("\(success)")
+            }
         }
 
     }

@@ -200,6 +200,7 @@ extension RecipeViewController: UITableViewDataSource
         else
         {
             self.tableView.backgroundView = nil
+            self.recipeTimelineComponent.content.count
         }
         return self.recipeTimelineComponent.content.count
     }

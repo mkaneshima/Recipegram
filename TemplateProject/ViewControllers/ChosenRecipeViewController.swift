@@ -142,6 +142,8 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         updatedDirectionsTableView.dataSource = self
         updatedDirectionsTableView.delegate = self
+        
+        
         // Do any additional setup after loading the view.
         
         recipe!.ingredientsImages.getDataInBackgroundWithBlock
@@ -196,6 +198,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         }
         else
         {
+            cell.updatedDirectionsTextView.showsVerticalScrollIndicator = true
             cell.updatedDirectionsTextView.text = ""
         }
         

@@ -30,11 +30,12 @@ class UpdatedDirectionsTableViewCell: UITableViewCell
 //        }
 //    }
 //    
-    
+
     override func awakeFromNib()
     {
         super.awakeFromNib()
         // Initialization code
+        updatedDirectionsTextView.showsVerticalScrollIndicator = true
     }
 
     override func setSelected(selected: Bool, animated: Bool)
