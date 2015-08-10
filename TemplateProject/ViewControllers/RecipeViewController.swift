@@ -44,18 +44,6 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         PFUser.logOut()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.logOut()
-//        let parseLoginHelper = (UIApplication.sharedApplication().delegate as! AppDelegate).parseLoginHelper
-//        let window = (UIApplication.sharedApplication().delegate as! AppDelegate).window
-//        let loginViewController = PFLogInViewController()
-//        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten |  .Facebook
-//        loginViewController.delegate = parseLoginHelper
-//        loginViewController.signUpController?.delegate = parseLoginHelper
-//  
-//        self.removeFromParentViewController()
-//        self.presentViewController(loginViewController, animated:true, completion:nil)
-        
-        
-        
     }
     
     
@@ -200,6 +188,19 @@ extension RecipeViewController: UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        if self.recipeTimelineComponent.content.count == 0
+        {
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            messageLabel.text = "You don't have any recipes! Create one!"
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .Center
+            messageLabel.sizeToFit()
+            self.tableView.backgroundView = messageLabel
+        }
+        else
+        {
+            self.tableView.backgroundView = nil
+        }
         return self.recipeTimelineComponent.content.count
         //self.recipeTimelineComponent.content[section].count
     }
