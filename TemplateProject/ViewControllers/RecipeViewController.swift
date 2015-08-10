@@ -202,7 +202,6 @@ extension RecipeViewController: UITableViewDataSource
             self.tableView.backgroundView = nil
         }
         return self.recipeTimelineComponent.content.count
-        //self.recipeTimelineComponent.content[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -212,8 +211,7 @@ extension RecipeViewController: UITableViewDataSource
         let recipe = recipeTimelineComponent.content[indexPath.row]
         recipe.downloadImage()
         cell.recipe = recipe
-//        cell.timeline = self
-        
+        cell.recipeTimeline = self
         return cell
     }
     

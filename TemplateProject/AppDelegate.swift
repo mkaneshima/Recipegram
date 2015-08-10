@@ -36,9 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 // if login was successful, display the NavigationController
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainViewController = storyboard.instantiateViewControllerWithIdentifier("NavigationController") as! UINavigationController
-                
-                
-//                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            
                 self.window?.rootViewController!.presentViewController(mainViewController, animated:true, completion:nil)
             }
         }
@@ -80,7 +78,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Otherwise set the LoginViewController to be the first
         let loginViewController = PFLogInViewController()
-        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten |  .Facebook
+        let logoTitle = UILabel()
+        logoTitle.textColor = UIColor.blackColor()
+        logoTitle.text = "Recipegram"
+        logoTitle.font = UIFont(name: "Helvetica", size: 40.0)
+
+        loginViewController.logInView?.logo = logoTitle
+        loginViewController.logInView?.showsVerticalScrollIndicator = true
+        loginViewController.logInView?.dismissButton?.hidden = true
+        
+        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten
         loginViewController.delegate = parseLoginHelper
         loginViewController.signUpController?.delegate = parseLoginHelper
         
@@ -135,7 +142,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         
         let loginViewController = PFLogInViewController()
-        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten |  .Facebook
+        let logoTitle = UILabel()
+        logoTitle.textColor = UIColor.blackColor()
+        logoTitle.text = "Recipegram"
+        logoTitle.font = UIFont(name: "Helvetica", size: 40.0)
+        
+        loginViewController.logInView?.logo = logoTitle
+        loginViewController.logInView?.showsVerticalScrollIndicator = true
+        loginViewController.logInView?.dismissButton?.hidden = true
+        
+        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten
         loginViewController.delegate = parseLoginHelper
         loginViewController.signUpController?.delegate = parseLoginHelper
 

@@ -18,7 +18,7 @@ class RecipeTableViewCell: UITableViewCell
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var postTimeLabel: UILabel!
     @IBOutlet weak var moreButtonTapped: UIButton!
-    @IBOutlet weak var likeButtonTapped: UIButton!
+//    @IBOutlet weak var likeButtonTapped: UIButton!
     
     
     weak var recipeTimeline: RecipeViewController?
