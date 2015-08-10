@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Make School. All rights reserved.
 //
 
-//import UIKit
-//import Parse
-//import ParseUI
-//
-//class LoginViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate
-//{
-//
+import UIKit
+import Parse
+import ParseUI
+
+class LoginViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate
+{
+
 //    var loginHelper: ParseLoginHelper!
 //
 //    var loginViewController: PFLogInViewController! = PFLogInViewController()
@@ -101,16 +101,16 @@
 //    {
 //        self.presentViewController(self.loginViewController, animated: true, completion: nil)
 //    }
-//    
-//    
-//    /*
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//    }
-//    */
-//
-//}
+    
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

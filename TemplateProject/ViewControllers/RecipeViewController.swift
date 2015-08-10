@@ -42,6 +42,8 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBAction func logoutBarButtonItemPressed(sender: AnyObject)
     {
         PFUser.logOut()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.logOut()
 //        let parseLoginHelper = (UIApplication.sharedApplication().delegate as! AppDelegate).parseLoginHelper
 //        let window = (UIApplication.sharedApplication().delegate as! AppDelegate).window
 //        let loginViewController = PFLogInViewController()
@@ -133,8 +135,6 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     // MARK: UIActionSheets
-    
-    // MARK: More button
     func showActionSheetForRecipe(recipe: Recipe)
     {
         if (recipe.user == PFUser.currentUser())
@@ -146,6 +146,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
             showFlagActionSheetForRecipe(recipe)
         }
     }
+    
     func showDeleteActionSheetForRecipe(recipe: Recipe)
     {
         let alertController = UIAlertController(title: nil, message: "Do you want to delete this recipe?", preferredStyle: .ActionSheet)
@@ -170,7 +171,8 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func showFlagActionSheetForRecipe(recipe: Recipe) {
+    func showFlagActionSheetForRecipe(recipe: Recipe)
+    {
         let alertController = UIAlertController(title: nil, message: "Do you want to flag this recipe?", preferredStyle: .ActionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)

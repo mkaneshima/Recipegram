@@ -107,6 +107,7 @@ class ParseHelper
     // MARK: Flagging
     static func flagRecipe(user: PFUser, recipe: Recipe)
     {
+        
         let flagObject = PFObject(className: ParseFlaggedContentClass)
         flagObject.setObject(user, forKey: ParseFlaggedContentFromUser)
         flagObject.setObject(recipe, forKey: ParseFlaggedContentToRecipe)
@@ -117,6 +118,7 @@ class ParseHelper
         
         //TODO: add error handling
         flagObject.saveInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
+        
     }
     
     // MARK: Following

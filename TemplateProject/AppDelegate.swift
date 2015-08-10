@@ -130,6 +130,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate
   {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
    }
+    
+    func logOut()
+    {
+        
+        let loginViewController = PFLogInViewController()
+        loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten |  .Facebook
+        loginViewController.delegate = parseLoginHelper
+        loginViewController.signUpController?.delegate = parseLoginHelper
+
+        self.window?.rootViewController = loginViewController
+    }
+    
   
 }
 
