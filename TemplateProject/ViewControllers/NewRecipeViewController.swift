@@ -63,6 +63,12 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         }
         var tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapDismiss)
+        
+        addDirectionButton.layer.cornerRadius = 5
+//        addDirectionButton.frame.width == 150
+        
+        postRecipeButton.layer.cornerRadius = 5
+        
     }
     
     
@@ -296,6 +302,8 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
     }
     
     
+    
+    @IBOutlet weak var addDirectionButton: UIButton!
     
     
     // MARK: UnwindtoSegue Function

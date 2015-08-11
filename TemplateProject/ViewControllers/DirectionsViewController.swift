@@ -59,7 +59,11 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         scrollView.bounces = false
         scrollView.scrollEnabled = false
         // Do any additional setup after loading the view.
+        
+        doneButton.layer.cornerRadius = 5
     }
+    
+    
     
     // MARK: didReceiveMemoryWarning
     override func didReceiveMemoryWarning()
@@ -97,7 +101,7 @@ class DirectionsViewController: UIViewController, UITextFieldDelegate, UIImagePi
         else
         {
             performSegueWithIdentifier("selectDoneButtonPressed", sender: self)
-             println("hello there!")
+//             println("hello there!")
         }
         
     }

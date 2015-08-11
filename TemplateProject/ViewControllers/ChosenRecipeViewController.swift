@@ -200,6 +200,7 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         else
         {
             cell.updatedDirectionsTextView.showsVerticalScrollIndicator = true
+            cell.updatedDirectionsTextView.showsHorizontalScrollIndicator = true
             cell.updatedDirectionsTextView.text = ""
         }
         

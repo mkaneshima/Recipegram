@@ -16,6 +16,7 @@ class UpdatedDirectionsTableViewCell: UITableViewCell
     @IBOutlet weak var updatedDirectionsImageView: UIImageView!
     @IBOutlet weak var updatedDirectionsTextView: UITextView!
     
+    
     // MARK: How to get the directions content (text and image objects) from NewRecipeViewController to show up in ChosenRecipeViewController
 //    func displayDirection()
 //    {

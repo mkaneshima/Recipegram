@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainViewController = storyboard.instantiateViewControllerWithIdentifier("NavigationController") as! UINavigationController
             
+                self.window?.rootViewController!.dismissViewControllerAnimated(true, completion: nil)
                 self.window?.rootViewController!.presentViewController(mainViewController, animated:true, completion:nil)
             }
         }
@@ -44,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
   {
+    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+    UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
     
     // Override point for customization after application launch.
     
@@ -62,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     // Initialize Facebook
     PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
     
-    
     // check if we have logged in user
     let user = PFUser.currentUser()
     
@@ -78,10 +81,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Otherwise set the LoginViewController to be the first
         let loginViewController = PFLogInViewController()
+        
         let logoTitle = UILabel()
         logoTitle.textColor = UIColor.blackColor()
         logoTitle.text = "Recipegram"
         logoTitle.font = UIFont(name: "Helvetica", size: 40.0)
+        
+        let signInLogoTitle = UILabel()
+        signInLogoTitle.textColor = UIColor.blackColor()
+        signInLogoTitle.text = "Recipegram"
+        signInLogoTitle.font = UIFont(name: "Helvetica", size: 40.0)
 
         loginViewController.logInView?.logo = logoTitle
         loginViewController.logInView?.showsVerticalScrollIndicator = true
@@ -90,6 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten
         loginViewController.delegate = parseLoginHelper
         loginViewController.signUpController?.delegate = parseLoginHelper
+        
+        loginViewController.signUpController?.signUpView?.logo = signInLogoTitle
+        loginViewController.signUpController?.signUpView?.dismissButton?.hidden = true
+//        loginViewController.signUpController?.signUpView?.emailField?.hidden = true
+        
         
         startViewController = loginViewController
     }
@@ -142,10 +156,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         
         let loginViewController = PFLogInViewController()
+
+        
         let logoTitle = UILabel()
         logoTitle.textColor = UIColor.blackColor()
         logoTitle.text = "Recipegram"
         logoTitle.font = UIFont(name: "Helvetica", size: 40.0)
+        
+        let signInLogoTitle = UILabel()
+        signInLogoTitle.textColor = UIColor.blackColor()
+        signInLogoTitle.text = "Recipegram"
+        signInLogoTitle.font = UIFont(name: "Helvetica", size: 40.0)
+        
         
         loginViewController.logInView?.logo = logoTitle
         loginViewController.logInView?.showsVerticalScrollIndicator = true
@@ -154,6 +176,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten
         loginViewController.delegate = parseLoginHelper
         loginViewController.signUpController?.delegate = parseLoginHelper
+        
+        
+        loginViewController.signUpController?.signUpView?.logo = signInLogoTitle
+        loginViewController.signUpController?.signUpView?.dismissButton?.hidden = true
+//        loginViewController.signUpController?.signUpView?.emailField?.hidden = true
 
         self.window?.rootViewController = loginViewController
     }

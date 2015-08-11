@@ -15,11 +15,14 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Mixpanel
 
-class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, TimelineComponentTarget
+class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, TimelineComponentTarget
 {
     @IBOutlet weak var tableView: UITableView!
     
     var selected: Int!
+    
+    // Mixpanel
+    let mixpanel = Mixpanel.sharedInstance()
     
     // Segue Identifiers
     let recipeSegueIdentifier = "ShowRecipeSegue"
@@ -32,7 +35,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newRecipeViewController: AnyObject! = storyboard.instantiateViewControllerWithIdentifier(newRecipeSegueIdentifier)
-        
+        self.mixpanel.track("Add New Recipe")
     }
 
     
@@ -45,6 +48,7 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         PFUser.logOut()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.logOut()
+        self.mixpanel.track("Logged out")
     }
     
     
@@ -59,7 +63,9 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         recipeTimelineComponent = TimelineComponent(target: self)
         self.navigationController?.delegate = self
         
+        
     }
+    
 
     override func viewDidAppear(animated: Bool)
     {
@@ -201,6 +207,7 @@ extension RecipeViewController: UITableViewDataSource
         else
         {
             self.tableView.backgroundView = nil
+//            self.tableView.reloadData()
             self.recipeTimelineComponent.content.count
         }
         return self.recipeTimelineComponent.content.count
