@@ -65,7 +65,6 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
         self.view.addGestureRecognizer(tapDismiss)
         
         addDirectionButton.layer.cornerRadius = 5
-//        addDirectionButton.frame.width == 150
         
         postRecipeButton.layer.cornerRadius = 5
         
@@ -299,6 +298,7 @@ class NewRecipeViewController: UIViewController, UITableViewDelegate, UINavigati
             performSegueWithIdentifier("postRecipeSegue", sender: self)
 
         }
+        
     }
     
     

@@ -134,6 +134,9 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: Updated directions with text and image
     @IBOutlet weak var updatedDirectionsTableView: UITableView!
+    
+        //self.updatedDirectionsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+    
     var updatedDirectionsArray: [String] = []
     var updatedImagesArray: [UIImage] = []
     
@@ -143,6 +146,9 @@ class ChosenRecipeViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         updatedDirectionsTableView.dataSource = self
         updatedDirectionsTableView.delegate = self
+        self.ingredientsTextView.font = UIFont(name: "Helvetica", size: 14.0)
+        self.ingredientsTextView.scrollEnabled = true
+        
         
         
         // Do any additional setup after loading the view.
