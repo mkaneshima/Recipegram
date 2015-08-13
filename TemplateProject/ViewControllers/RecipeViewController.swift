@@ -15,11 +15,13 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Mixpanel
 
-class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, TimelineComponentTarget
+class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, TimelineComponentTarget
 {
     @IBOutlet weak var tableView: UITableView!
     
     var selected: Int!
+    
+    
     
     // Mixpanel
     let mixpanel = Mixpanel.sharedInstance()
@@ -27,6 +29,21 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
     // Segue Identifiers
     let recipeSegueIdentifier = "ShowRecipeSegue"
     let newRecipeSegueIdentifier = "CreateNewRecipeSegue"
+    
+    
+    enum State
+    {
+        case DefaultMode
+        case SearchMode
+    }
+    
+    var state: State = .DefaultMode
+    {
+        didSet
+        {
+            // update recipes and
+        }
+    }
     
     
     @IBOutlet weak var addRecipeBarButton: UIBarButtonItem!
@@ -50,6 +67,11 @@ class RecipeViewController: UIViewController, UIImagePickerControllerDelegate, U
         appDelegate.logOut()
         self.mixpanel.track("Logged out")
     }
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     
     
     // Timeline Component Protocol
@@ -251,5 +273,10 @@ extension RecipeViewController
     {
         return .LightContent
     }
+}
+
+extension RecipeViewController: UISearchBarDelegate
+{
+    
 }
 
